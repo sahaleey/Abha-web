@@ -4,7 +4,7 @@ const communityMembers = [
     slug: "ramees",
     name: "Ramees",
     role: "Second Leader",
-    image: "../public/images/ramees.jpg",
+    image: "/images/ramees.jpg", // Corrected image path
     DOB: "",
     skill: "",
     bio: "Creativity meets strategy to tell your story.",
@@ -13,16 +13,16 @@ const communityMembers = [
     slug: "ma-amoon",
     name: "Ma Amoon",
     role: "Join Secretery + Academic cord.",
-    image: "../public/images/maamoon.jpg",
+    image: "/images/maamoon.jpg", // Corrected image path
     DOB: "19/5/77",
-    skill: "natural", // Make sure to update the path to the actual image
+    skill: "natural",
     bio: "John is a passionate frontend developer with experience in building responsive websites using React, JavaScript, and CSS. He loves creating beautiful and user-friendly interfaces.",
   },
   {
     slug: "jasil",
     name: "Jasil",
     role: "Treasure + Academic cord.",
-    image: "../public/images/jasil.jpg",
+    image: "/images/jasil.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Bringing people together, one event at a time.",
@@ -31,7 +31,7 @@ const communityMembers = [
     slug: "ashiq",
     name: "Ashiq",
     role: "Sout Abha Chair.",
-    image: "../public/images/ashiq.jpg",
+    image: "/images/ashiq.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -40,7 +40,7 @@ const communityMembers = [
     slug: "swabah",
     name: "Swabah",
     role: "English Hub Chair.",
-    image: "../public/images/swabah.jpg",
+    image: "/images/swabah.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -49,7 +49,7 @@ const communityMembers = [
     slug: "muhsin",
     name: "Muhsin",
     role: "Auditing Board",
-    image: "../public/images/muhsin.jpg",
+    image: "/images/muhsin.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -58,7 +58,7 @@ const communityMembers = [
     slug: "bishr",
     name: "Bishr",
     role: "Auditing Board",
-    image: "../public/images/bishr.jpg",
+    image: "/images/bishr.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -67,7 +67,7 @@ const communityMembers = [
     slug: "jalal",
     name: "Jalal",
     role: "Lisanul jazeera Conv.",
-    image: "../public/images/jalal.jpg",
+    image: "/images/jalal.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -76,7 +76,7 @@ const communityMembers = [
     slug: "ihsan",
     name: "Ihsan",
     role: "English Hub Chair.",
-    image: "../public/images/ihsan.jpg",
+    image: "/images/ihsan.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -85,7 +85,7 @@ const communityMembers = [
     slug: "sinan-km",
     name: "Sinan KM",
     role: "Creative Designer",
-    image: "../public/images/sinan km.jpg",
+    image: "/images/sinan km.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -94,7 +94,7 @@ const communityMembers = [
     slug: "al-ameen",
     name: "Al-Ameen",
     role: "President",
-    image: "../public/images/alameen.jpg",
+    image: "/images/alameen.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -103,7 +103,7 @@ const communityMembers = [
     slug: "sajad",
     name: "Sajad",
     role: "Vice President",
-    image: "../public/images/sajad.jpg",
+    image: "/images/sajad.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -112,7 +112,7 @@ const communityMembers = [
     slug: "anshif",
     name: "Anshif",
     role: "Member",
-    image: "../public/images/anshif.jpg",
+    image: "/images/anshif.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -121,7 +121,7 @@ const communityMembers = [
     slug: "rasheed",
     name: "Rasheed",
     role: "Social Affairs Chair.",
-    image: "../public/images/rasheed.jpg",
+    image: "/images/rasheed.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -130,7 +130,7 @@ const communityMembers = [
     slug: "sahal",
     name: "Sahal",
     role: "Zuban e Ghalib Chair.",
-    image: "../public/images/sahal.jpg",
+    image: "/images/sahal.jpg", // Corrected image path
     DOB: "14/9/28",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -139,7 +139,7 @@ const communityMembers = [
     slug: "ahmed",
     name: "Ahmed",
     role: "Malayala Koottaima Conv.",
-    image: "../public/images/ahmed.jpg",
+    image: "/images/ahmed.jpg", // Corrected image path
     DOB: "14/9/28",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -148,7 +148,7 @@ const communityMembers = [
     slug: "dilshad",
     name: "Dilshad",
     role: "Social Affair Conv.",
-    image: "../public/images/dilshad.jpg",
+    image: "/images/dilshad.jpg", // Corrected image path
     DOB: "14/9/28",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -157,7 +157,7 @@ const communityMembers = [
     slug: "fayiz",
     name: "Fayiz",
     role: "Social Media Manager",
-    image: "../public/images/fayiz.jpg",
+    image: "/images/fayiz.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -166,7 +166,7 @@ const communityMembers = [
     slug: "mabrook",
     name: "Mabrook",
     role: "Creative Designer",
-    image: "../public/images/mabrook.jpg",
+    image: "/images/mabrook.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -176,7 +176,7 @@ const communityMembers = [
     slug: "yaseen",
     name: "Yaseen",
     role: "IQ Orbit Chair.",
-    image: "../public/images/yaseen.jpg",
+    image: "/images/yaseen.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Circle around the core of intelligence.",
@@ -186,7 +186,7 @@ const communityMembers = [
     slug: "favas",
     name: "Favas",
     role: "Leader",
-    image: "../public/images/favas.jpg",
+    image: "/images/favas.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -195,7 +195,7 @@ const communityMembers = [
     slug: "anas",
     name: "Anas",
     role: "Member",
-    image: "../public/images/anas.jpg",
+    image: "/images/anas.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -205,7 +205,7 @@ const communityMembers = [
     slug: "anwar",
     name: "Anwar",
     role: "General Secretery + IQ Orbit Conv.",
-    image: "../public/images/anwar.jpeg",
+    image: "/images/anwar.jpeg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     quote: "Creativity meets strategy to tell your story.",
@@ -214,7 +214,7 @@ const communityMembers = [
     slug: "sinan-pm",
     name: "Sinan Pm",
     role: "Zubane e Ghalib Conv.",
-    image: "../public/images/sinan pm.jpg",
+    image: "/images/sinan pm.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -223,7 +223,7 @@ const communityMembers = [
     slug: "ribin",
     name: "Ribin",
     role: "P.R.O",
-    image: "../public/images/ribin.jpg",
+    image: "/images/ribin.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -232,7 +232,7 @@ const communityMembers = [
     slug: "mohammed",
     name: "Mohammed",
     role: "Malayala Koottaima Chair.",
-    image: "../public/images/muhammed.jpg",
+    image: "/images/muhammed.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
