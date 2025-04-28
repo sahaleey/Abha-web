@@ -1,0 +1,42 @@
+@font-face {
+  font-family: bloomsburg;
+  src: url("../src/assets/fonts/Roboto.ttf");
+}
+body {
+  cursor: none;
+}
+
+/* Add this to your global CSS or App.css */
+
+@import "tailwindcss";
+
+@theme {
+  --font-bloomsburg: bloomsburg, "sans-serif";
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 6s linear infinite;
+}
+
+@keyframes glowRing {
+  0%,
+  100% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+}
+
+.group-hover\:animate-glowRing:hover {
+  animation: glowRing 2s infinite;
+}

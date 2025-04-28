@@ -1,0 +1,89 @@
+/* src/styles/GetInTouch.css */
+
+body {
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text color for better contrast */
+  font-family: "", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 10vh;
+  padding: 20px;
+}
+
+.contact-form {
+  background-color: #1f1f1f; /* Dark background for the form */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+}
+
+.contact-form h2 {
+  color: #ffffff; /* White text for the header */
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 3rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #e0e0e0; /* Light labels */
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #333;
+  color: #e0e0e0; /* Light text inside inputs */
+  font-size: 16px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #4caf50; /* Green border on focus */
+  background-color: #444; /* Slightly lighter on focus */
+}
+
+button.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50; /* Green button */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.submit-button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+}
+
+.status-message {
+  text-align: center;
+  margin-top: 20px;
+  color: #76ff03; /* Green text for success message */
+}
+
+.status-message.error {
+  color: #ff5722; /* Red text for error message */
+}
