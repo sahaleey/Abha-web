@@ -26,10 +26,6 @@ router.post("/", upload.single("image"), async (req, res) => {
     const { name, stage, host, date, description, category } = req.body;
     const image = req.file ? req.file.filename : null;
 
-    if (!name || !stage || !host || !date || !description || !category) {
-      return res.status(400).json({ message: "All fields are required" });
-    }
-
     const newProgramme = new Programme({
       name,
       stage,
@@ -37,7 +33,7 @@ router.post("/", upload.single("image"), async (req, res) => {
       date,
       description,
       category,
-      image,
+      image: req.file.filename,
     });
 
     await newProgramme.save();
@@ -73,14 +69,13 @@ router.delete("/:id", async (req, res) => {
       fs.unlink(imagePath, (err) => {
         if (err) {
           console.error("Failed to delete image file:", err);
-          return res.status(500).json({ message: "Error deleting image" });
         } else {
           console.log("Image file deleted successfully:", programme.image);
         }
       });
     }
 
-    // Now delete the programme from the database
+    // Now delete the programme from database
     await Programme.findByIdAndDelete(programmeId);
 
     res
