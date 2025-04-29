@@ -1,10 +1,11 @@
 // src/data/communityMembers.js
+import ramees from "../../Public/images/ramees.jpg";
 const communityMembers = [
   {
     slug: "ramees",
     name: "Ramees",
     role: "Second Leader",
-    image: "/images/ramees.Jpg", // Corrected image path
+    image: { ramees }, // Corrected image path
     DOB: "",
     skill: "",
     bio: "Creativity meets strategy to tell your story.",
@@ -49,9 +50,11 @@ const communityMembers = [
     slug: "muhsin",
     name: "Muhsin",
     role: "Auditing Board",
+    add: "",
+    address: "",
     image: "/images/muhsin.jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
+    DOB: "16/05/2007",
+    skill: "Tafheemul Quran",
     bio: "Creativity meets strategy to tell your story.",
   },
   {
@@ -148,9 +151,11 @@ const communityMembers = [
     slug: "dilshad",
     name: "Dilshad",
     role: "Social Affair Conv.",
-    image: "/images/dilshad.jpg", // Corrected image path
-    DOB: "14/9/28",
-    skill: "natural",
+    image: "/images/dilshad.jpg",
+    add: "552",
+    address: "Cherur, Malappuram", // Corrected image path
+    DOB: "09/05/2008",
+    skill: "Arabic Writer",
     bio: "Creativity meets strategy to tell your story.",
   },
   {
@@ -176,9 +181,11 @@ const communityMembers = [
     slug: "yaseen",
     name: "Yaseen",
     role: "IQ Orbit Chair.",
+    add: "559",
+    address: "Thodupuzha, Idukki",
     image: "/images/yaseen.jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
+    DOB: "28/8/2007",
+    skill: "GK Awareness",
     bio: "Circle around the core of intelligence.",
   },
 

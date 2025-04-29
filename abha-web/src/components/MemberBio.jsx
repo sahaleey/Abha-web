@@ -40,6 +40,12 @@ const MemberBio = () => {
       </p>
 
       {/* DOB */}
+      <p className="text-gray-400 text-center mb-1 italic">
+        Ad.NO: {member.add}
+      </p>
+      <p className="text-gray-400 text-center mb-1 italic">
+        Address: {member.address}
+      </p>
       <p className="text-gray-400 text-center mb-1 italic">DOB: {member.DOB}</p>
 
       {/* Skill */}
