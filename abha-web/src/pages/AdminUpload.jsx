@@ -45,7 +45,7 @@ const AdminUpload = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/programmes",
+        "https://abha-web-1.onrender.com/api/programmes",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -92,7 +92,7 @@ const AdminUpload = () => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/programmes/${id}`
+        `https://abha-web-1.onrender.com/api/programmes/${id}`
       );
       if (response.status === 200) {
         setUploadedProgrammes(
@@ -205,7 +205,7 @@ const AdminUpload = () => {
             >
               {prog.image && (
                 <img
-                  src={`http://localhost:5000/uploads/${prog.image}`}
+                  src={`https://abha-web-1.onrender.com/uploads/${prog.image}`}
                   alt={prog.name}
                   className="w-full h-60 object-cover transition-transform duration-500 ease-out transform hover:scale-110"
                 />
