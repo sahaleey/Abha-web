@@ -22,9 +22,7 @@ const AdminUpload = () => {
 
   const fetchProgrammes = async () => {
     try {
-      const res = await axios.get(
-        "https://abha-web-1.onrender.com/api/programmes"
-      );
+      const res = await axios.get("http://localhost:5000/api/programmes");
       setUploadedProgrammes(res.data);
     } catch (error) {
       console.error("Failed to fetch programmes", error);
@@ -45,7 +43,7 @@ const AdminUpload = () => {
 
     try {
       const response = await axios.post(
-        "https://abha-web-1.onrender.com/api/programmes",
+        "http://localhost:5000/api/programmes",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -92,7 +90,7 @@ const AdminUpload = () => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `https://abha-web-1.onrender.com/api/programmes/${id}`
+        `http://localhost:5000/api/programmes/${id}`
       );
       if (response.status === 200) {
         setUploadedProgrammes(
@@ -205,7 +203,7 @@ const AdminUpload = () => {
             >
               {prog.image && (
                 <img
-                  src={`https://abha-web-1.onrender.com/uploads/${prog.image}`}
+                  src={`http://localhost:5000/uploads/${prog.image}`}
                   alt={prog.name}
                   className="w-full h-60 object-cover transition-transform duration-500 ease-out transform hover:scale-110"
                 />
