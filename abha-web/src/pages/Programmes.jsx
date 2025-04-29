@@ -13,7 +13,7 @@ const ProgrammeCard = ({ item }) => {
   const imageUrl = item.image
     ? item.image.startsWith("http")
       ? item.image // Remote image URL
-      : `http://localhost:5000/uploads/${item.image}` // Ensure this matches your backend file path
+      : `https://abha-web-1.onrender.com/uploads/${item.image}` // Ensure this matches your backend file path
     : null;
 
   return (
