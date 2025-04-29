@@ -4,7 +4,7 @@ const communityMembers = [
     slug: "ramees",
     name: "Ramees",
     role: "Second Leader",
-    image: "/images/ramees.jpg", // Corrected image path
+    image: "/images/ramees.Jpg", // Corrected image path
     DOB: "",
     skill: "",
     bio: "Creativity meets strategy to tell your story.",
@@ -13,7 +13,7 @@ const communityMembers = [
     slug: "ma-amoon",
     name: "Ma Amoon",
     role: "Join Secretery + Academic cord.",
-    image: "/images/maamoon.jpg", // Corrected image path
+    image: "/images/maamoon.Jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "John is a passionate frontend developer with experience in building responsive websites using React, JavaScript, and CSS. He loves creating beautiful and user-friendly interfaces.",
@@ -22,7 +22,7 @@ const communityMembers = [
     slug: "jasil",
     name: "Jasil",
     role: "Treasure + Academic cord.",
-    image: "/images/jasil.jpg", // Corrected image path
+    image: "/images/jasil.Jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Bringing people together, one event at a time.",
@@ -31,7 +31,7 @@ const communityMembers = [
     slug: "ashiq",
     name: "Ashiq",
     role: "Sout Abha Chair.",
-    image: "/images/ashiq.jpg", // Corrected image path
+    image: "/images/ashiq.Jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",

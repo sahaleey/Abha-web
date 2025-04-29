@@ -173,7 +173,7 @@ rounded-3xl px-15 py-14 shadow-xl transition-transform duration-300 transform ho
 rounded-3xl  shadow-xl transition-transform duration-300 transform hover:scale-105 px-12 py-10"
                       >
                         <h4 className="text-xl md:text-2xl text-center font-bold text-white font-bloomsburg">
-                          Hold on lots some fantastic unforgettable moments,
+                          Hold on! lots some fantastic unforgettable moments,
                           created unity and jokes between our relation. whole
                           some moments we sharing{" "}
                           <Link
@@ -190,9 +190,9 @@ rounded-3xl  shadow-xl transition-transform duration-300 transform hover:scale-1
 rounded-3xl  shadow-xl transition-transform duration-300 transform hover:scale-105 px-23 py-10 text-center"
                       >
                         <h4 className="text-xl md:text-2xl font-bold text-white font-bloomsburg">
-                          After knowing about we, how you feel that?!, we are
-                          curios to know that just share you're thought and rate
-                          this web through{" "}
+                          After knowing about us, how you feel that?!, we are
+                          curios to know that just share you're thought about
+                          this web through <br />
                           <Link
                             to="/poll"
                             className="text-red-400  p-1  transition-colors hover:text-green-300 "
@@ -211,6 +211,7 @@ rounded-3xl p-6 shadow-xl transition-transform duration-300 transform hover:scal
                           and we're just days away from an unforgettable
                           experience. Whether it's a groundbreaking conference,
                           a fun-filled meetup, or an exciting celebration,{" "}
+                          <br />
                           <Link
                             to="/event-countdown"
                             className="text-amber-300  p-1  transition-colors hover:text-emerald-700"
