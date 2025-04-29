@@ -10,7 +10,10 @@ const Feedback = () => {
   const handleFeedbackSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/feedback", feedback);
+      await axios.post(
+        "https://abha-web-1.onrender.com/api/feedback",
+        feedback
+      );
       setFeedbackSent(true);
       setFeedback({ rating: 0, comment: "" });
     } catch (error) {
@@ -34,7 +37,10 @@ const Feedback = () => {
           Thank you for your feedback!
         </p>
       ) : (
-        <form onSubmit={handleFeedbackSubmit} className="max-w-xl mx-auto space-y-6">
+        <form
+          onSubmit={handleFeedbackSubmit}
+          className="max-w-xl mx-auto space-y-6"
+        >
           <div className="flex justify-center space-x-2">
             {[1, 2, 3, 4, 5].map((star) => (
               <span
@@ -51,7 +57,9 @@ const Feedback = () => {
             className="w-full bg-gray-800 text-white p-4 rounded-lg"
             placeholder="Write your feedback..."
             value={feedback.comment}
-            onChange={(e) => setFeedback({ ...feedback, comment: e.target.value })}
+            onChange={(e) =>
+              setFeedback({ ...feedback, comment: e.target.value })
+            }
             required
           />
           <div className="text-center">
