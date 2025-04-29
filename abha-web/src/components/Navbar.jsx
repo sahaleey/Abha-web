@@ -19,7 +19,7 @@ function Navbar() {
     { path: "/podcast", label: "Podcast" },
   ];
 
-  const correctPassword = "admin123"; // Change your password here
+  const correctPassword = "abha@web14"; // Change your password here
 
   const handleAdminClick = () => {
     setShowPasswordInput(true);
