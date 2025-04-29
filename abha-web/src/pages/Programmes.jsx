@@ -97,7 +97,9 @@ const Programmes = () => {
 
   const fetchUploadedProgrammes = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/programmes");
+      const response = await axios.get(
+        "https://abha-web-1.onrender.com/api/programmes"
+      );
       const programmes = response.data;
 
       const doneProgrammes = programmes.filter(
