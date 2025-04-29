@@ -22,7 +22,9 @@ const AdminUpload = () => {
 
   const fetchProgrammes = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/programmes");
+      const res = await axios.get(
+        "https://abha-web-1.onrender.com/api/programmes"
+      );
       setUploadedProgrammes(res.data);
     } catch (error) {
       console.error("Failed to fetch programmes", error);
