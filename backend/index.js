@@ -19,7 +19,7 @@ const MONGO_URI = process.env.MONGO_URL; // Corrected the variable name here
 // Middleware
 app.use(
   cors({
-    origin: "https://abha-web-2.onrender.com/",
+    origin: ["https://abha-web-2.onrender.com/"],
   })
 );
 app.use(express.json());
