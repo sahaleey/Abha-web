@@ -17,11 +17,7 @@ const PORT = 5000;
 const MONGO_URI = process.env.MONGO_URL; // Corrected the variable name here
 
 // Middleware
-app.use(
-  cors({
-    origin: "https://abha-web-2.onrender.com/",
-  })
-);
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads")); // Serve static files from 'uploads'
