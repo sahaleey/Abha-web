@@ -6,7 +6,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const programmeRoutes = require("./routes/programmeroutes");
 const feedbackRoutes = require("./routes/feedbackroutes");
-const contactRoutes = require("./routes/contact"); // Corrected variable name
+const contactRoutes = require("./routes/contact");
+// Corrected variable name
 
 dotenv.config();
 const app = express();
@@ -29,7 +30,8 @@ app.get("/", (req, res) => {
 // API Routes
 app.use("/api/programmes", programmeRoutes); // Correct route path
 app.use("/api/feedback", feedbackRoutes); // Correct route path
-app.use("/api/contact", contactRoutes); // Correct route path
+app.use("/api/contact", contactRoutes);
+// Correct route path
 
 // Connect to MongoDB and start server
 mongoose
