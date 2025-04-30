@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const programmeRoutes = require("./routes/programmeroutes");
 const feedbackRoutes = require("./routes/feedbackroutes");
 const contactRoutes = require("./routes/contact");
-// Corrected variable name
+const path = require("path"); // Import path module
 
 dotenv.config();
 const app = express();
@@ -20,7 +20,9 @@ const MONGO_URI = process.env.MONGO_URL; // Corrected the variable name here
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/uploads", express.static("uploads")); // Serve static files from 'uploads'
+
+// Serve static files from 'public' directory for frontend images
+app.use("/images", express.static(path.join(__dirname, "public", "images"))); // Updated static path
 
 // Basic route
 app.get("/", (req, res) => {
@@ -30,8 +32,7 @@ app.get("/", (req, res) => {
 // API Routes
 app.use("/api/programmes", programmeRoutes); // Correct route path
 app.use("/api/feedback", feedbackRoutes); // Correct route path
-app.use("/api/contact", contactRoutes);
-// Correct route path
+app.use("/api/contact", contactRoutes); // Correct route path
 
 // Connect to MongoDB and start server
 mongoose
