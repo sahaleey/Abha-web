@@ -5,7 +5,7 @@ const communityMembers = [
     slug: "ramees",
     name: "Ramees",
     role: "Second Leader",
-    image: "/images/ramees.jpg",
+    image: "/ramees.jpg",
     add: "516",
     address: "Kuzhimanna, Kizhisseri, Malappuram", // Corrected image path
     DOB: "4-11-2006",
@@ -16,7 +16,7 @@ const communityMembers = [
     slug: "ma-amoon",
     name: "Ma Amoon",
     role: "Join Secretery + Academic cord.",
-    image: "/images/maamoon.jpg", // Corrected image path
+    image: "/maamoon.jpg", // Corrected image path
     DOB: "22/08/2007",
     add: "535",
     address: "Edathala, Malappuram",
@@ -28,7 +28,7 @@ const communityMembers = [
     slug: "jasil",
     name: "Jasil",
     role: "Treasure + Academic cord.",
-    image: "/images/jasil.jpg", // Corrected image path
+    image: "/jasil.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Bringing people together, one event at a time.",
@@ -37,7 +37,7 @@ const communityMembers = [
     slug: "ashiq",
     name: "Ashiq",
     role: "Sout Abha Chair.",
-    image: "/images/ashiq.jpg", // Corrected image path
+    image: "/ashiq.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -46,7 +46,7 @@ const communityMembers = [
     slug: "swabah",
     name: "Swabah",
     role: "English Hub Chair.",
-    image: "/images/swabah.jpg", // Corrected image path
+    image: "/swabah.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -57,7 +57,7 @@ const communityMembers = [
     role: "Auditing Board",
     add: "518",
     address: "Vaduthala, Jetty, Alappuzha",
-    image: "/images/muhsin.png", // Corrected image path
+    image: "/muhsin.png", // Corrected image path
     DOB: "16/05/2007",
     skill: "Tafheemul Quran",
     bio: "Creativity meets strategy to tell your story.",
@@ -66,7 +66,7 @@ const communityMembers = [
     slug: "bishr",
     name: "Bishr",
     role: "Auditing Board",
-    image: "/images/bishr.jpg", // Corrected image path
+    image: "/bishr.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -77,7 +77,7 @@ const communityMembers = [
     role: "Lisanul jazeera Conv.",
     add: "568",
     address: "Kottappuram, Mannarkad, Palakkad",
-    image: "/images/jalal.jpg", // Corrected image path
+    image: "/jalal.jpg", // Corrected image path
     DOB: "17/11/2008",
     skill: "Orator Arabic",
     bio: "Creativity meets strategy to tell your story.",
@@ -86,7 +86,7 @@ const communityMembers = [
     slug: "ihsan",
     name: "Ihsan",
     role: "English Hub Chair.",
-    image: "/images/ihsan.jpg",
+    image: "/ihsan.jpg",
     add: "540",
     address: "Thaikattukkara, Aluva, Eranakulam", // Corrected image path
     DOB: "23/03/2009",
@@ -98,7 +98,7 @@ const communityMembers = [
     role: "Creative Designer",
     add: "537",
     address: "Ponjassery, Perumbavoor, Eranakulam",
-    image: "/images/sinan km.jpg", // Corrected image path
+    image: "/sinan km.jpg", // Corrected image path
     DOB: "24/07/2008",
     skill: "Graphic Designer, English Expert, Artist",
   },
@@ -106,7 +106,7 @@ const communityMembers = [
     slug: "al-ameen",
     name: "Al-Ameen",
     role: "President",
-    image: "/images/alameen.jpg", // Corrected image path
+    image: "/alameen.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -115,7 +115,7 @@ const communityMembers = [
     slug: "sajad",
     name: "Sajad",
     role: "Vice President",
-    image: "/images/sajad.jpg", // Corrected image path
+    image: "/sajad.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -126,7 +126,7 @@ const communityMembers = [
     add: "553",
     address: "Cherukunnu, Malappuram",
     role: "Member",
-    image: "/images/anshif.jpg", // Corrected image path
+    image: "/anshif.jpg", // Corrected image path
     DOB: "24/12/2007",
     skill: "Singer",
     bio: "Creativity meets strategy to tell your story.",
@@ -135,7 +135,7 @@ const communityMembers = [
     slug: "rasheed",
     name: "Rasheed",
     role: "Social Affairs Chair.",
-    image: "/images/rasheed.jpg", // Corrected image path
+    image: "/rasheed.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -144,7 +144,7 @@ const communityMembers = [
     slug: "sahal",
     name: "Sahal",
     role: "Zuban e Ghalib Chair.",
-    image: "/images/sahal.jpg", // Corrected image path
+    image: "/sahal.jpg", // Corrected image path
     DOB: "14/9/28",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -153,7 +153,7 @@ const communityMembers = [
     slug: "ahmed",
     name: "Ahmed",
     role: "Malayala Koottaima Conv.",
-    image: "/images/ahmed.jpg", // Corrected image path
+    image: "/ahmed.jpg", // Corrected image path
     DOB: "14/9/28",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -162,7 +162,7 @@ const communityMembers = [
     slug: "dilshad",
     name: "Dilshad",
     role: "Social Affair Conv.",
-    image: "/images/dilshad.jpg",
+    image: "/dilshad.jpg",
     add: "552",
     address: "Cherur, Malappuram", // Corrected image path
     DOB: "09/05/2008",
@@ -173,7 +173,7 @@ const communityMembers = [
     slug: "fayiz",
     name: "Fayiz",
     role: "Social Media Manager",
-    image: "/images/fayiz.jpg",
+    image: "/fayiz.jpg",
     add: "567",
     address: "Kuttamashery, Aluva, Eranakulam", // Corrected image path
     DOB: "25/04/2008",
@@ -185,7 +185,7 @@ const communityMembers = [
     role: "Creative Designer",
     add: "499",
     address: "Muvattuppuzha, Eranakulam",
-    image: "/images/mabrook.jpg", // Corrected image path
+    image: "/mabrook.jpg", // Corrected image path
     DOB: "22/10/2007",
     skill: "Artist, RJ, Robotics Expert",
   },
@@ -196,7 +196,7 @@ const communityMembers = [
     role: "IQ Orbit Chair.",
     add: "559",
     address: "Thodupuzha, Idukki",
-    image: "/images/yaseen.jpg", // Corrected image path
+    image: "/yaseen.jpg", // Corrected image path
     DOB: "28/8/2007",
     skill: "GK Awareness",
     bio: "Circle around the core of intelligence.",
@@ -208,7 +208,7 @@ const communityMembers = [
     role: "Leader",
     add: "549",
     address: "Eranad, manjeri, malappuram",
-    image: "/images/favas.jpg", // Corrected image path
+    image: "/favas.jpg", // Corrected image path
     DOB: "08/09/2008",
     skill: "Actor, Inspiration talk",
     bio: "Creativity meets strategy to tell your story.",
@@ -219,7 +219,7 @@ const communityMembers = [
     role: "Member",
     add: "507",
     address: "Chenthrapinni, Thrissure",
-    image: "/images/anas.jpg", // Corrected image path
+    image: "/anas.jpg", // Corrected image path
     DOB: "07/08/2007",
     skill: "Orator",
     bio: "Creativity meets strategy to tell your story.",
@@ -229,7 +229,7 @@ const communityMembers = [
     slug: "anwar",
     name: "Anwar",
     role: "General Secretery + IQ Orbit Conv.",
-    image: "/images/anwar.jpg",
+    image: "/anwar.jpg",
     add: "495",
     address: "irukkupalam, Thodupuzha, Idukki", // Corrected image path
     DOB: "01/12/2006",
@@ -240,7 +240,7 @@ const communityMembers = [
     slug: "sinan-pm",
     name: "Sinan Pm",
     role: "Zubane e Ghalib Conv.",
-    image: "/images/sinan pm.jpg", // Corrected image path
+    image: "/sinan pm.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -249,7 +249,7 @@ const communityMembers = [
     slug: "ribin",
     name: "Ribin",
     role: "P.R.O",
-    image: "/images/ribin.jpg", // Corrected image path
+    image: "/ribin.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -258,7 +258,7 @@ const communityMembers = [
     slug: "mohammed",
     name: "Mohammed",
     role: "Malayala Koottaima Chair.",
-    image: "/images/muhammed.jpg",
+    image: "/muhammed.jpg",
     add: "539",
     address: "Pezhakkappilly, Eranakulam", // Corrected image path
     DOB: "22/08/2008",
