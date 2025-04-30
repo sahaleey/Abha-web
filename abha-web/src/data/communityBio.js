@@ -5,9 +5,11 @@ const communityMembers = [
     slug: "ramees",
     name: "Ramees",
     role: "Second Leader",
-    image: "/images/ramees.JPG", // Corrected image path
-    DOB: "",
-    skill: "",
+    image: "../public/images/ramees.JPG",
+    add: "516",
+    address: "Kuzhimanna, Kizhisseri, Malappuram", // Corrected image path
+    DOB: "4-11-2006",
+    skill: "Singer",
     bio: "Creativity meets strategy to tell your story.",
   },
   {
@@ -15,8 +17,11 @@ const communityMembers = [
     name: "Ma Amoon",
     role: "Join Secretery + Academic cord.",
     image: "/images/maamoon.Jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
+    DOB: "22/08/2007",
+    add: "535",
+    address: "Edathala, Malappuram",
+
+    skill: "Arabic Scholar",
     bio: "John is a passionate frontend developer with experience in building responsive websites using React, JavaScript, and CSS. He loves creating beautiful and user-friendly interfaces.",
   },
   {
@@ -50,8 +55,8 @@ const communityMembers = [
     slug: "muhsin",
     name: "Muhsin",
     role: "Auditing Board",
-    add: "",
-    address: "",
+    add: "518",
+    address: "Vaduthala, Jetty, Alappuzha",
     image: "/images/muhsin.jpg", // Corrected image path
     DOB: "16/05/2007",
     skill: "Tafheemul Quran",
@@ -70,28 +75,32 @@ const communityMembers = [
     slug: "jalal",
     name: "Jalal",
     role: "Lisanul jazeera Conv.",
+    add: "568",
+    address: "Kottappuram, Mannarkad, Palakkad",
     image: "/images/jalal.jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
+    DOB: "17/11/2008",
+    skill: "Orator Arabic",
     bio: "Creativity meets strategy to tell your story.",
   },
   {
     slug: "ihsan",
     name: "Ihsan",
     role: "English Hub Chair.",
-    image: "/images/ihsan.jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
-    bio: "Creativity meets strategy to tell your story.",
+    image: "/images/ihsan.jpg",
+    add: "540",
+    address: "Thaikattukkara, Aluva, Eranakulam", // Corrected image path
+    DOB: "23/03/2009",
+    skill: "Graphic Designer, English Expert",
   },
   {
     slug: "sinan-km",
     name: "Sinan KM",
     role: "Creative Designer",
+    add: "537",
+    address: "Ponjassery, Perumbavoor, Eranakulam",
     image: "/images/sinan km.jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
-    bio: "Creativity meets strategy to tell your story.",
+    DOB: "24/07/2008",
+    skill: "Graphic Designer, English Expert, Artist",
   },
   {
     slug: "al-ameen",
@@ -114,10 +123,12 @@ const communityMembers = [
   {
     slug: "anshif",
     name: "Anshif",
+    add: "553",
+    address: "Cherukunnu, Malappuram",
     role: "Member",
     image: "/images/anshif.jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
+    DOB: "24/12/2007",
+    skill: "Singer",
     bio: "Creativity meets strategy to tell your story.",
   },
   {
@@ -162,19 +173,21 @@ const communityMembers = [
     slug: "fayiz",
     name: "Fayiz",
     role: "Social Media Manager",
-    image: "/images/fayiz.jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
-    bio: "Creativity meets strategy to tell your story.",
+    image: "/images/fayiz.jpg",
+    add: "567",
+    address: "Kuttamashery, Aluva, Eranakulam", // Corrected image path
+    DOB: "25/04/2008",
+    skill: "Social Media Influencer",
   },
   {
     slug: "mabrook",
     name: "Mabrook",
     role: "Creative Designer",
+    add: "499",
+    address: "Muvattuppuzha, Eranakulam",
     image: "/images/mabrook.jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
-    bio: "Creativity meets strategy to tell your story.",
+    DOB: "22/10/2007",
+    skill: "Artist, RJ, Robotics Expert",
   },
 
   {
@@ -193,18 +206,22 @@ const communityMembers = [
     slug: "favas",
     name: "Favas",
     role: "Leader",
+    add: "549",
+    address: "Eranad, manjeri, malappuram",
     image: "/images/favas.jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
+    DOB: "08/09/2008",
+    skill: "Actor, Inspiration talk",
     bio: "Creativity meets strategy to tell your story.",
   },
   {
     slug: "anas",
     name: "Anas",
     role: "Member",
+    add: "507",
+    address: "Chenthrapinni, Thrissure",
     image: "/images/anas.jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
+    DOB: "07/08/2007",
+    skill: "Orator",
     bio: "Creativity meets strategy to tell your story.",
   },
 
@@ -212,9 +229,11 @@ const communityMembers = [
     slug: "anwar",
     name: "Anwar",
     role: "General Secretery + IQ Orbit Conv.",
-    image: "/images/anwar.jpeg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
+    image: "/images/anwar.jpeg",
+    add: "495",
+    address: "irukkupalam, Thodupuzha, Idukki", // Corrected image path
+    DOB: "01/12/2006",
+    skill: "GK awareness, MLM Essay",
     quote: "Creativity meets strategy to tell your story.",
   },
   {
@@ -239,10 +258,11 @@ const communityMembers = [
     slug: "mohammed",
     name: "Mohammed",
     role: "Malayala Koottaima Chair.",
-    image: "/images/muhammed.jpg", // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
-    bio: "Creativity meets strategy to tell your story.",
+    image: "/images/muhammed.jpg",
+    add: "539",
+    address: "Pezhakkappilly, Eranakulam", // Corrected image path
+    DOB: "22/08/2008",
+    skill: "Malayalam Writer, Graphic Designer",
   },
   // Add more members as needed
 ];
