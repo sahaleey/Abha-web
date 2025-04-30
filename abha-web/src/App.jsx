@@ -25,33 +25,13 @@ import Podcast from "./pages/Podcast";
 import MemberBio from "./components/MemberBio";
 import StatsSection from "./components/StatsSection";
 import AdminUpload from "./pages/AdminUpload";
-import Loading from "./components/Loading";
 
 function App() {
-  const [loading, setLoading] = useState(true);
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.2,
   });
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false); // ✅ Stop loading after delay
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    if (inView) {
-      controls.start({ opacity: 1, y: 0 });
-    } else {
-      controls.start({ opacity: 0, y: 40 });
-    }
-  }, [inView, controls]);
-
-  if (loading) return <Loading />;
 
   useEffect(() => {
     if (inView) {
