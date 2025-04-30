@@ -8,7 +8,7 @@ const blogData = [
     author: "sahal",
     excerpt:
       "Explore the vision behind Abha and how our community inspires creativity and growth.",
-    image: "../src/assets/Abha-lg.png",
+    image: image,
     content: `## About Abha
 
 Welcome to the official Abha blog. We aim to empower, inspire and bring people together...
