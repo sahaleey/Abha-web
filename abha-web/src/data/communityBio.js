@@ -5,7 +5,7 @@ const communityMembers = [
     slug: "ramees",
     name: "Ramees",
     role: "Second Leader",
-    image: { ramees }, // Corrected image path
+    image: ramees, // Corrected image path
     DOB: "",
     skill: "",
     bio: "Creativity meets strategy to tell your story.",
