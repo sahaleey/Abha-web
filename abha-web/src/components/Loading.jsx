@@ -1,3 +1,5 @@
+import React from "react";
+
 const AbhaLoader = () => {
   const letters = ["A", "B", "H", "A"];
 
