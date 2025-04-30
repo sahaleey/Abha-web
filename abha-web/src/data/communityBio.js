@@ -5,7 +5,7 @@ const communityMembers = [
     slug: "ramees",
     name: "Ramees",
     role: "Second Leader",
-    image: "../assets/images/ramees.jpg",
+    image: "/images/ramees.jpg",
     add: "516",
     address: "Kuzhimanna, Kizhisseri, Malappuram", // Corrected image path
     DOB: "4-11-2006",
@@ -16,7 +16,7 @@ const communityMembers = [
     slug: "ma-amoon",
     name: "Ma Amoon",
     role: "Join Secretery + Academic cord.",
-    image: "/images/maamoon.Jpg", // Corrected image path
+    image: "/images/maamoon.jpg", // Corrected image path
     DOB: "22/08/2007",
     add: "535",
     address: "Edathala, Malappuram",
@@ -28,7 +28,7 @@ const communityMembers = [
     slug: "jasil",
     name: "Jasil",
     role: "Treasure + Academic cord.",
-    image: "/images/jasil.Jpg", // Corrected image path
+    image: "/images/jasil.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Bringing people together, one event at a time.",
@@ -37,7 +37,7 @@ const communityMembers = [
     slug: "ashiq",
     name: "Ashiq",
     role: "Sout Abha Chair.",
-    image: "/images/ashiq.Jpg", // Corrected image path
+    image: "/images/ashiq.jpg", // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
@@ -229,7 +229,7 @@ const communityMembers = [
     slug: "anwar",
     name: "Anwar",
     role: "General Secretery + IQ Orbit Conv.",
-    image: "/images/anwar.jpeg",
+    image: "/images/anwar.jpg",
     add: "495",
     address: "irukkupalam, Thodupuzha, Idukki", // Corrected image path
     DOB: "01/12/2006",

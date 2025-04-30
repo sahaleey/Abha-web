@@ -58,7 +58,10 @@ import { GrFormView } from "react-icons/gr"; */}
             >
               <FaInstagram />
             </a>
-            <a href="#" className="text-blue-400 hover:text-white transition">
+            <a
+              href="https://www.facebook.com/profile.php?id=61575696666536"
+              className="text-blue-400 hover:text-white transition"
+            >
               <FaFacebookF />
             </a>
             <a href="#" className="text-blue-400 hover:text-white transition">
