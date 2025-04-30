@@ -6,10 +6,7 @@ import Image4 from "../assets/gallery/8.jpg";
 const galleryData = [
   {
     event: " Meetup",
-    images: Image1,
-    Image2,
-    Image3,
-    Image4,
+    images: [Image1, Image2, Image3, Image4],
   },
   {
     event: "Tech Fest",
