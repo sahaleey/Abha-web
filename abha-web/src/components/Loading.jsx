@@ -1,18 +1,29 @@
-// components/Loading.jsx
-import React from "react";
 import { motion } from "framer-motion";
 
-const Loading = () => {
+// You can move this to a separate file if needed
+const AbhaLoader = () => {
+  const letters = ["A", "B", "H", "A"];
+
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-[#1e2425] z-[9999] flex items-center justify-center">
-      <motion.div
-        className="w-24 h-24 border-4 border-t-[#ce9206] border-white rounded-full animate-spin"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-      />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#1e2425]">
+      <div className="flex space-x-4">
+        {letters.map((letter, index) => (
+          <motion.span
+            key={index}
+            className="text-6xl font-extrabold text-[#ce9206] font-bloomsburg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.6,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          >
+            {letter}
+          </motion.span>
+        ))}
+      </div>
     </div>
   );
 };
-
-export default Loading;

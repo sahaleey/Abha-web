@@ -25,7 +25,7 @@ import Podcast from "./pages/Podcast";
 import MemberBio from "./components/MemberBio";
 import StatsSection from "./components/StatsSection";
 import AdminUpload from "./pages/AdminUpload";
-import Loading from "./components/Loading";
+import AbhaLoader from "./components/Loading";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -51,7 +51,7 @@ function App() {
     }
   }, [inView, controls]);
 
-  if (loading) return <Loading />;
+  if (loading) return <AbhaLoader />;
 
   useEffect(() => {
     if (inView) {
