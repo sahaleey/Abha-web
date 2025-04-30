@@ -1,5 +1,5 @@
 // src/data/communityMembers.js
-import ramees from "./images/ramees.jpg";
+import ramees from "/images/ramees.Jpg";
 const communityMembers = [
   {
     slug: "ramees",
