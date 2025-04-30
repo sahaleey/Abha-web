@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     const handleLoad = () => {
-      // Simulate delay to load all images
+      // Simulate a delay to load all images
       setTimeout(() => {
         setIsLoading(false);
       }, 1500); // 1.5s delay
@@ -61,14 +61,6 @@ function App() {
   if (isLoading) {
     return <AbhaLoader />;
   }
-
-  useEffect(() => {
-    if (inView) {
-      controls.start({ opacity: 1, y: 0 });
-    } else {
-      controls.start({ opacity: 0, y: 40 });
-    }
-  }, [inView, controls]);
 
   // Timeline Data
   const timelineData = [
@@ -256,51 +248,6 @@ rounded-3xl p-6 shadow-xl transition-transform duration-300 transform hover:scal
                   </div>
 
                   {/* Counters */}
-                  {/* <div className="mt-50 flex flex-col sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-2xl mx-auto ">
-                    {[
-                      {
-                        count: 250,
-                        suffix: "+",
-                        label: "Programmes",
-                        delay: 0.2,
-                      },
-                      {
-                        count: 250,
-                        suffix: "+",
-                        label: "Upcoming Events",
-                        delay: 0.2,
-                      },
-                      { count: 26, suffix: "+", label: "Members", delay: 0.4 },
-                      {
-                        count: 20,
-                        suffix: "+",
-                        label: "Projects",
-                        delay: 0.7,
-                      },
-                    ].map((item, index) => (
-                      <div
-                        key={index}
-                        className="bg-[#131313] backdrop-blur-lg rounded-xl p-8 shadow-xl transform transition-all duration-300 hover:scale-105"
-                      >
-                        <motion.h2
-                          className="text-4xl font-bold text-white font-bloomsburg"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 1, delay: item.delay }}
-                        >
-                          <CountUp
-                            start={0}
-                            end={item.count}
-                            duration={2}
-                            suffix={item.suffix}
-                          />
-                        </motion.h2>
-                        <p className="text-xl font-bloomsburg text-gray-300 mt-2">
-                          {item.label}
-                        </p>
-                      </div>
-                    ))}
-                  </div> */}
                   <StatsSection />
 
                   {/* Timeline Section */}
@@ -327,8 +274,8 @@ rounded-3xl p-6 shadow-xl transition-transform duration-300 transform hover:scal
             <Route path="/admin-upload" element={<AdminUpload />} />
           </Routes>
         </ErrorBoundary>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }
