@@ -57,7 +57,7 @@ const communityMembers = [
     role: "Auditing Board",
     add: "518",
     address: "Vaduthala, Jetty, Alappuzha",
-    image: "/images/muhsin.jpg", // Corrected image path
+    image: "/images/muhsin.png", // Corrected image path
     DOB: "16/05/2007",
     skill: "Tafheemul Quran",
     bio: "Creativity meets strategy to tell your story.",
