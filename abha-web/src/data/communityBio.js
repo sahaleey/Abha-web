@@ -3,6 +3,15 @@ import ramees from "../assets/images/ramees.jpg";
 import maamoon from "../assets/images/maamoon.jpg";
 import jasil from "../assets/images/jasil.jpg";
 import ashiq from "../assets/images/ashiq.jpg";
+import swabah from "../assets/images/swabah.jpg";
+import muhsin from "../assets/images/muhsin.png";
+import bishr from "/images/bishr.jpg";
+import jalal from "../assets/images/jalal.jpg";
+import ahmed from "../assets/images/ahmed.jpg";
+import ashiq from "../assets/images/ashiq.jpg";
+import ashiq from "../assets/images/ashiq.jpg";
+import ashiq from "../assets/images/ashiq.jpg";
+import ashiq from "../assets/images/ashiq.jpg";
 
 const communityMembers = [
   {
@@ -30,18 +39,18 @@ const communityMembers = [
   },
   {
     slug: "jasil",
-    name: jasil,
+    name: "Jasil",
     role: "Treasure + Academic cord.",
-    image: "/jasil.jpg", // Corrected image path
+    image: jasil, // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Bringing people together, one event at a time.",
   },
   {
     slug: "ashiq",
-    name: ashiq,
+    name: "Ashiq",
     role: "Sout Abha Chair.",
-    image: "/ashiq.jpg", // Corrected image path
+    image: ashiq, // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
     bio: "Creativity meets strategy to tell your story.",
