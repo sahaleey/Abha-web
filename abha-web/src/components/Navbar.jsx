@@ -98,7 +98,7 @@ function Navbar() {
                 onClick={handleAdminClick}
                 className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg transition-transform hover:scale-110"
               >
-                Administrative
+                Admin
               </button>
             </li>
           )}
