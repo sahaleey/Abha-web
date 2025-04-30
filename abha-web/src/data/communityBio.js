@@ -5,7 +5,7 @@ const communityMembers = [
     slug: "ramees",
     name: "Ramees",
     role: "Second Leader",
-    image: "../public/images/ramees.JPG",
+    image: "../dist/images/ramees.JPG",
     add: "516",
     address: "Kuzhimanna, Kizhisseri, Malappuram", // Corrected image path
     DOB: "4-11-2006",
