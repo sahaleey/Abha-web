@@ -24,7 +24,7 @@ import sahal from "../assets/images/sahal.jpg";
 import sajad from "../assets/images/sajad.jpg";
 import sinankm from "../assets/images/sinan km.jpg";
 import sinanpm from "../assets/images/sinan pm.jpg";
-import yaseen from "../assets/images/yaseen pm.jpg";
+import yaseen from "../assets/images/yaseen.jpg";
 
 const communityMembers = [
   {
