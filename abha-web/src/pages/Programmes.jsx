@@ -136,7 +136,7 @@ const Programmes = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 1 }}
       >
-        Programmes
+        Programs
       </motion.h1>
 
       <div className="flex flex-col xl:flex-row gap-10 items-center xl:items-start w-full justify-center relative z-10">

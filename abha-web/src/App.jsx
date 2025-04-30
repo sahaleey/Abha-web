@@ -9,7 +9,6 @@ import { Timeline } from "./components/Ui/Timeline";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import ParticlesBackground from "./components/ParticlesBackground";
-import CountUp from "react-countup";
 import CommunitySlider from "./components/CommunitySlider";
 import CustomCursor from "./components/CustomCursor";
 import { Typewriter } from "react-simple-typewriter";
