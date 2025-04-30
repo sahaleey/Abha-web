@@ -28,7 +28,7 @@ import AdminUpload from "./pages/AdminUpload";
 import AbhaLoader from "./components/Loading";
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: false,
@@ -36,11 +36,18 @@ function App() {
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false); // ✅ Stop loading after delay
-    }, 1500);
+    const handleLoad = () => {
+      // Simulate delay to load all images
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1500); // 1.5s delay
+    };
 
-    return () => clearTimeout(timer);
+    window.addEventListener("load", handleLoad);
+
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
   }, []);
 
   useEffect(() => {
@@ -51,7 +58,9 @@ function App() {
     }
   }, [inView, controls]);
 
-  if (loading) return <AbhaLoader />;
+  if (isLoading) {
+    return <AbhaLoader />;
+  }
 
   useEffect(() => {
     if (inView) {
