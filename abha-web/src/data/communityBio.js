@@ -8,10 +8,6 @@ import muhsin from "../assets/images/muhsin.png";
 import bishr from "/images/bishr.jpg";
 import jalal from "../assets/images/jalal.jpg";
 import ahmed from "../assets/images/ahmed.jpg";
-import ashiq from "../assets/images/ashiq.jpg";
-import ashiq from "../assets/images/ashiq.jpg";
-import ashiq from "../assets/images/ashiq.jpg";
-import ashiq from "../assets/images/ashiq.jpg";
 
 const communityMembers = [
   {
