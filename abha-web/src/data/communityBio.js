@@ -1,11 +1,11 @@
 // src/data/communityMembers.js
-import ramees from "/images/ramees.JPG";
+
 const communityMembers = [
   {
     slug: "ramees",
     name: "Ramees",
     role: "Second Leader",
-    image: ramees, // Corrected image path
+    image: "/images/ramees.JPG", // Corrected image path
     DOB: "",
     skill: "",
     bio: "Creativity meets strategy to tell your story.",
