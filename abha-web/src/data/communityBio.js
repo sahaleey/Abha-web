@@ -1,11 +1,15 @@
 // src/data/communityMembers.js
+import ramees from "../assets/images/ramees.jpg";
+import maamoon from "../assets/images/maamoon.jpg";
+import jasil from "../assets/images/jasil.jpg";
+import ashiq from "../assets/images/ashiq.jpg";
 
 const communityMembers = [
   {
     slug: "ramees",
     name: "Ramees",
     role: "Second Leader",
-    image: "/ramees.jpg",
+    image: ramees,
     add: "516",
     address: "Kuzhimanna, Kizhisseri, Malappuram", // Corrected image path
     DOB: "4-11-2006",
@@ -16,7 +20,7 @@ const communityMembers = [
     slug: "ma-amoon",
     name: "Ma Amoon",
     role: "Join Secretery + Academic cord.",
-    image: "/maamoon.jpg", // Corrected image path
+    image: maamoon, // Corrected image path
     DOB: "22/08/2007",
     add: "535",
     address: "Edathala, Malappuram",
@@ -26,7 +30,7 @@ const communityMembers = [
   },
   {
     slug: "jasil",
-    name: "Jasil",
+    name: jasil,
     role: "Treasure + Academic cord.",
     image: "/jasil.jpg", // Corrected image path
     DOB: "19/5/77",
@@ -35,7 +39,7 @@ const communityMembers = [
   },
   {
     slug: "ashiq",
-    name: "Ashiq",
+    name: ashiq,
     role: "Sout Abha Chair.",
     image: "/ashiq.jpg", // Corrected image path
     DOB: "19/5/77",
