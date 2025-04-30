@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 // You can move this to a separate file if needed
-const AbhaLoader = () => {
+export const AbhaLoader = () => {
   const letters = ["A", "B", "H", "A"];
 
   return (
