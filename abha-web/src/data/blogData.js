@@ -1,10 +1,13 @@
+import image from "../assets/Abha-lg.png";
+
 const blogData = [
   {
     id: 1,
     title: "Welcome to the Abha Blog",
     date: "2025-04-22",
-    author:"sahal",
-    excerpt: "Explore the vision behind Abha and how our community inspires creativity and growth.",
+    author: "sahal",
+    excerpt:
+      "Explore the vision behind Abha and how our community inspires creativity and growth.",
     image: "../src/assets/Abha-lg.png",
     content: `## About Abha
 
@@ -27,7 +30,8 @@ Abha creates a platform where youth can engage in artistic and community-buildin
     title: "Celebrating Culture and Unity",
     date: "2025-04-19",
     image: "",
-    excerpt: "Abha brings people together through cultural events and shared experiences.",
+    excerpt:
+      "Abha brings people together through cultural events and shared experiences.",
     content: `This is the full blog content for Celebrating Culture and Unity.
 
 With a series of events celebrating art, music, and diversity, Abha cultivates a sense of unity and belonging...`,
