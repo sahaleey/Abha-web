@@ -41,7 +41,7 @@ const communityMembers = [
   {
     slug: "ma-amoon",
     name: "Ma Amoon",
-    role: "Join Secretery + Academic cord.",
+    role: "General Secretery + Academic cord.",
     image: maamoon, // Corrected image path
     DOB: "22/08/2007",
     add: "535",
@@ -254,7 +254,7 @@ const communityMembers = [
   {
     slug: "anwar",
     name: "Anwar",
-    role: "General Secretery + IQ Orbit Conv.",
+    role: "Joint Secretery + IQ Orbit Conv.",
     image: anwar,
     add: "495",
     address: "irukkupalam, Thodupuzha, Idukki", // Corrected image path

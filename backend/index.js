@@ -1,4 +1,3 @@
-// backend/index.js
 const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -7,7 +6,8 @@ const bodyParser = require("body-parser");
 const programmeRoutes = require("./routes/programmeroutes");
 const feedbackRoutes = require("./routes/feedbackroutes");
 const contactRoutes = require("./routes/contact");
-const path = require("path"); // Import path module
+
+// Corrected variable name
 
 dotenv.config();
 const app = express();
@@ -20,10 +20,7 @@ const MONGO_URI = process.env.MONGO_URL; // Corrected the variable name here
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Serve static files from 'public' directory for frontend images
-app.use(express.static(path.join(__dirname, "public")));
-// Updated static path
+app.use("/uploads", express.static("uploads")); // Serve static files from 'uploads'
 
 // Basic route
 app.get("/", (req, res) => {
@@ -33,7 +30,8 @@ app.get("/", (req, res) => {
 // API Routes
 app.use("/api/programmes", programmeRoutes); // Correct route path
 app.use("/api/feedback", feedbackRoutes); // Correct route path
-app.use("/api/contact", contactRoutes); // Correct route path
+app.use("/api/contact", contactRoutes);
+// Correct route path
 
 // Connect to MongoDB and start server
 mongoose

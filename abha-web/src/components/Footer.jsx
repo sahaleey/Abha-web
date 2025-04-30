@@ -64,7 +64,10 @@ import { GrFormView } from "react-icons/gr"; */}
             >
               <FaFacebookF />
             </a>
-            <a href="#" className="text-blue-400 hover:text-white transition">
+            <a
+              href="https://x.com/abhamates14th"
+              className="text-blue-400 hover:text-white transition"
+            >
               <FaTwitter />
             </a>
           </div>
