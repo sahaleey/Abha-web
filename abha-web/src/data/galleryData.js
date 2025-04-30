@@ -1,28 +1,24 @@
+import Image1 from "../assets/gallery/1.jpg";
+import Image2 from "../assets/gallery/2.jpg";
+import Image3 from "../assets/gallery/5.jpg";
+import Image4 from "../assets/gallery/8.jpg";
+
 const galleryData = [
-    {
-      event: "Annual Meetup",
-      images: [
-        "/images/meetup1.jpg",
-        "/images/meetup2.jpg",
-        "/images/meetup3.jpg"
-      ]
-    },
-    {
-      event: "Tech Fest",
-      images: [
-        "/images/tech1.jpg",
-        "/images/tech2.jpg",
-        "/images/tech3.jpg"
-      ]
-    },
-    {
-      event: "Creative Nights",
-      images: [
-        "/images/creative1.jpg",
-        "/images/creative2.jpg"
-      ]
-    }
-  ];
-  
-  export default galleryData;
-  
+  {
+    event: " Meetup",
+    images: Image1,
+    Image2,
+    Image3,
+    Image4,
+  },
+  {
+    event: "Tech Fest",
+    images: [],
+  },
+  {
+    event: "Creative Nights",
+    images: [],
+  },
+];
+
+export default galleryData;
