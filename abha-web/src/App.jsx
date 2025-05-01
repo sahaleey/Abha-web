@@ -35,19 +35,44 @@ function App() {
     threshold: 0.2,
   });
 
+  // ✅ Helper to wait for all images to be fully loaded
+  const waitForImagesToLoad = () => {
+    const images = Array.from(document.images);
+    if (images.length === 0) {
+      return Promise.resolve();
+    }
+
+    return new Promise((resolve) => {
+      let loadedCount = 0;
+      images.forEach((img) => {
+        if (img.complete) {
+          loadedCount++;
+        } else {
+          img.addEventListener("load", () => {
+            loadedCount++;
+            if (loadedCount === images.length) resolve();
+          });
+          img.addEventListener("error", () => {
+            loadedCount++;
+            if (loadedCount === images.length) resolve();
+          });
+        }
+      });
+
+      // In case all were already loaded
+      if (loadedCount === images.length) {
+        resolve();
+      }
+    });
+  };
+
   useEffect(() => {
-    const handleLoad = () => {
-      // Simulate a delay to load all images
+    waitForImagesToLoad().then(() => {
+      // Optional delay for smoother transition
       setTimeout(() => {
         setIsLoading(false);
-      }, 1500); // 1.5s delay
-    };
-
-    window.addEventListener("load", handleLoad);
-
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
+      }, 500);
+    });
   }, []);
 
   useEffect(() => {
