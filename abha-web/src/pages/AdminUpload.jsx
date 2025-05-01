@@ -110,7 +110,7 @@ const AdminUpload = () => {
     <div className="min-h-screen bg-gradient-to-tr mt-17 from-[#0f0c29] via-[#302b63] to-[#24243e] p-8">
       <div className="max-w-5xl mx-auto text-center">
         <h1 className="text-5xl font-extrabold text-white mb-12 animate__animated animate__fadeIn">
-          Upload Programs
+          Upload Programmes
         </h1>
       </div>
 
@@ -125,7 +125,7 @@ const AdminUpload = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
           <div className="bg-[#1f1f1f] p-10 rounded-2xl shadow-2xl w-full max-w-xl animate__animated animate__fadeIn animate__delay-1s">
             <h2 className="text-4xl font-bold text-white mb-8 text-center">
-              Add New Program
+              Add New Programme
             </h2>
             <form onSubmit={handleUpload} className="space-y-2 gap-2 ">
               <input
@@ -250,13 +250,13 @@ const AdminUpload = () => {
                   }}
                   className="mt-4 text-red-500 hover:text-red-700 transition duration-300 ease-out hover:scale-110"
                 >
-                  Delete Program
+                  Delete Programme
                 </button>
               </div>
             </div>
           ))
         ) : (
-          <p className="text-white">No programs uploaded yet.</p>
+          <p className="text-white">No programmes uploaded yet.</p>
         )}
       </div>
 
