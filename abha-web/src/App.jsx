@@ -35,7 +35,7 @@ function App() {
     threshold: 0.2,
   });
 
-  // ✅ Helper to wait for all images to be fully loaded
+  //  Helper to wait for all images fully loaded
   const waitForImagesToLoad = () => {
     const images = Array.from(document.images);
     if (images.length === 0) {
