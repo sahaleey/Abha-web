@@ -54,40 +54,15 @@ const validateTime = (req, res, next) => {
 // Create Programme with Cloudinary upload
 router.post(
   "/programmes",
-  upload.single("image"), // Multer middleware first
+  validateTime,
+  upload.single("image"),
   async (req, res) => {
     try {
-      // Log the raw request body (for debugging)
-      console.log("Raw request body:", req.body);
+      const { name, stage, host, date, startTime, description, category } =
+        req.body;
 
-      // Log the received startTime (before validation)
-      console.log("⏰ Received startTime:", req.body.startTime);
+      // Validate time format (optional extra validation)
 
-      // Manually parse time if needed (e.g., "1430" → "14:30")
-      let formattedTime = req.body.startTime;
-      if (
-        formattedTime &&
-        formattedTime.length === 4 &&
-        !formattedTime.includes(":")
-      ) {
-        formattedTime = `${formattedTime.slice(0, 2)}:${formattedTime.slice(
-          2
-        )}`;
-      }
-
-      // Log the formatted time
-      console.log("🔄 Formatted startTime:", formattedTime);
-
-      // Validate time format
-      const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-      if (!timeRegex.test(formattedTime)) {
-        console.log("❌ Invalid time format:", formattedTime);
-        return res.status(400).json({
-          message: "Invalid start time format. Use HH:MM (e.g., 14:30)",
-        });
-      }
-
-      // Proceed with Cloudinary upload and save
       const result = await new Promise((resolve, reject) => {
         const stream = cloudinary.uploader.upload_stream(
           { folder: "programmes" },
@@ -97,11 +72,19 @@ router.post(
           }
         );
         stream.end(req.file.buffer);
+        console.log(req.file); // Debug: Check if file exists
+        res.json({ success: true });
       });
 
+      // Cloudinary upload logic remains the same...
       const newProgramme = new Programme({
-        ...req.body,
-        startTime: formattedTime, // Use the formatted time
+        name,
+        stage,
+        host,
+        date: new Date(date), // Ensure proper date parsing
+        startTime,
+        description,
+        category,
         image: {
           public_id: result.public_id,
           url: result.secure_url,
@@ -111,7 +94,7 @@ router.post(
       await newProgramme.save();
       res.status(201).json(newProgramme);
     } catch (error) {
-      console.error("🔥 Upload error:", error.message);
+      console.error("Server error:", error);
       res.status(500).json({
         error: "Internal Server Error",
         details: error.message,

@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 });
 
 // API Routes
-app.use("/api/programmes", programmeRoutes);
+app.use("/api", programmeRoutes);
 app.use("/api/feedback", feedbackRoutes);
 app.use("/api/contact", contactRoutes);
 
