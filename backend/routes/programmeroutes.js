@@ -1,45 +1,52 @@
 // routes/programmeroutes.js
 const express = require("express");
 const multer = require("multer");
-const fs = require("fs");
 const path = require("path");
+const cloudinary = require("cloudinary").v2;
 const Programme = require("../models/programme");
 
 const router = express.Router();
 
-// Configure multer storage
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, uniqueSuffix + path.extname(file.originalname));
-  },
-});
+// Configure multer for memory storage (no need for disk storage with Cloudinary)
+const upload = multer({ storage: multer.memoryStorage() });
 
-const upload = multer({ storage });
-
-// Create Programme
+// Create Programme with Cloudinary upload
 router.post("/", upload.single("image"), async (req, res) => {
   try {
-    const { name, stage, host, date, description, category } = req.body;
-    const image = req.file ? req.file.filename : null;
+    const { name, stage, host, date, startTime, description, category } =
+      req.body;
 
+    // Validate time format (optional extra validation)
+    const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    if (!timeRegex.test(startTime)) {
+      return res
+        .status(400)
+        .json({ message: "Invalid start time format. Use HH:MM" });
+    }
+
+    // Cloudinary upload logic remains the same...
     const newProgramme = new Programme({
       name,
       stage,
       host,
-      date,
+      date: new Date(date), // Ensure proper date parsing
+      startTime,
       description,
       category,
-      image: req.file.filename,
+      image: {
+        public_id: result.public_id,
+        url: result.secure_url,
+      },
     });
 
     await newProgramme.save();
     res.status(201).json(newProgramme);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.error("Error creating programme:", error);
+    res.status(500).json({
+      message: "Error creating programme",
+      error: error.message,
+    });
   }
 });
 
@@ -53,37 +60,30 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Delete Programme
+// Delete Programme with Cloudinary cleanup
 router.delete("/:id", async (req, res) => {
   try {
-    const programmeId = req.params.id;
-    const programme = await Programme.findById(programmeId);
+    const programme = await Programme.findById(req.params.id);
 
     if (!programme) {
       return res.status(404).json({ message: "Programme not found" });
     }
 
-    // Delete the image file if it exists
-    if (programme.image) {
-      const imagePath = path.join(__dirname, "..", "uploads", programme.image);
-      fs.unlink(imagePath, (err) => {
-        if (err) {
-          console.error("Failed to delete image file:", err);
-        } else {
-          console.log("Image file deleted successfully:", programme.image);
-        }
-      });
+    // Delete image from Cloudinary if exists
+    if (programme.image && programme.image.public_id) {
+      await cloudinary.uploader.destroy(programme.image.public_id);
     }
 
-    // Now delete the programme from database
-    await Programme.findByIdAndDelete(programmeId);
+    // Delete the programme from database
+    await Programme.findByIdAndDelete(req.params.id);
 
-    res
-      .status(200)
-      .json({ message: "Programme and its image deleted successfully" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Error deleting programme" });
+    res.json({ message: "Programme deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting programme:", error);
+    res.status(500).json({
+      message: "Error deleting programme",
+      error: error.message,
+    });
   }
 });
 

@@ -10,6 +10,7 @@ const AdminUpload = () => {
   const [stage, setStage] = useState("");
   const [host, setHost] = useState("");
   const [date, setDate] = useState("");
+  const [startTime, setStartTime] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("already_done");
   const [image, setImage] = useState(null);
@@ -28,61 +29,55 @@ const AdminUpload = () => {
       setUploadedProgrammes(res.data);
     } catch (error) {
       console.error("Failed to fetch programmes", error);
+      toast.error("Failed to load programmes");
     }
   };
 
   const handleUpload = async (e) => {
     e.preventDefault();
 
+    if (!image) {
+      toast.error("Please select an image");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("name", name);
     formData.append("stage", stage);
     formData.append("host", host);
     formData.append("date", date);
+    formData.append("startTime", startTime);
     formData.append("description", description);
     formData.append("category", category);
     formData.append("image", image);
 
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://abha-web-1.onrender.com/api/programmes",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
+
       Swal.fire({
-        title: '<span style="color: #fff;">Uploaded!</span>',
-        html: '<span style="color: #bbb;">Your programme has been successfully uploaded.</span>',
+        title: '<span style="color: #fff;">Success!</span>',
+        html: '<span style="color: #bbb;">Programme uploaded successfully.</span>',
         icon: "success",
         background: "rgba(31, 31, 31, 0.95)",
-        color: "#ffffff",
         showConfirmButton: false,
         timer: 2000,
-        backdrop: `
-          rgba(0,0,0,0.6)
-        `,
-        customClass: {
-          popup: "rounded-3xl p-8 backdrop-blur-md shadow-2xl",
-        },
-        showClass: {
-          popup: "animate__animated animate__zoomIn faster",
-        },
-        hideClass: {
-          popup: "animate__animated animate__zoomOut faster",
-        },
       });
 
-      if (response.status === 201) {
-        setIsModalOpen(false);
-        setName("");
-        setStage("");
-        setHost("");
-        setDate("");
-        setDescription("");
-        setCategory("already_done");
-        setImage(null);
-        fetchProgrammes();
-        toast.success("Programme uploaded successfully!");
-      }
+      // Reset form and refresh data
+      setIsModalOpen(false);
+      setName("");
+      setStage("");
+      setHost("");
+      setDate("");
+      setStartTime("");
+      setDescription("");
+      setCategory("already_done");
+      setImage(null);
+      fetchProgrammes();
     } catch (err) {
       console.error(err);
       toast.error("Error uploading programme");
@@ -91,14 +86,23 @@ const AdminUpload = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(
-        `https://abha-web-1.onrender.com/api/programmes/${id}`
-      );
-      if (response.status === 200) {
-        setUploadedProgrammes(
-          uploadedProgrammes.filter((programme) => programme._id !== id)
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "This action cannot be undone!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Delete",
+        background: "rgba(31, 31, 31, 0.95)",
+      });
+
+      if (result.isConfirmed) {
+        await axios.delete(
+          `https://abha-web-1.onrender.com/api/programmes/${id}`
         );
-        toast.success("Programme deleted successfully!");
+        setUploadedProgrammes(uploadedProgrammes.filter((p) => p._id !== id));
+        toast.success("Programme deleted successfully");
       }
     } catch (error) {
       console.error("Error deleting programme", error);
@@ -106,162 +110,223 @@ const AdminUpload = () => {
     }
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  const formatTime = (timeString) => {
+    if (!timeString) return "";
+    const [hours, minutes] = timeString.split(":");
+    const hour = parseInt(hours);
+    return `${hour > 12 ? hour - 12 : hour}:${minutes} ${
+      hour >= 12 ? "PM" : "AM"
+    }`;
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-tr mt-17 from-[#0f0c29] via-[#302b63] to-[#24243e] p-8">
-      <div className="max-w-5xl mx-auto text-center">
-        <h1 className="text-5xl font-extrabold text-white mb-12 animate__animated animate__fadeIn">
-          Upload Programmes
+    <div className="min-h-screen mt-17 bg-gradient-to-tr from-[#0f0c29] via-[#302b63] to-[#24243e] p-4 md:p-8">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl md:text-4xl font-bold text-white mb-6 md:mb-10 text-center">
+          Programme Management
         </h1>
-      </div>
 
-      <button
-        onClick={() => setIsModalOpen(true)}
-        className="fixed bottom-10 right-10 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-5 rounded-full text-white shadow-2xl hover:scale-110 transition-all duration-300 ease-out hover:shadow-xl hover:bg-gradient-to-l"
-      >
-        <PlusCircle size={40} />
-      </button>
+        {/* Upload Button */}
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="fixed bottom-10 right-10 bg-gradient-to-r from-indigo-600 to-purple-600 p-4 rounded-full shadow-lg hover:scale-110 transition-transform z-10"
+        >
+          <PlusCircle size={32} />
+        </button>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-          <div className="bg-[#1f1f1f] p-10 rounded-2xl shadow-2xl w-full max-w-xl animate__animated animate__fadeIn animate__delay-1s">
-            <h2 className="text-4xl font-bold text-white mb-8 text-center">
-              Add New Programme
-            </h2>
-            <form onSubmit={handleUpload} className="space-y-2 gap-2 ">
-              <input
-                type="text"
-                placeholder="Programme Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full p-4 rounded-lg bg-[#333] text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-600 transition-all duration-300"
-              />
-              <input
-                type="text"
-                placeholder="Lead By"
-                value={host}
-                onChange={(e) => setHost(e.target.value)}
-                className="w-full p-4 rounded-lg bg-[#333] text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-600 transition-all duration-300"
-              />
-              <input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                className="w-full p-4 rounded-lg bg-[#333] text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-600 transition-all duration-300"
-              />
-              <input
-                type="text"
-                placeholder="Stage"
-                value={stage}
-                onChange={(e) => setStage(e.target.value)}
-                className="w-full p-4 rounded-lg bg-[#333] text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-600 transition-all duration-300"
-              />
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full p-4 rounded-lg bg-[#333] text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-600 transition-all duration-300"
-              >
-                <option value="already_done">Already Done</option>
-                <option value="want_to_do">Want to Do</option>
-              </select>
-              <input
-                type="file"
-                onChange={(e) => setImage(e.target.files[0])}
-                className="w-full p-4 rounded-lg bg-[#333] text-white transition-all duration-300"
-              />
-              <textarea
-                placeholder="Programme Description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                rows="4"
-                className="w-full p-4 rounded-lg bg-[#333] text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-600 transition-all duration-300"
-              />
-              <div className="flex justify-between">
+        {/* Upload Modal */}
+        {isModalOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+            <div className="bg-[#1e1e1e] p-6 md:p-8 rounded-xl w-full max-w-2xl">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-white">
+                  Add New Programme
+                </h2>
                 <button
-                  type="submit"
-                  className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-white py-3 px-6 rounded-full font-bold hover:scale-105 transition-transform"
-                >
-                  Upload
-                </button>
-                <button
-                  type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="bg-gray-500 py-3 px-6 rounded-full text-white hover:bg-gray-600 transition-all duration-300"
+                  className="text-gray-400 hover:text-white"
                 >
-                  Cancel
+                  ✕
                 </button>
               </div>
-            </form>
-          </div>
-        </div>
-      )}
+              <form
+                onSubmit={handleUpload}
+                className="space-y-4 overflow-y-auto max-h-[80vh] pr-2"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-gray-400 mb-2">
+                      Programme Name
+                    </label>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full p-3 bg-[#333] rounded-lg text-white"
+                      required
+                    />
+                  </div>
 
-      {/* Uploaded Programmes */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-16">
-        {uploadedProgrammes.length > 0 ? (
-          uploadedProgrammes.map((prog) => (
-            <div
-              key={prog._id}
-              className="bg-[#2a2a2a] rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out hover:shadow-2xl hover:bg-[#333] animate__animated animate__fadeIn"
-            >
-              {prog.image && (
-                <img
-                  src={`https://abha-web-1.onrender.com/uploads/${prog.image}`}
-                  alt={prog.name}
-                  className="w-full h-60 object-cover transition-transform duration-500 ease-out transform hover:scale-110"
-                />
-              )}
-              <div className="p-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">{prog.name}</h3>
-                <p className="text-sm text-gray-400 mb-1">
-                  Lead By: {prog.host}
-                </p>
-                <p className="text-sm text-gray-400 mb-4">Date: {prog.date}</p>
-                <p className="text-sm text-gray-400 mb-1">
-                  Stage: {prog.stage}
-                </p>
-                <p className="text-sm text-gray-400 mb-4">
-                  Category: {prog.category}
-                </p>
-                <p className="text-sm">{prog.description}</p>
-                <button
-                  onClick={() => {
-                    Swal.fire({
-                      title: "Are you sure?",
-                      text: "You won't be able to revert this!",
-                      icon: "warning",
-                      showCancelButton: true,
-                      confirmButtonColor: "#d33",
-                      cancelButtonColor: "#3085d6",
-                      confirmButtonText: "Yes, delete it!",
-                      background: "#1f1f1f",
-                      color: "#fff",
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-                        handleDelete(prog._id); // ✅ Actually delete if user confirms
-                        Swal.fire({
-                          title: "Deleted!",
-                          text: "Programme has been deleted.",
-                          icon: "success",
-                          background: "#1f1f1f",
-                          color: "#fff",
-                        });
-                      }
-                    });
-                  }}
-                  className="mt-4 text-red-500 hover:text-red-700 transition duration-300 ease-out hover:scale-110"
-                >
-                  Delete Programme
-                </button>
-              </div>
+                  <div>
+                    <label className="block text-gray-400 mb-2">Host</label>
+                    <input
+                      type="text"
+                      value={host}
+                      onChange={(e) => setHost(e.target.value)}
+                      className="w-full p-3 bg-[#333] rounded-lg text-white"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-400 mb-2">Date</label>
+                    <input
+                      type="date"
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)}
+                      className="w-full p-3 bg-[#333] rounded-lg text-white"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-400 mb-2">
+                      Start Time
+                    </label>
+                    <input
+                      type="time"
+                      value={startTime}
+                      onChange={(e) => setStartTime(e.target.value)}
+                      className="w-full p-3 bg-[#333] rounded-lg text-white"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-400 mb-2">Stage</label>
+                    <input
+                      type="text"
+                      value={stage}
+                      onChange={(e) => setStage(e.target.value)}
+                      className="w-full p-3 bg-[#333] rounded-lg text-white"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-400 mb-2">Category</label>
+                    <select
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
+                      className="w-full p-3 bg-[#333] rounded-lg text-white"
+                    >
+                      <option value="already_done">Past Event</option>
+                      <option value="want_to_do">Upcoming Event</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-gray-400 mb-2">
+                    Programme Image
+                  </label>
+                  <input
+                    type="file"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    className="w-full p-3 bg-[#333] rounded-lg text-white"
+                    accept="image/*"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-gray-400 mb-2">
+                    Description
+                  </label>
+                  <textarea
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    rows={4}
+                    className="w-full p-3 bg-[#333] rounded-lg text-white"
+                  />
+                </div>
+
+                <div className="flex justify-end gap-3 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsModalOpen(false)}
+                    className="px-4 py-2 bg-gray-600 rounded-lg hover:bg-gray-700 transition"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-4 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition"
+                  >
+                    Save Programme
+                  </button>
+                </div>
+              </form>
             </div>
-          ))
-        ) : (
-          <p className="text-white">No programmes uploaded yet.</p>
+          </div>
         )}
-      </div>
 
-      {/* Toast Notifications Container */}
-      <ToastContainer position="bottom-right" autoClose={5000} />
+        {/* Programme List */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {uploadedProgrammes.length > 0 ? (
+            uploadedProgrammes.map((prog) => (
+              <div
+                key={prog._id}
+                className="bg-[#2a2a2a] rounded-xl overflow-hidden hover:shadow-lg transition-shadow"
+              >
+                <img
+                  src={prog.image.url}
+                  alt={prog.name}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-5">
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {prog.name}
+                  </h3>
+                  <p className="text-gray-400 mb-1">
+                    <span className="font-medium">Date:</span>{" "}
+                    {formatDate(prog.date)}
+                  </p>
+                  <p className="text-gray-400 mb-1">
+                    <span className="font-medium">Time:</span>{" "}
+                    {formatTime(prog.startTime)}
+                  </p>
+                  <p className="text-gray-400 mb-1">
+                    <span className="font-medium">Host:</span> {prog.host}
+                  </p>
+                  <p className="text-gray-400 mb-3">
+                    <span className="font-medium">Stage:</span> {prog.stage}
+                  </p>
+                  <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+                    {prog.description}
+                  </p>
+                  <button
+                    onClick={() => handleDelete(prog._id)}
+                    className="text-red-500 hover:text-red-400 transition"
+                  >
+                    Delete Programme
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-10">
+              <p className="text-gray-400 text-xl">No programmes added yet</p>
+            </div>
+          )}
+        </div>
+      </div>
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </div>
   );
 };
