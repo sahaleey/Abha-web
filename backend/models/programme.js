@@ -30,7 +30,7 @@ const programmeSchema = new mongoose.Schema(
     startTime: {
       type: String,
       required: [true, "Start time is required"],
-      match: [/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/, "Please use HH:MM format"], // 24-hour format validation
+      match: /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/, // 24-hour format validation
     },
 
     image: {

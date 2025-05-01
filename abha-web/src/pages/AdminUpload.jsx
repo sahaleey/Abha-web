@@ -36,8 +36,26 @@ const AdminUpload = () => {
   const handleUpload = async (e) => {
     e.preventDefault();
 
-    if (!image) {
-      toast.error("Please select an image");
+    // Validate required fields
+    const requiredFields = { name, stage, host, date, startTime, image };
+    const missingFields = Object.entries(requiredFields)
+      .filter(([_, value]) => !value)
+      .map(([key]) => key);
+
+    if (missingFields.length > 0) {
+      toast.error(`Missing required fields: ${missingFields.join(", ")}`);
+      return;
+    }
+
+    let formattedTime = startTime;
+    if (startTime && !startTime.includes(":")) {
+      formattedTime = `${startTime.slice(0, 2)}:${startTime.slice(2)}`;
+    }
+
+    // Validate time format
+    const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    if (!timeRegex.test(formattedTime)) {
+      toast.error("Invalid time format. Use HH:MM (e.g., 14:30)");
       return;
     }
 
@@ -46,41 +64,73 @@ const AdminUpload = () => {
     formData.append("stage", stage);
     formData.append("host", host);
     formData.append("date", date);
-    formData.append("startTime", startTime);
+    formData.append("startTime", formattedTime);
     formData.append("description", description);
     formData.append("category", category);
     formData.append("image", image);
 
     try {
-      await axios.post(
+      const response = await axios.post(
         "https://abha-web-1.onrender.com/api/programmes",
         formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            // Add if using authentication:
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          timeout: 15000,
+        }
       );
 
-      Swal.fire({
-        title: '<span style="color: #fff;">Success!</span>',
-        html: '<span style="color: #bbb;">Programme uploaded successfully.</span>',
-        icon: "success",
-        background: "rgba(31, 31, 31, 0.95)",
-        showConfirmButton: false,
-        timer: 2000,
+      if (response.status === 201) {
+        Swal.fire({
+          title: '<span style="color: #fff;">Success!</span>',
+          html: '<span style="color: #bbb;">Programme uploaded successfully.</span>',
+          icon: "success",
+          background: "rgba(31, 31, 31, 0.95)",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+
+        // Reset form and refresh data
+        setIsModalOpen(false);
+        setName("");
+        setStage("");
+        setHost("");
+        setDate("");
+        setStartTime("");
+        setDescription("");
+        setCategory("already_done");
+        setImage(null);
+        fetchProgrammes();
+      }
+    } catch (err) {
+      console.error("Upload error details:", {
+        message: err.message,
+        response: err.response?.data,
+        config: err.config,
       });
 
-      // Reset form and refresh data
-      setIsModalOpen(false);
-      setName("");
-      setStage("");
-      setHost("");
-      setDate("");
-      setStartTime("");
-      setDescription("");
-      setCategory("already_done");
-      setImage(null);
-      fetchProgrammes();
-    } catch (err) {
-      console.error(err);
-      toast.error("Error uploading programme");
+      let errorMessage = "Error uploading programme";
+      if (err.response) {
+        // Try to get more specific error from server
+        errorMessage =
+          err.response.data?.message ||
+          err.response.data?.error ||
+          `Server responded with ${err.response.status}`;
+      } else if (err.code === "ECONNABORTED") {
+        errorMessage = "Request timed out. Please try again.";
+      } else if (err.message.includes("Network Error")) {
+        errorMessage = "Network connection failed. Please check your internet.";
+      }
+
+      Swal.fire({
+        title: "Upload Failed",
+        text: errorMessage,
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     }
   };
 
@@ -195,15 +245,20 @@ const AdminUpload = () => {
                   </div>
 
                   <div>
-                    <label className="block text-gray-400 mb-2">
-                      Start Time
-                    </label>
+                    <label className="block text-gray-400 mb-2">Time</label>
                     <input
                       type="time"
                       value={startTime}
-                      onChange={(e) => setStartTime(e.target.value)}
+                      onChange={(e) => {
+                        // Ensure proper HH:MM format
+                        let value = e.target.value;
+                        if (value.length === 5 && value.includes(":")) {
+                          setStartTime(value);
+                        }
+                      }}
                       className="w-full p-3 bg-[#333] rounded-lg text-white"
                       required
+                      step="3600" // Show hours only (no minutes)
                     />
                   </div>
 

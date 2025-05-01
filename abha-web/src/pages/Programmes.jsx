@@ -104,11 +104,19 @@ const Programmes = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Updated Programmes.jsx
     const fetchProgrammes = async () => {
       try {
+        setLoading(true);
+        setError(null);
+
         const response = await axios.get(
-          "https://abha-web-1.onrender.com/api/programmes"
+          "https://abha-web-1.onrender.com/api/programmes",
+          {
+            timeout: 10000, // 10 second timeout
+          }
         );
+
         const programmes = response.data;
 
         setUploadedProgrammes(
@@ -118,8 +126,23 @@ const Programmes = () => {
           programmes.filter((p) => p.category === "want_to_do")
         );
       } catch (err) {
-        console.error("Error fetching programmes:", err);
-        setError("Failed to load programmes. Please try again later.");
+        console.error("Fetch error:", err);
+
+        let errorMessage = "Error loading programmes";
+        if (err.response) {
+          if (err.response.status === 500) {
+            errorMessage = "Server error. Please try again later.";
+          } else if (err.response.data && err.response.data.message) {
+            errorMessage = err.response.data.message;
+          }
+        } else if (err.message.includes("timeout")) {
+          errorMessage = "Request timed out. Please check your connection.";
+        } else if (err.code === "ERR_NETWORK") {
+          errorMessage =
+            "Network error. Please check your internet connection.";
+        }
+
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }

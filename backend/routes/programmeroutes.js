@@ -8,47 +8,101 @@ const Programme = require("../models/programme");
 const router = express.Router();
 
 // Configure multer for memory storage (no need for disk storage with Cloudinary)
-const upload = multer({ storage: multer.memoryStorage() });
-
-// Create Programme with Cloudinary upload
-router.post("/", upload.single("image"), async (req, res) => {
-  try {
-    const { name, stage, host, date, startTime, description, category } =
-      req.body;
-
-    // Validate time format (optional extra validation)
-    const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-    if (!timeRegex.test(startTime)) {
-      return res
-        .status(400)
-        .json({ message: "Invalid start time format. Use HH:MM" });
+const upload = multer({
+  limits: {
+    fileSize: 10 * 1024 * 1024, // 10MB limit (in bytes)
+    files: 1, // Limit to 1 file
+  },
+  fileFilter: (req, file, cb) => {
+    // Accept images only
+    if (file.mimetype.startsWith("image/")) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only image files are allowed!"), false);
     }
+  },
+});
 
-    // Cloudinary upload logic remains the same...
-    const newProgramme = new Programme({
-      name,
-      stage,
-      host,
-      date: new Date(date), // Ensure proper date parsing
-      startTime,
-      description,
-      category,
-      image: {
-        public_id: result.public_id,
-        url: result.secure_url,
-      },
-    });
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // Ensure this folder exists!
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
 
-    await newProgramme.save();
-    res.status(201).json(newProgramme);
-  } catch (error) {
-    console.error("Error creating programme:", error);
-    res.status(500).json({
-      message: "Error creating programme",
-      error: error.message,
+const validateTime = (req, res, next) => {
+  let { startTime } = req.body;
+
+  // If time comes without colon (e.g., "1430"), add it
+  if (startTime && startTime.length === 4 && !startTime.includes(":")) {
+    startTime = `${startTime.slice(0, 2)}:${startTime.slice(2)}`;
+    req.body.startTime = startTime; // Update the request
+  }
+
+  const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+  if (!timeRegex.test(startTime)) {
+    return res.status(400).json({
+      message:
+        "Invalid start time format. Use HH:MM (24-hour format, e.g., 14:30)",
     });
   }
-});
+  next();
+};
+
+// Create Programme with Cloudinary upload
+router.post(
+  "/programmes",
+  validateTime,
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const { name, stage, host, date, startTime, description, category } =
+        req.body;
+
+      // Cloudinary upload
+      const result = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          { folder: "programmes" },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          }
+        );
+
+        // Check if file exists
+        if (!req.file) {
+          throw new Error("No image file provided");
+        }
+        stream.end(req.file.buffer);
+      });
+
+      const newProgramme = new Programme({
+        name,
+        stage,
+        host,
+        date: new Date(date),
+        startTime,
+        description,
+        category,
+        image: {
+          public_id: result.public_id,
+          url: result.secure_url,
+        },
+      });
+
+      await newProgramme.save();
+      res.status(201).json(newProgramme);
+    } catch (error) {
+      console.error("Upload error:", error);
+      res.status(500).json({
+        error: "Internal Server Error",
+        details: error.message,
+      });
+    }
+  }
+);
 
 // Get all Programmes
 router.get("/", async (req, res) => {
