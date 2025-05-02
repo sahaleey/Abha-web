@@ -36,7 +36,6 @@ const AdminUpload = () => {
   const handleUpload = async (e) => {
     e.preventDefault();
 
-    // Validate required fields
     const requiredFields = { name, stage, host, date, startTime, image };
     const missingFields = Object.entries(requiredFields)
       .filter(([_, value]) => !value)
@@ -47,24 +46,12 @@ const AdminUpload = () => {
       return;
     }
 
-    let formattedTime = startTime;
-    if (startTime && !startTime.includes(":")) {
-      formattedTime = `${startTime.slice(0, 2)}:${startTime.slice(2)}`;
-    }
-
-    // Validate time format
-    const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-    if (!timeRegex.test(formattedTime)) {
-      toast.error("Invalid time format. Use HH:MM (e.g., 14:30)");
-      return;
-    }
-
     const formData = new FormData();
     formData.append("name", name);
     formData.append("stage", stage);
     formData.append("host", host);
     formData.append("date", date);
-    formData.append("startTime", formattedTime);
+    formData.append("startTime", startTime); // already HH:MM
     formData.append("description", description);
     formData.append("category", category);
     formData.append("image", image);
@@ -76,7 +63,6 @@ const AdminUpload = () => {
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            // Add if using authentication:
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
           timeout: 15000,
@@ -93,7 +79,6 @@ const AdminUpload = () => {
           timer: 2000,
         });
 
-        // Reset form and refresh data
         setIsModalOpen(false);
         setName("");
         setStage("");
@@ -114,7 +99,6 @@ const AdminUpload = () => {
 
       let errorMessage = "Error uploading programme";
       if (err.response) {
-        // Try to get more specific error from server
         errorMessage =
           err.response.data?.message ||
           err.response.data?.error ||
@@ -249,13 +233,7 @@ const AdminUpload = () => {
                     <input
                       type="time"
                       value={startTime}
-                      onChange={(e) => {
-                        // Ensure proper HH:MM format
-                        let value = e.target.value;
-                        if (value.length === 5 && value.includes(":")) {
-                          setStartTime(value);
-                        }
-                      }}
+                      onChange={(e) => setStartTime(e.target.value)}
                       className="w-full p-3 bg-[#333] rounded-lg text-white"
                       required
                       step="3600" // Show hours only (no minutes)

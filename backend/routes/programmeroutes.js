@@ -21,15 +21,7 @@ const upload = multer({
       cb(new Error("Only image files are allowed!"), false);
     }
   },
-});
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/"); // Ensure this folder exists!
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
+  storage: multer.memoryStorage(), // Use memory storage
 });
 
 const validateTime = (req, res, next) => {
@@ -60,9 +52,8 @@ router.post(
     try {
       const { name, stage, host, date, startTime, description, category } =
         req.body;
-
-      // Validate time format (optional extra validation)
-
+      console.log(req.file);
+      console.log(req.body);
       const result = await new Promise((resolve, reject) => {
         const stream = cloudinary.uploader.upload_stream(
           { folder: "programmes" },
@@ -72,15 +63,13 @@ router.post(
           }
         );
         stream.end(req.file.buffer);
-        console.log(req.file); // Debug: Check if file exists
       });
 
-      // Cloudinary upload logic remains the same...
       const newProgramme = new Programme({
         name,
         stage,
         host,
-        date: new Date(date), // Ensure proper date parsing
+        date: new Date(date),
         startTime,
         description,
         category,
