@@ -35,8 +35,9 @@ app.use((err, req, res, next) => {
 });
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://abha-web-2.onrender.com/"],
-    credentials: true,
+    origin: ["http://localhost:5173", "https://abha-web-2.onrender.com"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use((err, req, res, next) => {
