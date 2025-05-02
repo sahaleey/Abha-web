@@ -55,6 +55,7 @@ const AdminUpload = () => {
     formData.append("description", description);
     formData.append("category", category);
     formData.append("image", image);
+    console.log("Uploading startTime:", startTime);
 
     try {
       const response = await axios.post(

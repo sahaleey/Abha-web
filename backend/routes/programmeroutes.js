@@ -65,6 +65,14 @@ router.post(
         stream.end(req.file.buffer);
       });
 
+      const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+      if (!timeRegex.test(startTime)) {
+        return res.status(400).json({
+          message:
+            "Invalid start time format. Use HH:MM (24-hour format, e.g., 14:30)",
+        });
+      }
+
       const newProgramme = new Programme({
         name,
         stage,
