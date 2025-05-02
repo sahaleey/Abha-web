@@ -4,6 +4,7 @@ const multer = require("multer");
 const path = require("path");
 const cloudinary = require("cloudinary").v2;
 const Programme = require("../models/programme");
+const authMiddleware = require("../middlewares/auth");
 
 const router = express.Router();
 
@@ -46,6 +47,7 @@ const validateTime = (req, res, next) => {
 // Create Programme with Cloudinary upload
 router.post(
   "/programmes",
+  authMiddleware,
   upload.single("image"),
   validateTime,
   async (req, res) => {
@@ -64,14 +66,6 @@ router.post(
         );
         stream.end(req.file.buffer);
       });
-
-      const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-      if (!timeRegex.test(startTime)) {
-        return res.status(400).json({
-          message:
-            "Invalid start time format. Use HH:MM (24-hour format, e.g., 14:30)",
-        });
-      }
 
       const newProgramme = new Programme({
         name,
@@ -100,7 +94,7 @@ router.post(
 );
 
 // Get all Programmes
-router.get("/programmes", async (req, res) => {
+router.get("/programmes", authMiddleware, async (req, res) => {
   try {
     const programmes = await Programme.find();
     res.json(programmes);
@@ -110,7 +104,7 @@ router.get("/programmes", async (req, res) => {
 });
 
 // Delete Programme with Cloudinary cleanup
-router.delete("/:id", async (req, res) => {
+router.delete("/programmes/:id", async (req, res) => {
   try {
     const programme = await Programme.findById(req.params.id);
 

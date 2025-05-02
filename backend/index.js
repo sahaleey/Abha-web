@@ -26,6 +26,7 @@ cloudinary.config({
 const MONGO_URI = process.env.MONGO_URL;
 
 // Middleware
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({
