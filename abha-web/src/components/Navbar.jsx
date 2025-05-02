@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo print.jpg";
 
@@ -9,7 +9,6 @@ function Navbar() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const location = useLocation();
-  const navigate = useNavigate();
 
   const routes = [
     { path: "/", label: "Home" },
@@ -18,30 +17,6 @@ function Navbar() {
     { path: "/programmes", label: "Programmes" },
     { path: "/podcast", label: "Podcast" },
   ];
-
-  const correctPassword = "abha@web14"; // Change your password here
-
-  const handleAdminClick = () => {
-    setShowPasswordInput(true);
-  };
-
-  const handlePasswordSubmit = () => {
-    if (password === correctPassword) {
-      setError("");
-      setShowPasswordInput(false);
-      navigate("/admin-upload");
-    } else {
-      setError("Incorrect password. Try again.");
-    }
-  };
-
-  // Reset the password input and modal state when the location changes
-  useEffect(() => {
-    if (location.pathname === "/admin-upload") {
-      setPassword(""); // Reset password
-      setShowPasswordInput(false); // Hide password modal
-    }
-  }, [location]);
 
   return (
     <nav className="w-full shadow-md px-6 py-4 backdrop-blur-md bg-[#292C35] fixed top-0 z-50">
@@ -90,18 +65,6 @@ function Navbar() {
               </li>
             );
           })}
-
-          {/* Administrative Button - Hidden on /admin-upload */}
-          {location.pathname !== "/admin-upload" && (
-            <li>
-              <button
-                onClick={handleAdminClick}
-                className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg transition-transform hover:scale-110"
-              >
-                Admin
-              </button>
-            </li>
-          )}
         </ul>
       </div>
 

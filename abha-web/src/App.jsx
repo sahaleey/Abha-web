@@ -24,7 +24,6 @@ import EventCountdownTimer from "./components/EventCountdownTimer";
 import Podcast from "./pages/Podcast";
 import MemberBio from "./components/MemberBio";
 import StatsSection from "./components/StatsSection";
-import AdminUpload from "./pages/AdminUpload";
 import AbhaLoader from "./components/Loading";
 
 function App() {
@@ -296,7 +295,6 @@ rounded-3xl p-6 shadow-xl transition-transform duration-300 transform hover:scal
             <Route path="/event-countdown" element={<EventCountdownTimer />} />
             <Route path="/podcast" element={<Podcast />} />
             <Route path="/community/:slug" element={<MemberBio />} />
-            <Route path="/admin-upload" element={<AdminUpload />} />
           </Routes>
         </ErrorBoundary>
       </div>
