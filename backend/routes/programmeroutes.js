@@ -54,8 +54,8 @@ const validateTime = (req, res, next) => {
 // Create Programme with Cloudinary upload
 router.post(
   "/programmes",
-  validateTime,
   upload.single("image"),
+  validateTime,
   async (req, res) => {
     try {
       const { name, stage, host, date, startTime, description, category } =
@@ -73,7 +73,6 @@ router.post(
         );
         stream.end(req.file.buffer);
         console.log(req.file); // Debug: Check if file exists
-        res.json({ success: true });
       });
 
       // Cloudinary upload logic remains the same...
@@ -104,7 +103,7 @@ router.post(
 );
 
 // Get all Programmes
-router.get("/", async (req, res) => {
+router.get("/programmes", async (req, res) => {
   try {
     const programmes = await Programme.find();
     res.json(programmes);

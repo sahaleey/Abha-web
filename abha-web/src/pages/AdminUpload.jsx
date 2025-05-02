@@ -70,14 +70,18 @@ const AdminUpload = () => {
     formData.append("image", image);
 
     try {
-      const response = await axios.post("/api/programmes", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          // Add if using authentication:
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        timeout: 15000,
-      });
+      const response = await axios.post(
+        "https://abha-web-1.onrender.com/api/programmes",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            // Add if using authentication:
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          timeout: 15000,
+        }
+      );
 
       if (response.status === 201) {
         Swal.fire({

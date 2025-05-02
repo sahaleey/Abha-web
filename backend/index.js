@@ -33,7 +33,12 @@ app.use((err, req, res, next) => {
     details: process.env.NODE_ENV === "development" ? err.stack : undefined,
   });
 });
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://abha-web-2.onrender.com/"],
+    credentials: true,
+  })
+);
 app.use((err, req, res, next) => {
   if (err.code === "LIMIT_FILE_SIZE") {
     return res.status(413).json({
