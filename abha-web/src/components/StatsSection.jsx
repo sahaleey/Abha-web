@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 const StatsSection = () => {
   const stats = [
-    { count: 250, suffix: "+", label: "Programmes", delay: 0.2 },
+    { count: 250, suffix: "+", label: "Programs", delay: 0.2 },
     { count: 250, suffix: "+", label: "Upcoming Events", delay: 0.4 },
     { count: 26, suffix: "+", label: "Members", delay: 0.6 },
     { count: 20, suffix: "+", label: "Projects", delay: 0.8 },

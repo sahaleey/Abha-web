@@ -1,140 +1,121 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import { Routes, Route, Link } from "react-router-dom";
-import Blog from "./pages/Blog";
-import About from "./pages/About";
-import Programmes from "./pages/Programmes";
-import AbhaLogo from "./assets/logo.png";
-import { Timeline } from "./components/Ui/Timeline";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import ParticlesBackground from "./components/ParticlesBackground";
-import CommunitySlider from "./components/CommunitySlider";
-import CustomCursor from "./components/CustomCursor";
 import { Typewriter } from "react-simple-typewriter";
+import { FlipWord } from "./components/Ui/flip-words";
+import AbhaLoader from "./components/Loading";
 import Footer from "./components/Footer";
-import BlogPost from "./pages/BlogPost";
 import ErrorBoundary from "./components/ErrorBoundary";
-import GetInTouch from "../src/pages/GetInTouch";
+import FloatingIslands from "./components/FloatingIslands";
+import GlassCard from "./components/GlassCard";
+import HolographicTimeline from "./components/HolographicTimeline";
+import NebulaBackground from "./components/NebulaBackground";
+import QuantumParticles from "./components/QuantumParticles";
+import DigitalRain from "./components/DigitalRain";
+import Programmes from "./pages/Programmes";
+import About from "./pages/About";
 import CoreTeam from "./components/CoreTeam";
 import Gallery from "./pages/Gallery";
 import Poll from "./components/Poll";
-import { FlipWord } from "../src/components/Ui/flip-words";
 import EventCountdownTimer from "./components/EventCountdownTimer";
+import CustomCursor from "./components/CustomCursor";
+import logo from "./assets/logo.png";
+import CommunitySlider from "./components/CommunitySlider";
+import CommunityBio from "./components/CommunityBio";
+import GetInTouch from "./pages/GetInTouch";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Podcast from "./pages/Podcast";
-import MemberBio from "./components/MemberBio";
-import StatsSection from "./components/StatsSection";
-import AbhaLoader from "./components/Loading";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-
-  //  Helper to wait for all images fully loaded
-  const waitForImagesToLoad = () => {
-    const images = Array.from(document.images);
-    if (images.length === 0) {
-      return Promise.resolve();
-    }
-
-    return new Promise((resolve) => {
-      let loadedCount = 0;
-      images.forEach((img) => {
-        if (img.complete) {
-          loadedCount++;
-        } else {
-          img.addEventListener("load", () => {
-            loadedCount++;
-            if (loadedCount === images.length) resolve();
-          });
-          img.addEventListener("error", () => {
-            loadedCount++;
-            if (loadedCount === images.length) resolve();
-          });
-        }
-      });
-
-      // In case all were already loaded
-      if (loadedCount === images.length) {
-        resolve();
-      }
-    });
-  };
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.2 });
 
   useEffect(() => {
-    waitForImagesToLoad().then(() => {
-      // Optional delay for smoother transition
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 500);
-    });
+    const timer = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    if (inView) {
-      controls.start({ opacity: 1, y: 0 });
-    } else {
-      controls.start({ opacity: 0, y: 40 });
-    }
+    if (inView) controls.start({ opacity: 1, y: 0 });
+    else controls.start({ opacity: 0, y: 40 });
   }, [inView, controls]);
 
-  if (isLoading) {
-    return <AbhaLoader />;
-  }
+  if (isLoading) return <AbhaLoader />;
 
-  // Timeline Data
+  const highlightCards = [
+    {
+      title: "Meet Our Leaders",
+      description: "The visionary minds guiding our community forward",
+      link: "/core-team",
+      gradient: "from-emerald-500 to-teal-700",
+      hover: "hover:shadow-emerald-500/30",
+    },
+    {
+      title: "Shared Moments",
+      description: "Relive our unforgettable experiences together",
+      link: "/event-gallery",
+      gradient: "from-amber-500 to-orange-700",
+      hover: "hover:shadow-amber-500/30",
+    },
+    {
+      title: "Share Your Thoughts",
+      description: "We value your perspective on our community",
+      link: "/poll",
+      gradient: "from-blue-500 to-indigo-700",
+      hover: "hover:shadow-blue-500/30",
+    },
+    {
+      title: "Upcoming Events",
+      description: "Countdown to our next groundbreaking experience",
+      link: "/event-countdown",
+      gradient: "from-purple-500 to-fuchsia-700",
+      hover: "hover:shadow-purple-500/30",
+    },
+  ];
+
   const timelineData = [
     {
-      title: "2022 Last Month",
-      content: (
-        <p className="text-white font-bloomsburg text-2xl">
-          We kicked off our journey to empower communities through creativity
-          and collaboration.
-        </p>
-      ),
+      year: "2022 Last month",
+      title: "Foundation",
+      description:
+        "We kicked off our journey to empower communities through technology and creativity.",
+      icon: "🚀",
     },
     {
-      title: "2023",
-      content: (
-        <p className="text-white font-bloomsburg text-2xl">
-          We kicked off our journey to empower communities through creativity
-          and collaboration.
-        </p>
-      ),
+      year: "2023",
+      title: "First Milestone",
+      description:
+        "Launched our first community program with overwhelming response.",
+      icon: "🎯",
     },
     {
-      title: "2024",
-      content: (
-        <p className="text-white font-bloomsburg text-2xl">
-          Hosted our very first creative program, with over 100+ participants!
-        </p>
-      ),
+      year: "2024",
+      title: "Academic Excellence",
+      description:
+        "we held several creative programs, highlighted by a college academic conference on Quran translation among our students.",
+      icon: "📜",
     },
     {
-      title: "2025",
-      content: (
-        <p className="text-white font-bloomsburg text-2xl">
-          Grew our network, launched new initiatives, and reached over 500
-          members.
-        </p>
-      ),
+      year: "2025",
+      title: "Innovation",
+      description:
+        "We are moving forward with successful creative program planning while strengthening our unity.",
+      icon: "💡",
     },
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#1e2425] h-auto w-full overflow-x-hidden">
-      <div className="hidden lg:block">
-        <CustomCursor />
-      </div>
-      <div className="particles-container fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
-        <ParticlesBackground id="tsparticles" />
-      </div>
+    <div className="min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
+      <NebulaBackground />
+      <DigitalRain />
+      <QuantumParticles />
+      <CustomCursor />
 
-      <div className="relative z-10">
+      <div className="relative z-30">
         <Navbar />
 
         <ErrorBoundary>
@@ -143,162 +124,184 @@ function App() {
               path="/"
               element={
                 <>
-                  {/* Hero Section with Particles Background */}
-                  <div className="relative flex justify-center mt-23 ">
-                    <div className="relative z-20 flex flex-col md:flex-row items-center justify-between w-full max-w-9xl shadow-2xl rounded-4xl bg-[#292C35] gap-10 min-h-[83vh] md  :mt-27">
-                      {/* Text Section */}
+                  {/* Futuristic Hero Section */}
+                  <section className="relative h-screen flex items-center justify-center overflow-hidden">
+                    <FloatingIslands />
+
+                    <div className="relative z-20 container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
                       <motion.div
-                        className="flex-1 text-center md:text-left m-[10px] "
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                          duration: 1.5,
-                          delay: 0.3,
-                          ease: "easeOut",
-                        }}
+                        className="flex-1 space-y-8"
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                       >
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-bloomsburg  mb-6 text-center md:text-left md:ml-10 ">
+                        <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
                           Welcome to{" "}
                           <span>
                             <FlipWord
-                              words={["ABHA", "OUR COMMUNITY", "OUR VISIONS"]}
-                              duration={2500}
-                              className="text-[#ce9206]"
+                              className="text-amber-400"
+                              words={["ABHA", "THE FUTURE", "INNOVATION"]}
+                              duration={3000}
                             />
                           </span>
                         </h1>
 
-                        <p className="text-gray-300 text-l font text-left m-[40px] lg:mr-60   leading-relaxed font-bloomsburg">
+                        <div className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
                           <Typewriter
                             words={[
-                              "Discover a world of inspiration and opportunity.  Abha brings together creativity, passion, and community in one powerful space. Dive into our programs, read our blog, and learn more about our mission to empower and uplift.",
+                              "Where technology meets creativity. ABHA is redefining community engagement through cutting-edge programs and immersive experiences.",
+                              "Pushing boundaries since 2022. Our ecosystem blends innovation with human connection to build tomorrow's solutions today.",
                             ]}
-                            typeSpeed={15}
+                            loop={true}
+                            cursor
+                            cursorStyle="|"
+                            typeSpeed={30}
+                            deleteSpeed={20}
+                            delaySpeed={3000}
                           />
-                        </p>
+                        </div>
+
+                        <div className="flex gap-4">
+                          <Link to="/programmes">
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full font-medium shadow-lg"
+                            >
+                              Explore Programs
+                            </motion.button>{" "}
+                          </Link>
+                          <Link to="/about">
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="px-8 py-3 bg-transparent border-2 border-white/20 rounded-full font-medium hover:bg-white/10 transition-all"
+                            >
+                              Know about us
+                            </motion.button>{" "}
+                          </Link>
+                        </div>
                       </motion.div>
 
-                      {/* Logo  */}
-                      <div className="relative group w-80 h-100  flex-shrink-0 m-[15px]">
-                        <img
-                          src={AbhaLogo}
-                          alt="Abha"
-                          className="relative z-10  object-contain rounded-full transition-transform duration-300 hover:scale-110 "
-                        />
-                      </div>
-                    </div>
-                  </div>
+                      <motion.div
+                        className="relative"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3, duration: 0.8 }}
+                      >
+                        <div className="relative w-64 h-64 md:w-80 md:h-80 group">
+                          {/* Glowing outer ring */}
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-purple-600/10 opacity-70 group-hover:opacity-100 transition-all duration-500 blur-[2px] group-hover:blur-[4px] animate-pulse-slow" />
 
-                  {/* Highlight Section */}
-                  <div ref={ref} className="mt-32 flex justify-center">
-                    <motion.div
-                      className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl l  p-10 rounded-3xl"
-                      initial={{ opacity: 0, y: 40 }}
-                      animate={controls}
-                      transition={{ duration: 1.2, ease: "easeOut" }}
-                    >
-                      <div className="relative group">
-                        <div
-                          className="relative bg-gradient-to-br from-gray-800 via-violet-400 to-violet-800 backdrop-blur-xl border border-white/10
-rounded-3xl px-15 py-14 shadow-xl transition-transform duration-300 transform hover:scale-105 text-center "
-                        >
-                          <h4 className="text-xl md:text-2xl font-bold text-white font-bloomsburg">
-                            Hold up by our great Leaders We are moving through
-                            the path of success. Just click on to see our{" "}
-                            <Link
-                              to="/core-team"
-                              className="text-blue-700 p-1 transition-colors hover:text-orange-300"
-                            >
-                              leaders.
-                            </Link>
-                          </h4>
+                          {/* Main logo container */}
+                          <div className="relative w-full h-full rounded-full bg-[#0a0a0f] border border-white/10 overflow-hidden p-4 transition-all duration-500 group-hover:scale-105 group-hover:border-cyan-400/30">
+                            {/* Inner glow effect */}
+                            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/10 to-blue-600/5  opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                            {/* Animated floating logo */}
+                            <img
+                              src={logo}
+                              alt="ABHA Logo"
+                              className="w-full scale-160 h-full object-contain transition-transform duration-700 ease-in-out group-hover:scale-130 animate-float"
+                              style={{
+                                animation: "float 6s ease-in-out infinite",
+                                filter:
+                                  "drop-shadow(0 0 8px rgba(34, 211, 238, 0.3))",
+                              }}
+                            />
+
+                            {/* Hover spotlight effect */}
+                            <div className="absolute inset-0 rounded-full pointer-events-none opacity-0 group-hover:opacity-50 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.5)_0%,transparent_70%)]" />
+                          </div>
+
+                          {/* Reflection effect */}
+                          <div className="absolute bottom-0 left-1/2 w-3/4 h-8 -translate-x-1/2 bg-gradient-to-t from-cyan-400/20 to-transparent opacity-30 blur-[6px] rounded-full" />
                         </div>
-                      </div>
+                      </motion.div>
+                    </div>
+                  </section>
 
-                      <div
-                        className="bg-gradient-to-br from-orange-300 via-orange-400 to-orange-500 
-rounded-3xl  shadow-xl transition-transform duration-300 transform hover:scale-105 px-12 py-10"
+                  {/* Holographic Feature Cards */}
+                  <section ref={ref} className="relative py-20">
+                    <div className="container mx-auto px-6">
+                      <motion.div
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={controls}
+                        transition={{ duration: 0.8, staggerChildren: 0.1 }}
                       >
-                        <h4 className="text-xl md:text-2xl text-center font-bold text-white font-bloomsburg">
-                          Hold on! lots some fantastic unforgettable moments,
-                          created unity and jokes between our relation. whole
-                          some moments we sharing{" "}
-                          <Link
-                            to="/event-gallery"
-                            className="text-teal-600  p-1  transition-colors hover:text-gray-400 "
-                          >
-                            {" "}
-                            with you.
-                          </Link>
-                        </h4>
-                      </div>
-                      <div
-                        className="bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-500
-rounded-3xl  shadow-xl transition-transform duration-300 transform hover:scale-105 px-23 py-10 text-center"
-                      >
-                        <h4 className="text-xl md:text-2xl font-bold text-white font-bloomsburg">
-                          After knowing about us, how you feel that?!, we are
-                          curios to know that just share you're thought about
-                          this web through <br />
-                          <Link
-                            to="/poll"
-                            className="text-red-400  p-1  transition-colors hover:text-green-300 "
-                          >
-                            {" "}
-                            this way.
-                          </Link>
-                        </h4>
-                      </div>
-                      <div
-                        className="bg-gradient-to-br from-purple-500 via-fuchsia-500 to-pink-500
-rounded-3xl p-6 shadow-xl transition-transform duration-300 transform hover:scale-105 px-12 py-10 text-center"
-                      >
-                        <h4 className="text-xl md:text-2xl font-bold text-white font-bloomsburg">
-                          Don't miss out on the action! The countdown has begun,
-                          and we're just days away from an unforgettable
-                          experience. Whether it's a groundbreaking conference,
-                          a fun-filled meetup, or an exciting celebration,{" "}
-                          <br />
-                          <Link
-                            to="/event-countdown"
-                            className="text-amber-300  p-1  transition-colors hover:text-emerald-700"
-                          >
-                            {" "}
-                            the clock is ticking!
-                          </Link>
-                        </h4>
-                      </div>
-                    </motion.div>
-                  </div>
+                        {highlightCards.map((card, index) => (
+                          <GlassCard key={index} {...card} index={index} />
+                        ))}
+                      </motion.div>
+                    </div>
+                  </section>
 
-                  {/* Counters */}
-                  <StatsSection />
+                  {/* Stats Section */}
+                  <section className="py-20 bg-gradient-to-b from-black/50 to-transparent">
+                    <div className="container mx-auto px-6">
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 1 }}
+                        className="grid grid-cols-2 md:grid-cols-4 gap-8"
+                      >
+                        {[
+                          { value: "26", label: "Community Members" },
+                          { value: "50+", label: "Events Hosted" },
+                          { value: "06", label: "Core Team" },
+                          { value: "∞", label: "Possibilities" },
+                        ].map((stat, index) => (
+                          <motion.div
+                            key={index}
+                            whileHover={{ y: -5 }}
+                            className="text-center p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10"
+                          >
+                            <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
+                              {stat.value}
+                            </div>
+                            <div className="mt-2 text-gray-300">
+                              {stat.label}
+                            </div>
+                          </motion.div>
+                        ))}
+                      </motion.div>
+                    </div>
+                  </section>
 
-                  {/* Timeline Section */}
-                  <div className="mt-40">
-                    <Timeline data={timelineData} />
-                  </div>
+                  {/* Interactive Timeline */}
+                  <section className="py-32 relative">
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
+                    <div className="container mx-auto px-6 relative">
+                      <h2 className="text-4xl font-bold text-center mb-20">
+                        Our <span className="text-cyan-400">Journey</span>
+                      </h2>
+                      <HolographicTimeline data={timelineData} />
+                    </div>
+                  </section>
                   <CommunitySlider />
                 </>
               }
             />
 
-            {/* Other Pages */}
+            {/* Other Routes */}
             <Route path="/about" element={<About />} />
-            <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/programmes" element={<Programmes />} />
-            <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route path="/core-team" element={<CoreTeam />} />
             <Route path="/event-gallery" element={<Gallery />} />
             <Route path="/poll" element={<Poll />} />
             <Route path="/event-countdown" element={<EventCountdownTimer />} />
+            <Route path="/community" element={<CommunitySlider />} />
+            <Route path="/community/:slug" element={<CommunityBio />} />
+            <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route path="/podcast" element={<Podcast />} />
-            <Route path="/community/:slug" element={<MemberBio />} />
           </Routes>
         </ErrorBoundary>
+
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

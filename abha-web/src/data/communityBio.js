@@ -39,8 +39,8 @@ const communityMembers = [
     bio: "Creativity meets strategy to tell your story.",
   },
   {
-    slug: "ma-amoon",
-    name: "Ma Amoon",
+    slug: "maamoon",
+    name: "Ma'moon",
     role: "General Secretery + Academic cord.",
     image: maamoon, // Corrected image path
     DOB: "22/08/2007",
@@ -48,7 +48,6 @@ const communityMembers = [
     address: "Edathala, Malappuram",
 
     skill: "Arabic Scholar",
-    bio: "John is a passionate frontend developer with experience in building responsive websites using React, JavaScript, and CSS. He loves creating beautiful and user-friendly interfaces.",
   },
   {
     slug: "jasil",
@@ -57,16 +56,16 @@ const communityMembers = [
     image: jasil, // Corrected image path
     DOB: "19/5/77",
     skill: "natural",
-    bio: "Bringing people together, one event at a time.",
   },
   {
-    slug: "ashiq",
-    name: "Ashiq",
-    role: "Sout Abha Chair.",
+    slug: "ashique",
+    name: "Muhammed Ashique",
+    role: "Al-Majma'ah Chair.",
+    add: "536",
+    address: "Muvattupuzha, Ernakulam",
     image: ashiq, // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
-    bio: "Creativity meets strategy to tell your story.",
+    DOB: "25/02/2008",
+    skill: "drawing, calligraphy",
   },
   {
     slug: "swabah",
@@ -141,10 +140,11 @@ const communityMembers = [
     slug: "sajad",
     name: "Sajad",
     role: "Vice President",
-    image: sajad, // Corrected image path
-    DOB: "19/5/77",
-    skill: "natural",
-    bio: "Creativity meets strategy to tell your story.",
+    add: "533",
+    address: "Painkanniyoor, Venmenad, Thrissur",
+    image: sajad,
+    DOB: "21/12/2007",
+    skill: "Artist",
   },
   {
     slug: "anshif",

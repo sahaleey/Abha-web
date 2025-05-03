@@ -21,17 +21,17 @@ const teamMembers = [
     bio: "Loves tech and teamwork. Always ready to brainstorm big ideas!",
   },
   {
+    id: 3,
+    name: "Ma'moon",
+    role: "General Secretery",
+    photo: maamoon, // Adjust the image path as needed
+    bio: "Leader of the society is one who serve it",
+  },
+  {
     id: 4,
     name: "Anwar Sadath",
     role: "Join Secretery",
     photo: anwar, // Adjust the image path as needed
-    bio: "Loves tech and teamwork. Always ready to brainstorm big ideas!",
-  },
-  {
-    id: 3,
-    name: "Ma Amoon",
-    role: "Joint Secretery",
-    photo: maamoon, // Adjust the image path as needed
     bio: "Loves tech and teamwork. Always ready to brainstorm big ideas!",
   },
   {
