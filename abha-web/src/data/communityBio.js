@@ -56,13 +56,15 @@ const communityMembers = [
     image: maamoon, // Corrected image path
     DOB: "22/08/2007",
     add: "535",
-    address: "Edathala, Malappuram",
+    address: "Edathala, Ernakulam",
     skill: "Arabic Scholar",
   },
   {
     slug: "jasil",
     name: "Muhammed Jasil T.J",
     role: "Treasure + Academic cord.",
+    add: "534",
+    address: "Kechery, Thrissur",
     image: jasil, // Corrected image path
     DOB: "09/05/2008",
     skill: "Singer, Hadith expert, Arabic scholar",
