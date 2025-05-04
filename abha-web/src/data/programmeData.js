@@ -6,6 +6,7 @@ import Program4 from "../assets/programmeImages/ptti copy.jpg";
 import Program5 from "../assets/programmeImages/press.jpg";
 import Program6 from "../assets/programmeImages/main pos.jpg";
 import Program7 from "../assets/programmeImages/labourday.jpg";
+import Program8 from "../assets/programmeImages/shuhaib std.jpg";
 
 export const alreadyDoneProgrammes = [
   {
@@ -77,6 +78,16 @@ export const wantToDoProgrammes = [
     date: "05/05/2025",
     time: "06 : 00 AM to 10 : 00 PM",
     image: Program6,
+    description: "Coming Soon",
+  },
+  {
+    id: 7,
+    name: "Al-Dheenu  Al-Nasweeha",
+    stage: "Out Campus",
+    host: "ABHA",
+    date: "05/05/2025",
+    time: "In Camp",
+    image: Program8,
     description: "Coming Soon",
   },
 ];

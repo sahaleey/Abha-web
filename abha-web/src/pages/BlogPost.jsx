@@ -150,12 +150,14 @@ const BlogPost = () => {
 
         {/* Content */}
         <motion.div
-          className="prose prose-invert max-w-none text-lg leading-relaxed"
+          className="prose prose-invert max-w-none text-lg leading-relaxed space-y-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
         >
-          {post.content}
+          {post.content.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
         </motion.div>
 
         {/* Back Button Bottom */}

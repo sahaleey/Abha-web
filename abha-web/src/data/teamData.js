@@ -10,45 +10,44 @@ const teamMembers = [
     id: 1,
     name: "Al Ameen",
     role: "President",
-    photo: alameen, // Adjust the image path as needed
-    bio: "Passionate about building inclusive communities and empowering others.",
+    photo: alameen,
+    bio: "A visionary leader dedicated to guiding the team with clarity, purpose, and a passion for community growth.",
   },
   {
     id: 2,
     name: "Sajad",
     role: "Vice President",
-    photo: sajad, // Adjust the image path as needed
-    bio: "Loves tech and teamwork. Always ready to brainstorm big ideas!",
+    photo: sajad,
+    bio: "A dynamic motivator who bridges ideas and action, supporting the president and ensuring smooth teamwork across all projects.",
   },
   {
     id: 3,
     name: "Ma'moon",
-    role: "General Secretery",
-    photo: maamoon, // Adjust the image path as needed
-    bio: "Leader of the society is one who serve it",
+    role: "General Secretary",
+    photo: maamoon,
+    bio: "An organized and thoughtful coordinator, ensuring the team’s activities run efficiently and communication stays clear.",
   },
   {
     id: 4,
     name: "Anwar Sadath",
-    role: "Join Secretery",
-    photo: anwar, // Adjust the image path as needed
-    bio: "Loves tech and teamwork. Always ready to brainstorm big ideas!",
+    role: "Joint Secretary",
+    photo: anwar,
+    bio: "A proactive team player, always ready to assist in organizing events and ensuring no detail goes overlooked.",
   },
   {
     id: 5,
     name: "Jasil",
-    role: "Treasure",
-    photo: jasil, // Adjust the image path as needed
-    bio: "Loves tech and teamwork. Always ready to brainstorm big ideas!",
+    role: "Treasurer",
+    photo: jasil,
+    bio: "A responsible and trustworthy financial manager, keeping the team’s budget balanced and resources well allocated.",
   },
   {
     id: 6,
     name: "Ribin",
     role: "P.R.O",
-    photo: ribin, // Adjust the image path as needed
-    bio: "Loves tech and teamwork. Always ready to brainstorm big ideas!",
+    photo: ribin,
+    bio: "A creative communicator who shapes the team’s public image and builds strong connections with the wider community.",
   },
-  // Add more team members here
 ];
 
 export default teamMembers;

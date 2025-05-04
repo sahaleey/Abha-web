@@ -34,7 +34,7 @@ const communityMembers = [
     role: "Class Teacher",
     image: ustd,
     address: "Pattimattam, Aluva, Ernakulam", // Corrected image path
-    DOB: "",
+    DOB: "29/10/1994",
     skill: "Malayalam Writer",
     isClassTeacher: true,
   },
@@ -81,9 +81,11 @@ const communityMembers = [
     slug: "swabah",
     name: "Swabah",
     role: "English Hub Chair.",
+    add: "545",
+    address: "Kuttamashery, Aluva, Eranakulam",
     image: swabah, // Corrected image path
-    DOB: "19/5/77",
-    skill: "English Scholar",
+    DOB: "03/10/2008",
+    skill: "English Scholar, Singer",
   },
   {
     slug: "muhsin",
@@ -102,7 +104,7 @@ const communityMembers = [
     add: "564",
     address: "Ramankulam, Manjeri, Malappuram",
     image: bishr, // Corrected image path
-    DOB: "19/5/77",
+    DOB: "29/09/2007",
     skill: "Singer, Artist",
   },
   {
@@ -140,9 +142,11 @@ const communityMembers = [
     slug: "al-ameen",
     name: "Al-Ameen",
     role: "President",
+    add: "538",
+    address: "Yedathala, Aluva, Ernakulam",
     image: alameen, // Corrected image path
-    DOB: "19/5/77",
-    skill: "English Scholar",
+    DOB: "05/11/2007",
+    skill: "English Scholar, Motivational Speaker",
   },
   {
     slug: "sajad",
@@ -171,7 +175,7 @@ const communityMembers = [
     add: "557",
     address: "Valanjeri, Malappuram",
     image: rasheed, // Corrected image path
-    DOB: "19/5/77",
+    DOB: "08/07/2008",
     skill: "Urdu Writer",
   },
   {

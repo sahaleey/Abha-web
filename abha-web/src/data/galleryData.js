@@ -9,7 +9,7 @@ const galleryData = [
     images: [Image1, Image2, Image3, Image4],
   },
   {
-    event: "Tech Fest",
+    event: "Camp moments",
     images: [],
   },
   {

@@ -96,7 +96,7 @@ const CommunityBio = () => {
             {member.skill && (
               <div className="mb-8">
                 <h3 className="text-xl font-semibold mb-3 text-cyan-400">
-                  Skills
+                  Skill
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {member.skill.split(",").map((skill, index) => (

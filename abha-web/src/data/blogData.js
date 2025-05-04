@@ -1,40 +1,23 @@
-import image from "../assets/Abha-lg.png";
+import image from "../assets/Blogimg/OIP.jpg";
 
 const blogData = [
   {
     id: 1,
-    title: "Welcome to the Abha Blog",
-    date: "2025-04-22",
-    author: "sahal",
+    title: "The Eternal Trust – A Tale of Waqf and Wisdom",
+    date: "2025-05-05",
+    author: "Muhammed Sahal cp",
     excerpt:
-      "Explore the vision behind Abha and how our community inspires creativity and growth.",
+      "If you had the power to create a Waqf today, what would it sustain? A library? A shelter? A forest?",
     image: image,
-    content: `## About Abha
+    content: [
+      "In the heart of a thriving kingdom, nestled between golden deserts and emerald forests, stood the prosperous city of Noorabad. The city was a melting pot of cultures, where Hindus, Muslims, Christians, and Sikhs lived in harmony. But beneath its glittering surface, poverty and suffering lurked in the shadows. The city’s wealthiest merchant, Hakim Suleiman, was a man of immense fortune but a restless soul. His ships carried silks and spices across oceans, his vaults overflowed with gold, yet his heart was heavy. Every day, he passed by the starving children, the sick lying untreated in the streets, and the elderly abandoned by time.",
 
-Welcome to the official Abha blog. We aim to empower, inspire and bring people together...
+      "One evening, as Hakim walked through the bustling marketplace, he saw a young girl, Laila, begging for coins to buy medicine for her ailing mother. Her eyes, filled with desperation, pierced his soul. He gave her a bag of gold, but as he walked away, he heard a voice whisper, 'What good is gold if it only feeds one stomach today but leaves a thousand hungry tomorrow?' Startled, Hakim turned to see an old Sufi mystic, his face serene, his gaze knowing. The mystic introduced himself as Sheikh Ibrahim and asked Hakim a simple yet profound question: 'Hakim, when the winds of time scatter your name like dust, what will remain of you?'",
 
-Stay tuned for updates, stories, and insights.`,
-  },
-  {
-    id: 2,
-    title: "Empowering Youth Through Creativity",
-    date: "2025-04-20",
-    image: "",
-    excerpt: "Discover how Abha's programs inspire and empower young minds.",
-    content: `This is the full blog content for Empowering Youth Through Creativity.
+      "That night, Hakim could not sleep. He thought of his ancestors, their names forgotten, their wealth squandered by heirs who cared little for legacy. At dawn, he summoned the city’s scholars, judges, and elders and declared his decision: 'I shall dedicate half of my wealth as Waqf—an eternal trust. This land and these riches will never be sold, never inherited, but used forever to serve those in need.' The crowd gasped. His own brother, Farid, protested, 'You rob your family of their future!' But Hakim stood firm. 'I do not rob them—I free them. A legacy of greed is a curse, but a legacy of service is a blessing.'",
 
-Abha creates a platform where youth can engage in artistic and community-building programs that enrich their skills...`,
-  },
-  {
-    id: 3,
-    title: "Celebrating Culture and Unity",
-    date: "2025-04-19",
-    image: "",
-    excerpt:
-      "Abha brings people together through cultural events and shared experiences.",
-    content: `This is the full blog content for Celebrating Culture and Unity.
-
-With a series of events celebrating art, music, and diversity, Abha cultivates a sense of unity and belonging...`,
+      "THE REST IN NEXT PART.",
+    ],
   },
 ];
 
