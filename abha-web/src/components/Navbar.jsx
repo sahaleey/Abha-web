@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import Logo from "../assets/logo print.jpg";
+import Logo from "../assets/abha.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showPasswordInput, setShowPasswordInput] = useState(false);
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();

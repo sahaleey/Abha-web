@@ -10,7 +10,7 @@ const Footer = () => {
     { icon: <FaInstagram />, url: "https://www.instagram.com/_abha_nric/" },
     {
       icon: <FaFacebookF />,
-      url: "https://www.facebook.com/profile.php?id=61575696666536",
+      url: "https://www.facebook.com/profile.php?id=61575684312779",
     },
     { icon: <FaTwitter />, url: "https://x.com/abhamates14th" },
     {
