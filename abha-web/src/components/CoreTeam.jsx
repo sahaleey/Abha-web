@@ -33,7 +33,7 @@ const CoreTeam = () => {
                 <h3 className="text-xl font-bold text-amber-400">
                   {member.name}
                 </h3>
-                <p className="text-emerald-300 mb-2">{member.role}</p>
+                <p className="text-cyan-400 mb-2">{member.role}</p>
                 <p className="text-gray-200 text-sm">{member.bio}</p>
               </div>
             </div>
