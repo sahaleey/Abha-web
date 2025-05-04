@@ -28,6 +28,7 @@ import GetInTouch from "./pages/GetInTouch";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Podcast from "./pages/Podcast";
+import RadioStation from "./pages/RadioStation";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -286,6 +287,7 @@ function App() {
 
             {/* Other Routes */}
             <Route path="/about" element={<About />} />
+            <Route path="/radio" element={<RadioStation />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/programmes" element={<Programmes />} />

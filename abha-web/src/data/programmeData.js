@@ -2,6 +2,10 @@
 import Program1 from "../assets/programmeImages/rafikka.jpg";
 import Program2 from "../assets/programmeImages/INAGRU CMYK.jpg";
 import Program3 from "../assets/programmeImages/labour day.jpg";
+import Program4 from "../assets/programmeImages/ptti copy.jpg";
+import Program5 from "../assets/programmeImages/press.jpg";
+import Program6 from "../assets/programmeImages/main pos.jpg";
+import Program7 from "../assets/programmeImages/labourday.jpg";
 
 export const alreadyDoneProgrammes = [
   {
@@ -37,55 +41,42 @@ export const alreadyDoneProgrammes = [
     description:
       "On May 1, led by Ahmed Zainudheen, we celebrated Labour Day, honoring workers’ dedication and the dignity of labour.",
   },
-  // {
-  //   id: 3,
-  //   name: "Tech Talk",
-  //   stage: "Tech Hall",
-  //   host: "Sara",
-  //   image: "../src/assets/Oi.jpeg",
-  //   description: "Discussion on emerging technology and AI trends.",
-  // },
-  // {
-  //   id: 4,
-  //   name: "Tech Talk",
-  //   stage: "Tech Hall",
-  //   host: "Sara",
-  //   image: "../src/assets/bg.jpeg",
-  //   description: "Discussion on emerging technology and AI trends.",
-  // },
+  {
+    id: 4,
+    name: "നേർകാഴ്ച ",
+    stage: "Radio",
+    host: "Yaseen Pi, Anwar",
+    date: "03/05/2025",
+    time: "08 : 15 PM",
+    image: Program4,
+    description:
+      "On May 03, World Press Day. We conducted a live radio to talk about Indian anti-freedom of media",
+  },
+  {
+    id: 5,
+    name: "Defend freedom of Press",
+    date: "03/05/2025",
+    image: Program5,
+    description: "World Press Day. Freedom for Press!",
+  },
+  {
+    id: 6,
+    name: "നൻ പകൽ നേരത്തെ ജോലി",
+    date: "01/05/2025",
+    image: Program7,
+    description: "World Labour Day Special Poster",
+  },
 ];
 
 export const wantToDoProgrammes = [
-  // {
-  //   id: 5,
-  //   name: "Art Expo",
-  //   stage: "Art Gallery",
-  //   host: "Zara",
-  //   image: "/images/art-expo.jpg",
-  //   description: "Exhibition of artworks by community members.",
-  // },
-  // {
-  //   id: 6,
-  //   name: "Coding Marathon",
-  //   stage: "Innovation Lab",
-  //   host: "Usman",
-  //   image: "/images/coding-marathon.jpg",
-  //   description: "12-hour coding challenge to solve community problems.",
-  // },
-  // {
-  //   id: 7,
-  //   name: "Coding Marathon",
-  //   stage: "Innovation Lab",
-  //   host: "Usman",
-  //   image: "/images/coding-marathon.jpg",
-  //   description: "12-hour coding challenge to solve community problems.",
-  // },
-  // {
-  //   id: 8,
-  //   name: "Coding Marathon",
-  //   stage: "Innovation Lab",
-  //   host: "Usman",
-  //   image: "/images/coding-marathon.jpg",
-  //   description: "12-hour coding challenge to solve community problems.",
-  // },
+  {
+    id: 7,
+    name: "ഒന്നും ഒന്നും ഒന്ന്  ",
+    stage: "Out Campus",
+    host: "ABHA",
+    date: "05/05/2025",
+    time: "06 : 00 AM to 10 : 00 PM",
+    image: Program6,
+    description: "Coming Soon",
+  },
 ];

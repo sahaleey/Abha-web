@@ -19,6 +19,7 @@ function Navbar() {
     { path: "/blog", label: "Blog" },
     { path: "/programmes", label: "Programs" },
     { path: "/podcast", label: "Podcast" },
+    { path: "/radio", label: "Radio" },
   ];
 
   useEffect(() => {
@@ -28,22 +29,6 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleAdminClick = () => {
-    setShowPasswordInput(true);
-  };
-
-  const handlePasswordSubmit = () => {
-    if (password === "yourpassword") {
-      // Replace with actual password
-      navigate("/admin-upload");
-      setShowPasswordInput(false);
-      setPassword("");
-    } else {
-      setError("Incorrect password");
-      setTimeout(() => setError(""), 3000);
-    }
-  };
 
   return (
     <motion.nav

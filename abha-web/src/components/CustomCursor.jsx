@@ -9,7 +9,9 @@ const CustomCursor = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
+      const width = window.innerWidth;
       setIsDesktop(window.innerWidth > 768);
+      setIsDesktop(width > 1024);
     };
 
     checkScreenSize();

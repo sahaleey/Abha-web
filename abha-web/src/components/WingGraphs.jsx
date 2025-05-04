@@ -41,11 +41,12 @@ const WingGraphs = () => {
       "Malayalam",
       "Arabic",
       "Social Affairs",
+      "IQ Orbit",
     ],
     datasets: [
       {
         label: "Points",
-        data: isInView ? [0, 0, 0, 5, 10, 0] : [0, 0, 0, 0],
+        data: isInView ? [0, 0, 0, 5, 10, 0, 5] : [0, 0, 0, 0],
         backgroundColor: [
           "rgba(255, 99, 132, 0.8)",
           "rgba(54, 162, 235, 0.8)",
@@ -53,6 +54,7 @@ const WingGraphs = () => {
           "rgba(75, 192, 192, 0.8)",
           "rgba(6, 226, 35, 0.8)",
           "rgba(6, 145, 226, 0.8)",
+          "rgba(45, 50, 126, 0.8)",
         ],
         borderColor: [
           "rgba(255, 99, 132, 1)",
@@ -61,6 +63,7 @@ const WingGraphs = () => {
           "rgba(75, 192, 192, 1)",
           "rgba(6, 226, 35, 1)",
           "rgba(6, 145, 226, 1)",
+          "rgba(45, 50, 126, 1)",
         ],
         borderWidth: 2,
         borderRadius: 6,
@@ -72,6 +75,7 @@ const WingGraphs = () => {
           "rgba(75, 192, 192, 1)",
           "rgba(6, 226, 35, 1)",
           "rgba(6, 145, 226, 1)",
+          "rgba(45, 50, 126, 1)",
         ],
         weight: 1,
       },
