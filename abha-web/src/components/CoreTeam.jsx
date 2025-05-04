@@ -5,7 +5,7 @@ import "../styles/CoreTeam.css"; // make sure to have basic flip styles
 const CoreTeam = () => {
   return (
     <div className="core-team-flip-section py-24 px-6 md:px-20 text-white relative z-10">
-      <h2 className="text-5xl font-bold text-center text-amber-400 mb-16 font-bloomsburg">
+      <h2 className="text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-600 mb-16 font-bloomsburg">
         Meet the Core Team
       </h2>
 

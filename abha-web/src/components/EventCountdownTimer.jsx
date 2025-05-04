@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FiCalendar, FiClock, FiGift } from "react-icons/fi";
 
 const CountdownPage = () => {
-  const eventDate = new Date("2025-05-10T00:00:00");
+  const eventDate = new Date("0-0-0T00:00:00");
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -111,7 +111,7 @@ const CountdownPage = () => {
                 Countdown to Our Grand Event
               </h1>
               <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-                Mark your calendars for May 10, 2025
+                Mark your calendars {/*for May 10, 2025*/}
               </p>
             </motion.div>
 
@@ -172,7 +172,7 @@ const CountdownPage = () => {
               </div>
               <div className="flex justify-between text-xs text-gray-400 mt-2">
                 <span>Today</span>
-                <span>May 10, 2025</span>
+                {/* <span>May 10, 2025</span> */}
               </div>
             </motion.div>
 
