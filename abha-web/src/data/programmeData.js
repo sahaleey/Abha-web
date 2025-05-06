@@ -68,9 +68,6 @@ export const alreadyDoneProgrammes = [
     image: Program7,
     description: "World Labour Day Special Poster",
   },
-];
-
-export const wantToDoProgrammes = [
   {
     id: 7,
     name: "ഒന്നും ഒന്നും ഒന്ന്  ",
@@ -79,7 +76,8 @@ export const wantToDoProgrammes = [
     date: "05/05/2025",
     time: "06 : 00 AM to 10 : 00 PM",
     image: Program6,
-    description: "Coming Soon",
+    description:
+      "നമ്മൾ ഒത്തു ചേരുമ്പോൾ ആഗ്രഹങ്ങൾക്കു കരുത്തും പ്രവർത്തനങ്ങൾക്ക് ചിറകുകളും പിറക്കുന്നു. നമ്മുടെ ഗ്രൂപ്പ് ശക്തമായി മുന്നേറാൻ, സഹകരണത്തിൻ്റെയും പ്രചോദനത്തിൻ്റെയും ഈ ഘട്ടം ഒരിക്കലുമറക്കരുത്!",
   },
   {
     id: 8,
@@ -89,7 +87,8 @@ export const wantToDoProgrammes = [
     date: "05/05/2025",
     time: "In Camp",
     image: Program8,
-    description: "Coming Soon",
+    description: `برنامج «الدين النصيحة» بقيادة الشيخ شعيب هداوي في المسجد، يجمعنا على دروس الإيمان والصدق.
+فرصة للارتقاء بأرواحنا وتزكية قلوبنا بنور النصيحة والمحبة.`,
   },
   {
     id: 9,
@@ -99,6 +98,9 @@ export const wantToDoProgrammes = [
     date: "05/05/2025",
     time: "In Camp",
     image: Program9,
-    description: "Coming Soon",
+    description: `"Let Me Fly” with Usthad Vakkas Hudawi — where your dreams grow wings and your skills find their sky.
+It’s time to rise, break limits, and soar toward the greatness waiting inside you!`,
   },
 ];
+
+export const wantToDoProgrammes = [];

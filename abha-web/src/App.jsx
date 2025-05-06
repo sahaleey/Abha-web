@@ -195,7 +195,7 @@ function App() {
                           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-purple-600/10 opacity-70 group-hover:opacity-100 transition-all duration-500 blur-[2px] group-hover:blur-[4px] animate-pulse-slow" />
 
                           {/* Main logo container */}
-                          <div className="relative w-full h-full rounded-full bg-[#0a0a0f] border border-white/10 overflow-hidden p-4 transition-all duration-500 group-hover:scale-105 group-hover:border-cyan-400/30">
+                          <div className="relative w-full h-full rounded-full bg-[#0a0a0f]  overflow-hidden p-4 transition-all duration-500 group-hover:scale-105 group-hover:border-cyan-400/30">
                             {/* Inner glow effect */}
                             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/10 to-blue-600/5  opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 

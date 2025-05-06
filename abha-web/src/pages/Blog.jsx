@@ -42,7 +42,7 @@ const Blog = () => {
   }
 
   return (
-    <div className="min-h-screen py-12 px-4 md:px-12 bg-gradient-to-br from-black via-gray-900 to-gray-800 font-bloomsburg text-white">
+    <div className="min-h-screen py-12 px-4 md:px-12  bg-gradient-to-br from-black via-gray-900 to-gray-800 font-bloomsburg text-white">
       {/* Hero Title */}
       <motion.div
         className="max-w-7xl mx-auto"
