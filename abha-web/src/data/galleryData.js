@@ -2,6 +2,7 @@ import Image1 from "../assets/gallery/1.jpg";
 import Image2 from "../assets/gallery/2.jpg";
 import Image3 from "../assets/gallery/5.jpg";
 import Image4 from "../assets/gallery/8.jpg";
+import Camp1 from "../../Public/images/IMG_6097.JPG";
 
 const galleryData = [
   {
@@ -10,7 +11,7 @@ const galleryData = [
   },
   {
     event: "Camp moments",
-    images: [],
+    images: [Camp1],
   },
   {
     event: "Creative Nights",
