@@ -5,14 +5,13 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const feedbackRoutes = require("./routes/feedbackroutes");
-const contactRoutes = require("./routes/contact"); // Corrected variable name
+const contactRoutes = require("./routes/contact");
 
 dotenv.config();
 const app = express();
 const PORT = 5000;
 
-// MongoDB Connection URI (check your .env for correct key)
-const MONGO_URI = process.env.MONGO_URL; // Corrected the variable name here
+const MONGO_URI = process.env.MONGO_URL;
 
 // Middleware
 app.use(cors());
@@ -26,8 +25,8 @@ app.get("/", (req, res) => {
 
 // API Routes
 
-app.use("/api/feedback", feedbackRoutes); // Correct route path
-app.use("/api/contact", contactRoutes); // Correct route path
+app.use("/api/feedback", feedbackRoutes);
+app.use("/api/contact", contactRoutes);
 
 // Connect to MongoDB and start server
 mongoose

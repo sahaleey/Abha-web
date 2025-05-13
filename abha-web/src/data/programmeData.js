@@ -8,6 +8,9 @@ import Program6 from "../assets/programmeImages/main pos.jpg";
 import Program7 from "../assets/programmeImages/labourday.jpg";
 import Program8 from "../assets/programmeImages/shuhaib std.jpg";
 import Program9 from "../assets/programmeImages/wa.jpg";
+import Program10 from "../assets/programmeImages/ig 2.jpg";
+import Program11 from "../assets/programmeImages/know the legend.jpg";
+import Program12 from "../assets/programmeImages/nurse day.jpg";
 
 export const alreadyDoneProgrammes = [
   {
@@ -100,6 +103,29 @@ export const alreadyDoneProgrammes = [
     image: Program9,
     description: `"Let Me Fly” with Usthad Vakkas Hudawi — where your dreams grow wings and your skills find their sky.
 It’s time to rise, break limits, and soar toward the greatness waiting inside you!`,
+  },
+  {
+    id: 10,
+    name: "Mothers day : Special poster",
+    date: "11/05/2025",
+    image: Program10,
+    description: `Join Abha Community in honoring the unconditional love, strength, and sacrifices of mothers everywhere! Our special Mother’s Day poster is a vibrant tribute to the incredible women who shape our lives with warmth and wisdom.`,
+  },
+  {
+    id: 11,
+    name: "Know The Legend",
+    stage: "7th Class",
+    host: "English Wing",
+    date: "Every Tuesday",
+    image: Program11,
+    description: `"Journey into Romanticism! The English Wing's #KnowTheLegend series begins with William Wordsworth – explore the poet who made nature sing. Stay tuned!" #AbhaLiteraryJourney `,
+  },
+  {
+    id: 12,
+    name: "Nurse Day : Special Poster",
+    date: "12/05/2025",
+    image: Program12,
+    description: `Saluting Our Angels in Scrubs! This #InternationalNursesDay, Abha celebrates the compassion, courage and tireless care of nurses who heal the world every day. Join us in honoring these healthcare heroes!`,
   },
 ];
 
