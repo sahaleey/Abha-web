@@ -29,6 +29,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Podcast from "./pages/Podcast";
 import RadioStation from "./pages/RadioStation";
+import ChatApp from "./pages/AbhaAi";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -300,6 +301,7 @@ function App() {
             <Route path="/community/:slug" element={<CommunityBio />} />
             <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route path="/podcast" element={<Podcast />} />
+            <Route path="/abha-ai" element={<ChatApp />} />
           </Routes>
         </ErrorBoundary>
 
