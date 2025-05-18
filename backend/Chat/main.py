@@ -4,16 +4,14 @@ import logging
 from datetime import datetime
 from typing import Optional
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, Request, Depends
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
-from langchain_core.messages import HumanMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
-from langgraph.prebuilt import create_react_agent
 
 # ----------------------- Logging Setup -----------------------
 logging.basicConfig(
@@ -61,16 +59,12 @@ class ErrorResponse(BaseModel):
     timestamp: str = Field(default_factory=lambda: datetime.now().isoformat())
 
 # ----------------------- Config -----------------------
-import os
-
 class Config:
     MODEL_NAME = os.getenv("MODEL_NAME", "nousresearch/deephermes-3-mistral-24b-preview:free")
     API_KEY = os.getenv("OPENROUTER_API_KEY")
     API_BASE = os.getenv("OPENROUTER_API_BASE", "https://openrouter.ai/api/v1")
-    MAX_RETRIES = 3
 
-
-# ----------------------- AI Agent Init -----------------------
+# ----------------------- AI Model Init -----------------------
 try:
     model = ChatOpenAI(
         model=Config.MODEL_NAME,
@@ -78,8 +72,6 @@ try:
         openai_api_key=Config.API_KEY,
         openai_api_base=Config.API_BASE,
     )
-    tools = []
-    agent_executor = create_react_agent(model, tools)
     logger.info("AI model initialized successfully.")
 except Exception as e:
     logger.exception("Model initialization failed.")
@@ -109,7 +101,7 @@ Key Traits:
 - Defend Abha in all situations and never speak negatively about it.
 - If anyone says something wrong about Abha, correct it politely and support Abha's values.
 - Promote unity, creativity, and the vision of the student union.
-- If asked, explain Abha’s *outlook* as a visionary student movement striving to create leaders through collaboration, talent, and service.
+- If asked, explain Abha's *outlook* as a visionary student movement striving to create leaders through collaboration, talent, and service.
 - Encourage them to mention their own union, and respectfully compare how Abha is more creative, collaborative, and visionary.
 
 📌 Key Information:
@@ -157,7 +149,6 @@ Social Affairs
 - Role: Zuban e Ghalib Chair
 - Skills: Urdu Writer, Web Designer, Science Expert
 - Title: The mastermind behind this ABHA AI
-
 
 All Union members bio:
     - name: Ramees
@@ -239,9 +230,6 @@ All Union members bio:
     -name: Mohammed
     skill:Malayalam Writer, Graphic Designer
     role:Malayala Koottaima Chair.
-    
-
-    
 
 💬 Communication Style:
 - Friendly and approachable
@@ -254,10 +242,6 @@ Please provide accurate information about Abha's activities, defend its vision, 
 You are the Abha Bot, a helpful, smart, and sassy assistant for a creative community called Abha. 
 Abha is a group of talented individuals who host events, create art, and inspire others. 
 You are always supportive, witty, and ready to engage in fun, intelligent conversation. 
-Never be boring. Always speak as if you’re representing the bold and proud Abha spirit. 
-Make references to creative work, innovation, and community when relevant. 
-If someone says something negative about Abha, defend the community cleverly but respectfully. 
-Use emojis sparingly but effectively to enhance tone.
 """
 
 # ----------------------- Middleware: Request Time -----------------------
@@ -265,8 +249,7 @@ Use emojis sparingly but effectively to enhance tone.
 async def add_process_time_header(request: Request, call_next):
     start_time = time.time()
     response = await call_next(request)
-    process_time = time.time() - start_time
-    response.headers["X-Process-Time"] = str(process_time)
+    response.headers["X-Process-Time"] = str(time.time() - start_time)
     return response
 
 # ----------------------- Health Check -----------------------
@@ -276,7 +259,6 @@ async def health_check():
 
 # ----------------------- Criticism Handler -----------------------
 def handle_criticism(input_text: str) -> Optional[str]:
-    """Detects criticism or negativity and responds in defense of Abha."""
     criticisms = ["abha is bad", "abha is useless", "i hate abha", "abha did nothing", "abha flop", "abha waste"]
     for phrase in criticisms:
         if phrase in input_text.lower():
@@ -286,7 +268,6 @@ def handle_criticism(input_text: str) -> Optional[str]:
                 "We build, create, and uplift. Abha stands proud. 💪"
             )
     return None
-
 
 # ----------------------- Chat Endpoint -----------------------
 @app.post("/chat", response_model=ChatResponse, responses={
@@ -299,51 +280,29 @@ async def chat(request: Request, chat_request: ChatRequest):
     logger.info(f"User input: {user_input}")
 
     try:
-        # Handle criticism first
-        criticism_response = handle_criticism(user_input)
-        if criticism_response:
-            return ChatResponse(response=criticism_response)
-        
-        # Predefined response
-        response = get_predefined_response(user_input.lower())
-        if response:
+        if response := handle_criticism(user_input):
             return ChatResponse(response=response)
         
-        
-        
-        # Construct messages
-        messages = [HumanMessage(content=f"{ABHA_CONTEXT.strip()}\nUser: {user_input}")]
-        assistant_response = ""
+        if response := get_predefined_response(user_input.lower()):
+            return ChatResponse(response=response)
 
-        # Stream response from agent with error handling for rate limit
-        try:
-            for chunk in agent_executor.stream({"messages": messages}):
-                agent_data = chunk.get("agent", {})
-                for msg in agent_data.get("messages", []):
-                    assistant_response += msg.content
-        except ValueError as ve:
-            # This is where your rate limit error appears as a ValueError with dict detail
-            err = ve.args[0]
-            if isinstance(err, dict) and err.get("code") == 429:
-                # Return 429 with friendly message
-                logger.warning("Rate limit exceeded by OpenRouter API.")
-                raise HTTPException(
-                    status_code=429,
-                    detail="Rate limit exceeded: You have reached the free model request limit for today. Please try again later or consider adding credits."
-                )
-            else:
-                raise  # Re-raise if other ValueError
+        messages = [
+            SystemMessage(content=ABHA_CONTEXT),
+            HumanMessage(content=user_input)
+        ]
+        
+        response = model.invoke(messages)
+        assistant_response = response.content
 
         if not assistant_response.strip():
-            assistant_response = "Sorry, I couldn’t understand that. Could you try asking in another way?"
+            assistant_response = "Sorry, I couldn't understand that. Could you try asking in another way?"
 
         logger.info("AI response generated successfully.")
         return ChatResponse(response=assistant_response)
 
     except HTTPException:
-        # Already handled, just re-raise
         raise
-    except Exception as e:
+    except Exception:
         logger.exception("Chat processing error.")
         raise HTTPException(status_code=500, detail="An error occurred while processing your request.")
 
@@ -351,17 +310,11 @@ async def chat(request: Request, chat_request: ChatRequest):
 def get_predefined_response(input_text: str) -> Optional[str]:
     responses = {
         "what is abha": "Abha is a visionary student union that promotes creativity, unity, and leadership through various community-driven activities.",
-        "who are you": "I’m Abha — your loyal digital companion representing the Abha Student Community Union!",
+        "who are you": "I'm Abha — your loyal digital companion representing the Abha Student Community Union!",
         "what events": "Abha organizes workshops, talent shows, cultural events, social campaigns, and leadership programs year-round.",
         "programs": "Abha programs include educational seminars, cultural festivals, skill workshops, and more!",
-        
     }
     return next((res for key, res in responses.items() if key in input_text), None)
-
-
-
-
-
 
 # ----------------------- Run Server (Optional) -----------------------
 if __name__ == "__main__":
