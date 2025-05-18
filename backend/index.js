@@ -6,6 +6,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const feedbackRoutes = require("./routes/feedbackroutes");
 const contactRoutes = require("./routes/contact");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 dotenv.config();
 const app = express();
@@ -27,6 +28,17 @@ app.get("/", (req, res) => {
 
 app.use("/api/feedback", feedbackRoutes);
 app.use("/api/contact", contactRoutes);
+// Proxy Chat Requests to FastAPI
+app.use(
+  "/api/chat",
+  createProxyMiddleware({
+    target: "http://localhost:8000",
+    changeOrigin: true,
+    pathRewrite: {
+      "^/api/chat": "/chat",
+    },
+  })
+);
 
 // Connect to MongoDB and start server
 mongoose
