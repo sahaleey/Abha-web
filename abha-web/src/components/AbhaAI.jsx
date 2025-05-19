@@ -45,7 +45,7 @@ export default function ChatApp() {
   }, [containerControls, headerControls]);
 
   const handleSend = async () => {
-    if (!input.trim()) return;
+    if (!input.trim() || isLoading) return; // Prevent multiple sends
 
     const userMsg = input.trim();
     setMessages((prev) => [...prev, { sender: "user", text: userMsg }]);
@@ -59,6 +59,18 @@ export default function ChatApp() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMsg }),
       });
+
+      if (response.status === 429) {
+        // Handle too many requests
+        setMessages((prev) => [
+          ...prev,
+          {
+            sender: "bot",
+            text: "Too many requests! Please slow down and try again shortly.",
+          },
+        ]);
+        return;
+      }
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
