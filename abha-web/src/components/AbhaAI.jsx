@@ -225,7 +225,7 @@ export default function ChatApp() {
           </motion.div>
 
           {/* Chat area */}
-          <div className="flex-1 overflow-y-auto bg-zinc-800/70 relative">
+          <div className="flex-1 overflow-y-auto  bg-zinc-800/70 relative">
             {/* Gradient overlays */}
             <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-zinc-800 to-transparent pointer-events-none z-10"></div>
             <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-zinc-800 to-transparent pointer-events-none z-10"></div>
@@ -514,6 +514,8 @@ export default function ChatApp() {
               <span>Press Enter to send</span>
               <span className="text-zinc-500 mx-1">•</span>
               <span>Shift + Enter for new line</span>
+              <span className="text-zinc-500 mx-1">•</span>
+              <span>If too many request error shown please chat next day!</span>
             </motion.div>
           </motion.div>
         </div>
