@@ -2,15 +2,16 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiLoader } from "react-icons/fi";
 import { IoMdSend } from "react-icons/io";
+import { FaRobot } from "react-icons/fa";
+import { RiUser3Fill } from "react-icons/ri";
 
-export default function ChatBot() {
+export default function ChatApp() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messageEndRef = useRef(null);
   const inputRef = useRef(null);
 
-  // Enhanced scroll behavior with animation
   const scrollToBottom = () => {
     messageEndRef.current?.scrollIntoView({
       behavior: "smooth",
@@ -20,7 +21,6 @@ export default function ChatBot() {
 
   useEffect(scrollToBottom, [messages]);
 
-  // Focus input on load
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
@@ -34,7 +34,7 @@ export default function ChatBot() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/chat", {
+      const response = await fetch("https://project1-flox.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMsg }),
@@ -63,19 +63,19 @@ export default function ChatBot() {
     }
   };
 
-  // Typing animation for loading state
   const TypingIndicator = () => (
     <motion.div
-      className="typing-indicator"
+      className="flex px-3 py-2"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="typing-dots">
+      <div className="flex items-center h-6">
         {[...Array(3)].map((_, i) => (
           <motion.span
             key={i}
+            className="w-2 h-2 mx-1 bg-zinc-400 rounded-full inline-block"
             animate={{
               y: [0, -5, 0],
               opacity: [0.5, 1, 0.5],
@@ -92,434 +92,241 @@ export default function ChatBot() {
   );
 
   return (
-    <motion.div
-      className="chat-app-container"
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.3 }}
-    >
-      <div className="chat-app">
-        <div className="chat-header">
-          <motion.h2
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            ABHA AI
-          </motion.h2>
+    <div className="flex justify-center items-center mt-19 min-h-screen p-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 animate-gradient-background">
+      <motion.div
+        className="w-full max-w-4xl h-[90vh]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="flex flex-col w-full h-full bg-zinc-800 rounded-2xl overflow-hidden shadow-2xl border border-zinc-700">
           <motion.div
-            className="status-indicator"
-            animate={{
-              backgroundColor: isLoading ? "#ffc107" : "#4caf50",
-              boxShadow: isLoading
-                ? "0 0 8px rgba(255, 193, 7, 0.5)"
-                : "0 0 8px rgba(76, 175, 80, 0.5)",
-            }}
-            transition={{ duration: 0.3 }}
-          />
-        </div>
-
-        <div className="messages-container">
-          {messages.length === 0 ? (
+            className="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white border-b border-zinc-700"
+            initial={{ y: -50 }}
+            animate={{ y: 0 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div className="flex items-center gap-3">
+              <motion.div
+                className="w-10 h-10 bg-white/10 rounded-full flex justify-center items-center backdrop-blur-sm border border-white/20"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                <FaRobot className="text-white text-xl" />
+              </motion.div>
+              <motion.h2
+                className="text-xl font-semibold bg-gradient-to-r from-white to-indigo-100 bg-clip-text text-transparent"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                ABHA AI Assistant
+              </motion.h2>
+            </div>
             <motion.div
-              className="welcome-message"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm border ${
+                isLoading
+                  ? "border-amber-400/30 bg-amber-400/10 text-amber-400"
+                  : "border-emerald-400/30 bg-emerald-400/10 text-emerald-400"
+              }`}
+              animate={{
+                boxShadow: isLoading
+                  ? "0 0 12px rgba(245, 158, 11, 0.7)"
+                  : "0 0 12px rgba(16, 185, 129, 0.7)",
+              }}
+              transition={{ duration: 0.3 }}
             >
-              <h3>Welcome!</h3>
-              <p>Ask me anything and I'll do my best to help.</p>
-              <div className="welcome-animation">
-                {[...Array(5)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    animate={{
-                      y: [0, -15, 0],
-                      opacity: [0.6, 1, 0.6],
-                    }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 2,
-                      delay: i * 0.2,
-                    }}
-                  />
-                ))}
-              </div>
+              <span className="w-2 h-2 rounded-full bg-current"></span>
+              <span>{isLoading ? "Typing..." : "Online"}</span>
             </motion.div>
-          ) : (
-            <AnimatePresence>
-              {messages.map((m, i) => (
+          </motion.div>
+
+          <div className="flex-1 overflow-y-auto bg-zinc-800 relative">
+            <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-zinc-800 to-transparent pointer-events-none z-10"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-zinc-800 to-transparent pointer-events-none z-10"></div>
+
+            <div className="p-4">
+              {messages.length === 0 ? (
                 <motion.div
-                  key={i}
-                  className={`message ${m.sender}`}
+                  className="flex justify-center items-center h-full"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <motion.div
+                    className="bg-zinc-700 rounded-xl p-8 text-center max-w-md border border-zinc-600 shadow-lg"
+                    initial={{ scale: 0.9 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.7 }}
+                  >
+                    <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-white to-indigo-100 bg-clip-text text-transparent">
+                      Welcome to ABHA AI!
+                    </h3>
+                    <p className="text-zinc-400 mb-6">
+                      Ask me anything about health, wellness, or ABHA services.
+                    </p>
+                    <div className="flex justify-center gap-2 h-12 items-end">
+                      {[...Array(5)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="w-2.5 bg-gradient-to-t from-indigo-500 to-indigo-400 rounded-full"
+                          style={{
+                            height: [20, 35, 50, 35, 20][i] + "px",
+                          }}
+                          animate={{
+                            y: [0, -15, 0],
+                            opacity: [0.6, 1, 0.6],
+                          }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 2,
+                            delay: i * 0.2,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ) : (
+                <AnimatePresence>
+                  {messages.map((m, i) => (
+                    <motion.div
+                      key={i}
+                      className={`flex gap-3 mb-5 max-w-[85%] ${
+                        m.sender === "user"
+                          ? "ml-auto flex-row-reverse"
+                          : "mr-auto"
+                      }`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 10,
+                        delay: m.sender === "user" ? 0 : 0.1,
+                      }}
+                      exit={{ opacity: 0, x: m.sender === "user" ? 50 : -50 }}
+                    >
+                      <div
+                        className={`w-9 h-9 rounded-full flex justify-center items-center flex-shrink-0 mt-1 ${
+                          m.sender === "user"
+                            ? "bg-indigo-500/20 text-indigo-300"
+                            : "bg-zinc-700/30 text-zinc-200"
+                        }`}
+                      >
+                        {m.sender === "user" ? (
+                          <RiUser3Fill className="text-lg" />
+                        ) : (
+                          <FaRobot className="text-lg" />
+                        )}
+                      </div>
+                      <div
+                        className={`flex flex-col ${
+                          m.sender === "user" ? "items-end" : "items-start"
+                        }`}
+                      >
+                        <div
+                          className={`px-4 py-3 rounded-xl text-sm ${
+                            m.sender === "user"
+                              ? "bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-tr-sm"
+                              : "bg-zinc-700 text-zinc-100 border border-zinc-600 rounded-tl-sm"
+                          } shadow-md`}
+                        >
+                          {m.text}
+                        </div>
+                        <div
+                          className={`text-xs mt-1 px-2 text-zinc-400 ${
+                            m.sender === "user" ? "text-right" : "text-left"
+                          }`}
+                        >
+                          {new Date().toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              )}
+
+              {isLoading && messages.length > 0 && (
+                <motion.div
+                  className="flex gap-3 mb-5 max-w-[85%] mr-auto"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 10,
-                    delay: m.sender === "user" ? 0 : 0.1,
-                  }}
-                  exit={{ opacity: 0, x: m.sender === "user" ? 50 : -50 }}
+                  transition={{ delay: 0.2 }}
                 >
-                  <div className="message-content">{m.text}</div>
-                  <div className="message-time">
-                    {new Date().toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
+                  <div className="w-9 h-9 rounded-full flex justify-center items-center flex-shrink-0 mt-1 bg-zinc-700/30 text-zinc-200">
+                    <FaRobot className="text-lg" />
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <TypingIndicator />
                   </div>
                 </motion.div>
-              ))}
-            </AnimatePresence>
-          )}
+              )}
 
-          {isLoading && messages.length > 0 && (
-            <motion.div
-              className="message bot"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <TypingIndicator />
-            </motion.div>
-          )}
+              <div ref={messageEndRef} />
+            </div>
+          </div>
 
-          <div ref={messageEndRef} />
-        </div>
-
-        <motion.div
-          className="input-container"
-          layout
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        >
-          <motion.textarea
-            ref={inputRef}
-            rows={1}
-            placeholder="Type your message..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            disabled={isLoading}
-            animate={{
-              height: input.split("\n").length > 1 ? "auto" : "50px",
-            }}
-            transition={{ type: "spring", stiffness: 300 }}
-          />
-          <motion.button
-            onClick={handleSend}
-            disabled={isLoading || !input.trim()}
-            whileHover={!isLoading && input.trim() ? { scale: 1.05 } : {}}
-            whileTap={!isLoading && input.trim() ? { scale: 0.95 } : {}}
-            animate={{
-              backgroundColor: isLoading
-                ? "#555"
-                : input.trim()
-                ? "#4a6bff"
-                : "#555",
-              color: isLoading || !input.trim() ? "#aaa" : "#fff",
-            }}
+          <motion.div
+            className="p-3 bg-zinc-700 border-t border-zinc-600"
+            layout
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
-            {isLoading ? (
-              <motion.span
-                animate={{ rotate: 360 }}
-                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+            <div className="flex gap-2 items-end">
+              <motion.textarea
+                ref={inputRef}
+                rows={1}
+                className="flex-1 min-h-[60px] bg-zinc-600/50 border border-zinc-600 rounded-xl px-4 py-3 text-zinc-100 text-sm resize-none outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/30 backdrop-blur-sm placeholder-zinc-400"
+                placeholder="Type your message..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                disabled={isLoading}
+                animate={{
+                  height: input.split("\n").length > 1 ? "auto" : "60px",
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              />
+              <motion.button
+                className="w-14 h-14 rounded-xl flex justify-center items-center text-xl shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
+                onClick={handleSend}
+                disabled={isLoading || !input.trim()}
+                whileHover={
+                  !isLoading && input.trim() ? { scale: 1.05, rotate: 5 } : {}
+                }
+                whileTap={!isLoading && input.trim() ? { scale: 0.95 } : {}}
+                animate={{
+                  background: isLoading
+                    ? "linear-gradient(to bottom right, #555, #444)"
+                    : input.trim()
+                    ? "linear-gradient(to bottom right, #6366f1, #4f46e5)"
+                    : "linear-gradient(to bottom right, #555, #444)",
+                  color: isLoading || !input.trim() ? "#aaa" : "#fff",
+                }}
               >
-                <FiLoader />
-              </motion.span>
-            ) : (
-              <IoMdSend />
-            )}
-          </motion.button>
-        </motion.div>
-      </div>
-
-      <style jsx global>{`
-        :root {
-          --primary: #4a6bff;
-          --primary-dark: #3a5bef;
-          --user-message: var(--primary);
-          --bot-message: #2d3748;
-          --background: #121212;
-          --surface: #1e1e1e;
-          --text-primary: #ffffff;
-          --text-secondary: #a0aec0;
-          --success: #4caf50;
-          --warning: #ffc107;
-        }
-
-        * {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
-
-        body {
-          background-color: var(--background);
-          color: var(--text-primary);
-          font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-            Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-          line-height: 1.6;
-        }
-      `}</style>
-
-      <style jsx>{`
-        .chat-app-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          min-height: 100vh;
-          padding: 2rem;
-          background: radial-gradient(
-            circle at top right,
-            #1a1a2e 0%,
-            #16213e 50%,
-            #0f3460 100%
-          );
-        }
-
-        .chat-app {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          max-width: 800px;
-          height: 90vh;
-          background-color: var(--surface);
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-          position: relative;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .chat-header {
-          padding: 1.5rem;
-          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-          color: white;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .chat-header h2 {
-          font-weight: 600;
-          font-size: 1.5rem;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-        }
-
-        .status-indicator {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          position: relative;
-        }
-
-        .messages-container {
-          flex: 1;
-          padding: 1.5rem;
-          overflow-y: auto;
-          background: linear-gradient(
-              rgba(30, 30, 30, 0.9),
-              rgba(30, 30, 30, 0.9)
-            ),
-            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-          scrollbar-width: thin;
-          scrollbar-color: var(--primary) rgba(255, 255, 255, 0.1);
-        }
-
-        .messages-container::-webkit-scrollbar {
-          width: 6px;
-        }
-
-        .messages-container::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 3px;
-        }
-
-        .messages-container::-webkit-scrollbar-thumb {
-          background-color: var(--primary);
-          border-radius: 3px;
-        }
-
-        .message {
-          max-width: 80%;
-          margin-bottom: 1.25rem;
-          position: relative;
-        }
-
-        .message.user {
-          margin-left: auto;
-        }
-
-        .message.bot {
-          margin-right: auto;
-        }
-
-        .message-content {
-          padding: 0.75rem 1.25rem;
-          border-radius: 18px;
-          font-size: 0.95rem;
-          line-height: 1.5;
-          position: relative;
-          word-wrap: break-word;
-          white-space: pre-wrap;
-        }
-
-        .message.user .message-content {
-          background: var(--user-message);
-          color: white;
-          border-bottom-right-radius: 4px;
-        }
-
-        .message.bot .message-content {
-          background: var(--bot-message);
-          color: var(--text-primary);
-          border-bottom-left-radius: 4px;
-        }
-
-        .message-time {
-          font-size: 0.7rem;
-          color: var(--text-secondary);
-          margin-top: 0.25rem;
-          text-align: right;
-          padding-right: 0.5rem;
-        }
-
-        .message.user .message-time {
-          text-align: right;
-        }
-
-        .message.bot .message-time {
-          text-align: left;
-        }
-
-        .input-container {
-          display: flex;
-          padding: 1rem;
-          background-color: rgba(30, 30, 30, 0.8);
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-          gap: 0.75rem;
-          align-items: flex-end;
-        }
-
-        textarea {
-          flex: 1;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 12px;
-          padding: 0.75rem 1rem;
-          color: var(--text-primary);
-          font-family: inherit;
-          font-size: 0.95rem;
-          resize: none;
-          outline: none;
-          transition: all 0.3s ease;
-          max-height: 150px;
-          min-height: 50px;
-        }
-
-        textarea:focus {
-          border-color: var(--primary);
-          box-shadow: 0 0 0 2px rgba(74, 107, 255, 0.2);
-        }
-
-        textarea::placeholder {
-          color: var(--text-secondary);
-        }
-
-        button {
-          width: 50px;
-          height: 50px;
-          border-radius: 12px;
-          border: none;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          font-size: 1.25rem;
-          transition: all 0.2s ease;
-          background-color: var(--primary);
-          color: white;
-        }
-
-        button:disabled {
-          cursor: not-allowed;
-          opacity: 0.7;
-        }
-
-        .typing-indicator {
-          display: flex;
-          padding: 0.75rem 1.25rem;
-        }
-
-        .typing-dots {
-          display: flex;
-          align-items: center;
-          height: 24px;
-        }
-
-        .typing-dots span {
-          width: 8px;
-          height: 8px;
-          margin: 0 2px;
-          background-color: var(--text-secondary);
-          border-radius: 50%;
-          display: inline-block;
-        }
-
-        .welcome-message {
-          text-align: center;
-          padding: 2rem;
-          color: var(--text-secondary);
-        }
-
-        .welcome-message h3 {
-          color: var(--text-primary);
-          margin-bottom: 0.5rem;
-          font-size: 1.5rem;
-        }
-
-        .welcome-message p {
-          margin-bottom: 1.5rem;
-        }
-
-        .welcome-animation {
-          display: flex;
-          justify-content: center;
-          gap: 8px;
-          height: 40px;
-          align-items: flex-end;
-        }
-
-        .welcome-animation div {
-          width: 8px;
-          background: var(--primary);
-          border-radius: 4px;
-        }
-
-        .welcome-animation div:nth-child(1) {
-          height: 20px;
-        }
-
-        .welcome-animation div:nth-child(2) {
-          height: 30px;
-        }
-
-        .welcome-animation div:nth-child(3) {
-          height: 40px;
-        }
-
-        .welcome-animation div:nth-child(4) {
-          height: 30px;
-        }
-
-        .welcome-animation div:nth-child(5) {
-          height: 20px;
-        }
-      `}</style>
-    </motion.div>
+                {isLoading ? (
+                  <motion.span
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 1,
+                      ease: "linear",
+                    }}
+                  >
+                    <FiLoader />
+                  </motion.span>
+                ) : (
+                  <IoMdSend />
+                )}
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+    </div>
   );
 }
