@@ -1,4 +1,5 @@
 import image from "../assets/Blogimg/OIP.jpg";
+import image1 from "../assets/Blogimg/sahal.jpg";
 
 const blogData = [
   {
@@ -17,6 +18,146 @@ const blogData = [
       "That night, Hakim could not sleep. He thought of his ancestors, their names forgotten, their wealth squandered by heirs who cared little for legacy. At dawn, he summoned the city’s scholars, judges, and elders and declared his decision: 'I shall dedicate half of my wealth as Waqf—an eternal trust. This land and these riches will never be sold, never inherited, but used forever to serve those in need.' The crowd gasped. His own brother, Farid, protested, 'You rob your family of their future!' But Hakim stood firm. 'I do not rob them—I free them. A legacy of greed is a curse, but a legacy of service is a blessing.'",
 
       "THE REST IN NEXT PART.",
+    ],
+  },
+  {
+    id: 2,
+    title: "ഉമ്മമതില്‍ ",
+    date: "2025-05-17",
+    author: "Muhammed Ma'moon",
+    excerpt: [
+      "കണ്ണ് ലീക്കടിച്ചപ്പോള്‍",
+
+      "അവര്‍ പ്ലംബറായി.",
+
+      "പ്രതീക്ഷകള്‍ വീണുടഞ്ഞപ്പോള്‍ ...",
+    ],
+    image: image1,
+    content: [
+      "കണ്ണ് ലീക്കടിച്ചപ്പോള്‍",
+
+      "അവര്‍ പ്ലംബറായി.",
+
+      "പ്രതീക്ഷകള്‍ വീണുടഞ്ഞപ്പോള്‍",
+
+      "ശില്പിയും.",
+
+      "പര്‍വതങ്ങള്‍ പിടിച്ചു കയറുമ്പോള്‍",
+
+      "പിടിവള്ളികളായി.",
+      "ദുനിയാവ് നീട്ടി വെച്ചപ്പോള്‍",
+      "പിടികിട്ടാപ്പുള്ളിയും.",
+    ],
+  },
+  {
+    id: 3,
+    title: "ഇമ്പം ",
+    date: "2025-05-17",
+    author: "Muhammed Sajad ",
+    excerpt: [
+      "ഓടിത്തളര്‍ന്ന യാധനകളെ",
+
+      "കുഴിച്ചുമൂടിയ നൊമ്പരങ്ങള്‍",
+
+      "ചിരിതുന്നിച്ചേര്‍ന്ന വദനാംബുജങ്ങള്‍ ...",
+    ],
+    image: "",
+    content: [
+      "ഓടിത്തളര്‍ന്ന യാധനകളെ",
+
+      "കുഴിച്ചുമൂടിയ നൊമ്പരങ്ങള്‍",
+
+      "ചിരിതുന്നിച്ചേര്‍ന്ന വദനാംബുജങ്ങള്‍",
+
+      "ചൂടുപകര്‍ന്ന വര്‍ണ്ണചിറകുകള്‍",
+
+      "അടുപ്പിനു രോഷമില്ലാത്ത നാളുകളില്‍",
+
+      "സ്‌നേഹംവിളമ്പിയ കൈതഴമ്പുകള്‍",
+      "തേഞ്ഞുപോയ വിരല്‍രേഖകള്‍",
+      "സ്വപ്നവിളക്കിനു ചുറ്റുമിരുന്ന രാവൊര്‍മകള്‍",
+    ],
+  },
+  {
+    id: 4,
+    title: "പേമാരി ",
+    date: "2025-05-17",
+    author: "Muhammed Sinan KM",
+    excerpt: [
+      "എനിക്ക് കുട ചൂടാന്‍ ഇഷ്ടമാണ്.",
+
+      "സ്‌നേഹത്തിന്റെയും കരുതലിന്റെയും",
+
+      "പേമാരിയാസ്വദിച്ചു .....",
+    ],
+    image: "",
+    content: [
+      "എനിക്ക് കുട ചൂടാന്‍ ഇഷ്ടമാണ്.",
+
+      "സ്‌നേഹത്തിന്റെയും കരുതലിന്റെയും",
+
+      "പേമാരിയാസ്വദിച്ചു .....",
+
+      "ഒരുപറ്റം സഹിഷ്ണുതയുടെയും",
+
+      "സ്‌നേഹത്തിന്റെയും വാഗ്ദാക്കല്‍ ",
+
+      "ചേര്‍ന്ന് നിന്ന്....",
+      "എനിക്ക് കുട ചൂടാന്‍ ഇഷ്ടമാണ്.",
+    ],
+  },
+  {
+    id: 5,
+    title: "അപരനാമം ",
+    date: "2025-05-17",
+    author: "Muhammed Bishr Manjeri",
+    excerpt: "A beautiful poem about Family",
+    image: "",
+    content: [
+      "ചിതനായിരിക്കാമെന്നും അപരി എന്ന പ്രിയന്",
+
+      "പഥാകാഥകള്‍ താണ്ടി വിഷതമായി എരിവ്",
+
+      "വിഷ്വ സ്‌നേഹമേ,ഞാന്‍ നിറഞ്ഞത് ചിതനായ നിറവ്",
+
+      "രശ്മിയെ തഴുകി വെയിലെരിഞ്ഞത് പ്രിയന്‌",
+    ],
+  },
+  {
+    id: 6,
+    title: "കുടുംബിനി ",
+    date: "2025-05-17",
+    author: "Muhammed Jasil",
+    excerpt: "A beautiful poem about Family",
+    image: "",
+    content: [
+      "കേവല സ്‌നേഹം ആദായമാക്കി ",
+
+      "ആയുഷ്‌കാല പണയത്തിലാണീ ",
+
+      "ജീവിതം ......",
+
+      "വിയര്‍പ്പ് കലര്‍ന്ന അശ്രു ",
+      "ഉതിര്‍ന്ന തറയില്‍  ",
+      "സമര്‍പ്പിത നൊമ്പരകഥകള്‍  ",
+      "അലയടിച്ചു കൊണ്ടിരുന്നു   ",
+    ],
+  },
+  {
+    id: 7,
+    title: "കൂടാരം",
+    date: "2025-05-17",
+    author: "Ahmed Zainudheen",
+    excerpt: "A beautiful poem about Family",
+    image: "",
+    content: [
+      "വീടിനകത്തു ചിരികള്‍ നിറഞ്ഞു ",
+
+      "ഹൃദയങ്ങളില്‍ മുഴങ്ങുന്ന ഗാനം ",
+
+      "ആദ്യ പാഠശാല ഇവിടെ",
+
+      "താളുകള്‍ തുറന്നു വച്ചിരുന്നു  ",
     ],
   },
 ];

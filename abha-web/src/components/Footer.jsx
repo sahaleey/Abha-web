@@ -1,9 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaInstagram, FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
-import { RiTeamFill } from "react-icons/ri";
+import { RiHome9Fill } from "react-icons/ri";
 import { IoMdPaper } from "react-icons/io";
 import { MdOutlineEventNote } from "react-icons/md";
+import { FaRobot } from "react-icons/fa";
+import { RiRadio2Fill } from "react-icons/ri";
+import { FaPodcast } from "react-icons/fa";
+import { RiMiniProgramFill } from "react-icons/ri";
 
 const Footer = () => {
   const socialLinks = [
@@ -20,10 +24,13 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: "Home", path: "/", icon: <RiTeamFill /> },
+    { name: "Home", path: "/", icon: <RiHome9Fill /> },
     { name: "About", path: "/about", icon: <IoMdPaper /> },
     { name: "Blog", path: "/blog", icon: <MdOutlineEventNote /> },
-    { name: "Programs", path: "/programmes", icon: <RiTeamFill /> },
+    { name: "Programs", path: "/programmes", icon: <RiMiniProgramFill /> },
+    { name: "ABHA Radio", path: "/radio", icon: <RiRadio2Fill /> },
+    { name: "Podcast", path: "/podcast", icon: <FaPodcast /> },
+    { name: "ABHA AI", path: "/abha-ai", icon: <FaRobot /> },
   ];
 
   return (

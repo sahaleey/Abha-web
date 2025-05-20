@@ -24,7 +24,8 @@
     "http-proxy-middleware": "^3.0.5",
     "mongodb": "^6.16.0",
     "mongoose": "^8.14.0",
-    "multer": "1.4"
+    "multer": "1.4",
+    "nodemailer": "^7.0.3"
   },
   "description": ""
 }

@@ -127,7 +127,7 @@ function App() {
               element={
                 <>
                   {/* Futuristic Hero Section */}
-                  <section className="relative h-screen flex items-center justify-center overflow-hidden">
+                  <section className="relative  h-screen flex items-center justify-center overflow-hidden">
                     <FloatingIslands />
 
                     <div className="relative z-20 container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
@@ -163,7 +163,7 @@ function App() {
                           />
                         </div>
 
-                        <div className="flex gap-4">
+                        <div className="flex gap-4 ">
                           <Link to="/programmes">
                             <motion.button
                               whileHover={{ scale: 1.05 }}

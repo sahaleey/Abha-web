@@ -515,7 +515,10 @@ export default function ChatApp() {
               <span className="text-zinc-500 mx-1">•</span>
               <span>Shift + Enter for new line</span>
               <span className="text-zinc-500 mx-1">•</span>
-              <span>If too many request error shown please chat next day!</span>
+              <span>
+                Found a bug or error? Let us know through message — we're here
+                to help!
+              </span>
             </motion.div>
           </motion.div>
         </div>
