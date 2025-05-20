@@ -1,5 +1,7 @@
 import image from "../assets/Blogimg/OIP.jpg";
 import image1 from "../assets/Blogimg/sahal.jpg";
+import image2 from "../assets/Blogimg/fml.jpg";
+import image3 from "../assets/Blogimg/flm.jpg";
 
 const blogData = [
   {
@@ -61,7 +63,7 @@ const blogData = [
 
       "ചിരിതുന്നിച്ചേര്‍ന്ന വദനാംബുജങ്ങള്‍ ...",
     ],
-    image: "",
+    image: image2,
     content: [
       "ഓടിത്തളര്‍ന്ന യാധനകളെ",
 
@@ -90,7 +92,7 @@ const blogData = [
 
       "പേമാരിയാസ്വദിച്ചു .....",
     ],
-    image: "",
+    image: image3,
     content: [
       "എനിക്ക് കുട ചൂടാന്‍ ഇഷ്ടമാണ്.",
 
