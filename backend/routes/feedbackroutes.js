@@ -1,26 +1,31 @@
 const express = require("express");
 const router = express.Router();
-const Feedback = require("../models/Feedback");
+const { Resend } = require("resend");
 
-// POST feedback
+const resend = new Resend(process.env.RESEND_API_KEY); // Ensure this is set in your .env
+
+// POST feedback — sends email instead of saving to DB
 router.post("/", async (req, res) => {
   try {
     const { rating, comment } = req.body;
-    const feedback = new Feedback({ rating, comment });
-    await feedback.save();
-    res.status(201).json({ message: "Feedback submitted successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Server error", error });
-  }
-});
 
-// GET all feedback (optional)
-router.get("/", async (req, res) => {
-  try {
-    const feedbacks = await Feedback.find();
-    res.status(200).json(feedbacks);
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: "abhamates14@gmail.com", // Where you want to receive feedback
+      subject: "New Feedback Received",
+      html: `
+        <h3>New Feedback Submitted</h3>
+        <p><strong>Rating:</strong> ${rating}</p>
+        <p><strong>Comment:</strong> ${comment || "No comment provided"}</p>
+      `,
+    });
+
+    res
+      .status(200)
+      .json({ message: "Feedback submitted and emailed successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error });
+    console.error("Email send error:", error);
+    res.status(500).json({ message: "Failed to send feedback email", error });
   }
 });
 
