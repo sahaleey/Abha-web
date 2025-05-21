@@ -2,6 +2,9 @@ import image from "../assets/Blogimg/OIP.jpg";
 import image1 from "../assets/Blogimg/sahal.jpg";
 import image2 from "../assets/Blogimg/fml.jpg";
 import image3 from "../assets/Blogimg/flm.jpg";
+import image4 from "../assets/Blogimg/lmf.jpg";
+import image5 from "../assets/Blogimg/mgl.jpg";
+import image6 from "../assets/Blogimg/lfm.jpg";
 
 const blogData = [
   {
@@ -114,7 +117,7 @@ const blogData = [
     date: "2025-05-17",
     author: "Muhammed Bishr Manjeri",
     excerpt: "A beautiful poem about Family",
-    image: "",
+    image: image4,
     content: [
       "ചിതനായിരിക്കാമെന്നും അപരി എന്ന പ്രിയന്",
 
@@ -131,7 +134,7 @@ const blogData = [
     date: "2025-05-17",
     author: "Muhammed Jasil",
     excerpt: "A beautiful poem about Family",
-    image: "",
+    image: image5,
     content: [
       "കേവല സ്‌നേഹം ആദായമാക്കി ",
 
@@ -151,7 +154,7 @@ const blogData = [
     date: "2025-05-17",
     author: "Ahmed Zainudheen",
     excerpt: "A beautiful poem about Family",
-    image: "",
+    image: image6,
     content: [
       "വീടിനകത്തു ചിരികള്‍ നിറഞ്ഞു ",
 
