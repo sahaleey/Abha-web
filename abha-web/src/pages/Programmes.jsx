@@ -100,6 +100,7 @@ const ProgrammeCard = ({ item }) => {
       {/* Image section with faster hover */}
       <motion.div className="relative overflow-hidden">
         <motion.img
+          rel="preload"
           src={item.image}
           alt={item.name}
           className="w-full h-48 object-cover"

@@ -18,6 +18,7 @@ const RadioStation = () => {
       name: "ABHA FM",
       frequency: "98.5",
       cover: RadioImg,
+
       audio: Radio1,
       genre: "For our new Brothers",
     },
@@ -215,6 +216,7 @@ const RadioStation = () => {
                         whileHover={{ scale: 1.05 }}
                       >
                         <img
+                          rel="preload"
                           src={station.cover}
                           alt={station.name}
                           className="w-full h-full object-cover"
@@ -294,6 +296,7 @@ const RadioStation = () => {
                     whileHover={{ scale: 1.02 }}
                   >
                     <img
+                      rel="preload"
                       src={currentStation.cover}
                       alt={currentStation.name}
                       className="w-full h-full object-cover"

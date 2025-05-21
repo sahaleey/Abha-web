@@ -202,6 +202,7 @@ function App() {
 
                             {/* Animated floating logo */}
                             <img
+                              rel="preload"
                               src={logo}
                               alt="ABHA Logo"
                               className="w-full scale-160 h-full object-contain transition-transform duration-700 ease-in-out group-hover:scale-130 animate-float"

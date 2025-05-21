@@ -117,6 +117,7 @@ const CommunitySlider = () => {
               <div className="relative w-40 h-40 mx-auto mb-6">
                 <div className="absolute inset-0 rounded-full border-2 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]"></div>
                 <img
+                  rel="preload"
                   src={classTeacher.image}
                   alt={classTeacher.name}
                   className="relative z-10 w-full h-full rounded-full object-cover"
@@ -210,6 +211,7 @@ const CommunitySlider = () => {
                       }}
                     />
                     <motion.img
+                      rel="preload"
                       src={member.image}
                       alt={member.name}
                       className="relative z-10 w-full h-full rounded-full object-cover"

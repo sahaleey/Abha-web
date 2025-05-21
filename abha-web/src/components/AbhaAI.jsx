@@ -5,6 +5,7 @@ import { IoMdSend } from "react-icons/io";
 import { FaRobot, FaRegLightbulb } from "react-icons/fa";
 import { RiUser3Fill } from "react-icons/ri";
 import { BsThreeDotsVertical, BsArrowReturnLeft } from "react-icons/bs";
+import logo1 from "../assets/abha.png";
 
 export default function ChatApp() {
   const [messages, setMessages] = useState([]);
@@ -182,7 +183,11 @@ export default function ChatApp() {
                 transition={{ delay: 0.2, type: "spring" }}
                 whileHover={{ rotate: 10, scale: 1.1 }}
               >
-                <FaRobot className="text-white text-xl" />
+                <img
+                  src={logo1} // <-- put your logo path here
+                  alt="ABHA Logo"
+                  className="text-lg rounded-full scale-150"
+                />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
@@ -246,16 +251,17 @@ export default function ChatApp() {
                   >
                     <motion.div
                       className="w-16 h-16 mx-auto mb-4 bg-indigo-500/20 rounded-full flex items-center justify-center border border-indigo-500/30"
-                      animate={{
-                        rotate: 360,
-                      }}
                       transition={{
                         duration: 20,
                         repeat: Infinity,
                         ease: "linear",
                       }}
                     >
-                      <FaRobot className="text-2xl text-indigo-300" />
+                      <img
+                        src={logo1} // <-- put your logo path here
+                        alt="ABHA Logo"
+                        className="text-2xl rounded-full scale-150"
+                      />
                     </motion.div>
                     <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-white to-indigo-100 bg-clip-text text-transparent">
                       Welcome to ABHA AI!
@@ -353,7 +359,11 @@ export default function ChatApp() {
                         {m.sender === "user" ? (
                           <RiUser3Fill className="text-lg" />
                         ) : (
-                          <FaRobot className="text-lg" />
+                          <img
+                            src={logo1} // <-- put your logo path here
+                            alt="ABHA Logo"
+                            className="text-lg scale-150"
+                          />
                         )}
                       </motion.div>
                       <div

@@ -46,6 +46,7 @@ const CommunityBio = () => {
           >
             <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-3xl p-1">
               <img
+                rel="preload"
                 src={member.image}
                 alt={member.name}
                 className="w-full h-auto rounded-3xl object-cover border border-white/10"

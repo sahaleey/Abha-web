@@ -139,10 +139,11 @@ const BlogPost = () => {
             whileHover={{ scale: 1.01 }}
           >
             <img
+              rel="preload"
               src={post.image}
               alt={post.title}
-              className="w-full h-auto max-h-96 object-cover"
-              loading="lazy"
+              className="w-full h-auto max-h-96 object-cover "
+              loading="eager"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </motion.figure>

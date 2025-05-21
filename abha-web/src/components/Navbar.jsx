@@ -17,7 +17,7 @@ function Navbar() {
     { path: "/programmes", label: "Programs" },
     { path: "/podcast", label: "Podcast" },
     { path: "/radio", label: "Radio" },
-    { path: "/abha-ai", label: "Abha AI" },
+    { path: "/abha-ai", label: "ABHA AI" },
   ];
 
   useEffect(() => {
@@ -43,6 +43,7 @@ function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center z-50">
           <motion.img
+            rel="preload"
             src={Logo}
             alt="Abha Logo"
             className="h-12 w-auto rounded-full"

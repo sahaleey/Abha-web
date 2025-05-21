@@ -11,6 +11,15 @@ import Program9 from "../assets/programmeImages/wa.jpg";
 import Program10 from "../assets/programmeImages/ig 2.jpg";
 import Program11 from "../assets/programmeImages/know the legend.jpg";
 import Program12 from "../assets/programmeImages/nurse day.jpg";
+import Program13 from "../assets/programmeImages/aljoddor copy.jpg";
+import Program14 from "../assets/programmeImages/fluent.jpg";
+import Program15 from "../assets/programmeImages/janam.jpg";
+import Program16 from "../assets/programmeImages/moria.jpg";
+import Program17 from "../assets/programmeImages/ner.jpg";
+import Program18 from "../assets/programmeImages/لطائف قرآنية copy.jpg";
+import Program19 from "../assets/programmeImages/anti-terror.jpg";
+import Program20 from "../assets/programmeImages/web-launch.jpg";
+import Program21 from "../assets/programmeImages/nerkazhcha-1.jpg";
 
 export const alreadyDoneProgrammes = [
   {
@@ -126,6 +135,93 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     date: "12/05/2025",
     image: Program12,
     description: `Saluting Our Angels in Scrubs! This #InternationalNursesDay, Abha celebrates the compassion, courage and tireless care of nurses who heal the world every day. Join us in honoring these healthcare heroes!`,
+  },
+  {
+    id: 13,
+    name: "Al-Judoor",
+    stage: "7th Class",
+    host: "Ma'moon",
+    date: "01/05/2025",
+    time: "8 : 00 PM",
+    image: Program13,
+    description: `Al-Judoor is an Abha Academia initiative by our union to teach students the foundational grammar of Arabic in an engaging and accessible way.`,
+  },
+  {
+    id: 14,
+    name: "Fluent Flicks",
+    stage: "7th Class",
+    host: "Ihsan",
+    date: "Every Wednesday",
+    time: "8 : 30 PM",
+    image: Program14,
+    description: `Fluent Flicks is an English Wing program designed to introduce students to new English vocabulary through fun and interactive learning.`,
+  },
+  {
+    id: 15,
+    name: "ABHA Parliament - Janashabdam",
+    stage: "7th Class",
+    host: "Class leader",
+    date: "All Month last Week",
+    time: "9 : 30 PM",
+    image: Program15,
+    description: `ABHA Parliament is an inspiring initiative to empower and motivate the class wing through leadership, collaboration, and active participation.`,
+  },
+  {
+    id: 16,
+    name: "Carrier Guidance",
+    stage: "7th Class",
+    host: "Usthad Muhammad Asif Hudawi",
+    date: "15/05/2025",
+    time: "3 : 20 PM",
+    image: Program16,
+    description: `A Career Guidance class by Usthad Muhammed Asif Hudawi is being conducted to help students make informed and purpose-driven career choices.`,
+  },
+  {
+    id: 17,
+    name: "നേര്‍കാഴ്ച - മോദിയോടുള്ള ചോദ്യങ്ങള്‍",
+    stage: "In front of 7th Class",
+    host: "Anwar sadath",
+    date: "13/05/2025",
+    time: "9 : 30 PM",
+    image: Program17,
+    description: `IQ Orbit is hosting a group discussion titled "നേര്‍കാഴ്ച - മോദിയോടുള്ള ചോദ്യങ്ങള്‍" to critically engage students on the Pahalgam terrorist attack and encourage thoughtful dialogue.`,
+  },
+  {
+    id: 18,
+    name: "لطائف قرآنية",
+    stage: "7th Class",
+    host: "Ma'moon",
+    date: "01/05/2025",
+    time: "6 : 30 AM",
+    image: Program18,
+    description: `"لطائف قرآنية" is an enlightening session by Ma'moon under Abha Academia, aimed at introducing students to the profound laws and wisdom of the Qur’an.`,
+  },
+  {
+    id: 19,
+    name: "നേര്‍കാഴ്ച - 3 diffrent topic",
+    stage: "In front of 7th Class",
+    host: "IQ Orbit",
+    date: "21/05/2025",
+    time: "9 : 30 PM",
+    image: Program21,
+    description: `ABHA conducting "നേര്‍കാഴ്ച" sessions on three diverse topics, hosted by IQ Orbit, to spark critical thinking and open discussion among students.`,
+  },
+  {
+    id: 20,
+    name: "World Anti-Terrorist day - Special poster",
+    date: "21/05/2025",
+    image: Program19,
+    description: `ABHA created a powerful special poster to commemorate Anti-Terrorist Day, spreading awareness and promoting peace among students.`,
+  },
+  {
+    id: 21,
+    name: "ABHA Official web launching",
+    stage: "Masjid Ground floor",
+    host: "Usthad Muhammed Shafi Hudawi",
+    date: "21/05/2025",
+    time: "1 : 30 PM",
+    image: Program20,
+    description: `Abha proudly launched its official website, unveiled by Usthad Muhammed Shafi Hudawi, marking a new milestone in our community’s digital journey.`,
   },
 ];
 

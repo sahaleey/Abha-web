@@ -16,6 +16,7 @@ const CoreTeam = () => {
               {/* Front Side */}
               <div className="flip-card-front h-80 overflow-hidden rounded-xl">
                 <img
+                  rel="preload"
                   src={member.photo}
                   alt={member.name}
                   className="w-full h-full object-cover"

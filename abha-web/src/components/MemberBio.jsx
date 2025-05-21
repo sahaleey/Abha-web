@@ -21,6 +21,7 @@ const MemberBio = () => {
     >
       {/* Image */}
       <motion.img
+        rel="preload"
         src={member.image}
         alt={member.name}
         className="w-40 h-40 rounded-full object-cover mx-auto mb-6 border-4 border-amber-400 shadow-lg hover:scale-110 transition-transform duration-500"

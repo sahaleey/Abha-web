@@ -116,7 +116,11 @@ const blogData = [
     title: "അപരനാമം ",
     date: "2025-05-17",
     author: "Muhammed Bishr Manjeri",
-    excerpt: "A beautiful poem about Family",
+    excerpt: [
+      "ചിതനായിരിക്കാമെന്നും അപരി എന്ന പ്രിയന്",
+
+      "പഥാകാഥകള്‍ താണ്ടി വിഷതമായി എരിവ്",
+    ],
     image: image4,
     content: [
       "ചിതനായിരിക്കാമെന്നും അപരി എന്ന പ്രിയന്",
@@ -133,7 +137,13 @@ const blogData = [
     title: "കുടുംബിനി ",
     date: "2025-05-17",
     author: "Muhammed Jasil",
-    excerpt: "A beautiful poem about Family",
+    excerpt: [
+      "കേവല സ്‌നേഹം ആദായമാക്കി ",
+
+      "ആയുഷ്‌കാല പണയത്തിലാണീ ",
+
+      "ജീവിതം ......",
+    ],
     image: image5,
     content: [
       "കേവല സ്‌നേഹം ആദായമാക്കി ",
@@ -153,7 +163,7 @@ const blogData = [
     title: "കൂടാരം",
     date: "2025-05-17",
     author: "Ahmed Zainudheen",
-    excerpt: "A beautiful poem about Family",
+    excerpt: ["വീടിനകത്തു ചിരികള്‍ നിറഞ്ഞു ", "ഹൃദയങ്ങളില്‍ മുഴങ്ങുന്ന ഗാനം "],
     image: image6,
     content: [
       "വീടിനകത്തു ചിരികള്‍ നിറഞ്ഞു ",

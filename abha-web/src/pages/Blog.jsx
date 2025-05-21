@@ -153,10 +153,11 @@ const Blog = () => {
                 <Link to={`/blog/${post.id}`} className="block h-full">
                   <figure className="relative h-60 overflow-hidden">
                     <img
+                      rel="preload"
                       src={post.image || "/default-blog.jpg"}
                       alt={post.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="lazy"
+                      className="w-full h-full  transition-transform duration-700 group-hover:scale-110 object-contain"
+                      loading="eager"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   </figure>
