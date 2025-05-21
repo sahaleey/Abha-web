@@ -20,18 +20,6 @@ const CommunitySlider = () => {
     return () => clearInterval(intervalRef.current);
   }, [sliderMembers.length]);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === sliderMembers.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? sliderMembers.length - 1 : prev - 1
-    );
-  };
-
   const goToSlide = (index) => {
     setCurrentIndex(index);
   };
