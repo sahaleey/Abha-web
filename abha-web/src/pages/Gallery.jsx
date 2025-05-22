@@ -68,7 +68,10 @@ const Gallery = () => {
               className="gallery-image"
             />
           </motion.div>
-        ))}
+        ))}{" "}
+        {/* <a href="https://drive.google.com/drive/folders/1Nc_pCwW5KWTP7fIwc-sHXYMR8U1p-bRX">
+          More images
+        </a> */}
       </motion.div>
     </div>
   );

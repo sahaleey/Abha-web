@@ -438,7 +438,11 @@ export default function ChatApp() {
                   transition={{ delay: 0.2 }}
                 >
                   <div className="w-9 h-9 rounded-full flex justify-center items-center flex-shrink-0 mt-1 bg-zinc-700/30 text-zinc-200">
-                    <FaRobot className="text-lg" />
+                    <img
+                      src={logo1} // <-- put your logo path here
+                      alt="ABHA Logo"
+                      className="text-lg rounded-full scale-150"
+                    />
                   </div>
                   <div className="flex flex-col items-start">
                     <TypingIndicator />
