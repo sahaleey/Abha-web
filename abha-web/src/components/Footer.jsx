@@ -11,7 +11,7 @@ import { RiMiniProgramFill } from "react-icons/ri";
 
 const Footer = () => {
   const socialLinks = [
-    { icon: <FaInstagram />, url: "https://www.instagram.com/_abha_nric/" },
+    { icon: <FaInstagram />, url: "https://www.instagram.com/_abhanric_/" },
     {
       icon: <FaFacebookF />,
       url: "https://www.facebook.com/profile.php?id=61575684312779",
