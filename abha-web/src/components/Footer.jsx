@@ -171,6 +171,14 @@ const Footer = () => {
             © {new Date().getFullYear()} Abha Collective. All rights reserved.
           </p>
         </div>
+        <div className="max-w-7xl mx-auto px-6">
+          <p>
+            Developed by{" "}
+            <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent font-semibold ">
+              <a href="https://dev-scp.vercel.app">SCP</a>
+            </span>
+          </p>
+        </div>
       </motion.div>
     </footer>
   );
