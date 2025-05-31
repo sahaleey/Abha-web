@@ -273,15 +273,16 @@ function App() {
                   </section>
 
                   {/* Interactive Timeline */}
-                  <section className="py-32 relative">
+                  <section className="py-20 md:py-28 lg:py-32 relative">
                     <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
-                    <div className="container mx-auto px-6 relative">
-                      <h2 className="text-4xl font-bold text-center mb-20">
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 md:mb-20">
                         Our <span className="text-cyan-400">Journey</span>
                       </h2>
                       <HolographicTimeline data={timelineData} />
                     </div>
                   </section>
+
                   <CommunitySlider />
                 </>
               }
