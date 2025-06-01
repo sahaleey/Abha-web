@@ -4,11 +4,24 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { motion } from "framer-motion";
 
+import { alreadyDoneProgrammes } from "../data/programmeData";
+
 ChartJS.register(ArcElement, Tooltip, Legend, Title, ChartDataLabels);
 
 const WingGraphs = () => {
   const [isInView, setIsInView] = useState(false);
   const chartRef = useRef(null);
+
+  // Group programmes by wing, count points (1 per programme)
+  const wingPointsMap = {};
+  alreadyDoneProgrammes.forEach((program) => {
+    const wing = program.wing || "General";
+    if (!wingPointsMap[wing]) wingPointsMap[wing] = 0;
+    wingPointsMap[wing] += 1;
+  });
+
+  const wings = Object.keys(wingPointsMap);
+  const pointsByWing = Object.values(wingPointsMap);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,50 +46,36 @@ const WingGraphs = () => {
     };
   }, []);
 
+  // Define color palettes for up to 10 wings (expand as needed)
+  const backgroundColors = [
+    "rgba(255, 99, 132, 0.8)", // red
+    "rgba(54, 162, 235, 0.8)", // blue
+    "rgba(255, 206, 86, 0.8)", // yellow
+    "rgba(75, 192, 192, 0.8)", // teal
+    "rgba(6, 226, 35, 0.8)", // green
+    "rgba(6, 145, 226, 0.8)", // dark blue
+    "rgba(45, 50, 126, 0.8)", // navy
+    "rgba(255, 159, 64, 0.8)", // orange
+    "rgba(153, 102, 255, 0.8)", // purple
+    "rgba(255, 99, 255, 0.8)", // pink
+  ];
+
+  const borderColors = backgroundColors.map((color) =>
+    color.replace("0.8", "1")
+  );
+
   const wingsData = {
-    labels: [
-      "Academic",
-      "Urdu",
-      "English",
-      "Malayalam",
-      "Arabic",
-      "Social Affairs",
-      "IQ Orbit",
-    ],
+    labels: wings,
     datasets: [
       {
         label: "Points",
-        data: isInView ? [0, 0, 0, 5, 10, 0, 5] : [0, 0, 0, 0],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.8)",
-          "rgba(54, 162, 235, 0.8)",
-          "rgba(255, 206, 86, 0.8)",
-          "rgba(75, 192, 192, 0.8)",
-          "rgba(6, 226, 35, 0.8)",
-          "rgba(6, 145, 226, 0.8)",
-          "rgba(45, 50, 126, 0.8)",
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(6, 226, 35, 1)",
-          "rgba(6, 145, 226, 1)",
-          "rgba(45, 50, 126, 1)",
-        ],
+        data: isInView ? pointsByWing : Array(wings.length).fill(0),
+        backgroundColor: backgroundColors.slice(0, wings.length),
+        borderColor: borderColors.slice(0, wings.length),
         borderWidth: 2,
         borderRadius: 6,
         hoverBorderWidth: 3,
-        hoverBackgroundColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(6, 226, 35, 1)",
-          "rgba(6, 145, 226, 1)",
-          "rgba(45, 50, 126, 1)",
-        ],
+        hoverBackgroundColor: borderColors.slice(0, wings.length),
         weight: 1,
       },
     ],
@@ -146,9 +145,7 @@ const WingGraphs = () => {
           weight: "bold",
           size: 14,
         },
-        formatter: (value) => {
-          return value > 0 ? `${value} pts` : "";
-        },
+        formatter: (value) => (value > 0 ? `${value} pts` : ""),
       },
     },
     cutout: "60%",
