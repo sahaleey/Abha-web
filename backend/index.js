@@ -33,7 +33,7 @@ app.use("/api/contact", contactRoutes);
 app.use(
   "/api/chat",
   createProxyMiddleware({
-    target: "http://localhost:8000",
+    target: "https://project1-flox.onrender.com",
     changeOrigin: true,
     pathRewrite: {
       "^/api/chat": "/chat",

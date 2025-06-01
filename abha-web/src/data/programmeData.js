@@ -20,6 +20,10 @@ import Program18 from "../assets/programmeImages/لطائف قرآنية copy.jp
 import Program19 from "../assets/programmeImages/anti-terror.jpg";
 import Program20 from "../assets/programmeImages/web-launch.jpg";
 import Program21 from "../assets/programmeImages/nerkazhcha-1.jpg";
+import Program22 from "../assets/programmeImages/brothers abha 1.png";
+import Program23 from "../assets/programmeImages/KOOTTEZHUTH.jpg";
+import Program24 from "../assets/programmeImages/urdu wng.jpg";
+import Program25 from "../assets/programmeImages/website.jpg";
 
 export const alreadyDoneProgrammes = [
   {
@@ -222,6 +226,41 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     time: "1 : 30 PM",
     image: Program20,
     description: `Abha proudly launched its official website, unveiled by Usthad Muhammed Shafi Hudawi, marking a new milestone in our community’s digital journey.`,
+  },
+  {
+    id: 22,
+    name: "Brothers day",
+    date: "24/05/2025",
+    image: Program22,
+    description: `Celebrating the unbreakable bond of love, laughter, and brotherhood this Brothers Day!`,
+  },
+  {
+    id: 23,
+    name: "Web Design Course",
+    stage: "7th class",
+    host: "Usthad Muhammed Rahoof Hudawi",
+    date: "18/05/2025",
+    time: "9 : 30 PM",
+    image: Program25,
+    description: `Master the art of modern web design with Usthad Muhammad Rahoof Hudawi in our comprehensive and practical course.`,
+  },
+  {
+    id: 23,
+    name: "Tabloid - Koottezhuth Publication",
+    stage: "Masjid Ground floor",
+    date: "21/05/2025",
+    time: "1 : 30 PM",
+    image: Program23,
+    description: `Kuttezhuth – A heartfelt Malayalam tabloid celebrating the warmth, values, and stories of family life.`,
+  },
+  {
+    id: 24,
+    name: "Grammer Hunt",
+    stage: "7th Class",
+    host: "Muhammed Sahel cp",
+    time: "8 : 00 PM",
+    image: Program24,
+    description: `Grammar Hunt – An engaging journey through the rules and beauty of Urdu, sharpening language skills with fun and challenge.`,
   },
 ];
 
