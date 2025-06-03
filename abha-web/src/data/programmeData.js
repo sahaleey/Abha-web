@@ -25,6 +25,8 @@ import Program23 from "../assets/programmeImages/KOOTTEZHUTH.jpg";
 import Program24 from "../assets/programmeImages/urdu wng.jpg";
 import Program25 from "../assets/programmeImages/website.jpg";
 import Program26 from "../assets/programmeImages/ig.jpg";
+import Program27 from "../assets/programmeImages/50k.jpg";
+import Program28 from "../assets/programmeImages/rain mlm copy .jpg";
 
 export const alreadyDoneProgrammes = [
   {
@@ -254,7 +256,7 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     description: `Master the art of modern web design with Usthad Muhammad Rahoof Hudawi in our comprehensive and practical course.`,
   },
   {
-    id: 23,
+    id: 24,
     name: "Tabloid - Koottezhuth Publication",
     wing: "Malayalam Wing",
     stage: "Masjid Ground floor",
@@ -264,7 +266,7 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     description: `Kuttezhuth – A heartfelt Malayalam tabloid celebrating the warmth, values, and stories of family life.`,
   },
   {
-    id: 24,
+    id: 25,
     name: "Grammer Hunt",
     wing: "Urdu Wing",
     stage: "7th Class",
@@ -274,12 +276,27 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     description: `Grammar Hunt – An engaging journey through the rules and beauty of Urdu, sharpening language skills with fun and challenge.`,
   },
   {
-    id: 25,
+    id: 26,
     name: "Ummak Oru Kath",
     stage: "Home",
     host: "Usthad Muhammed Shareef Hudawi",
     image: Program26,
     description: `A heartfelt tribute to motherhood, where students pen emotional letters expressing their deepest love and gratitude to their mothers.`,
+  },
+  {
+    id: 27,
+    name: "Mission 50K",
+    stage: "7th Class",
+    host: "Core Team",
+    image: Program27,
+    description: `Mission 50K is a powerful reading initiative challenging all class members to collectively read 50,000 pages within one academic year—fueling knowledge, focus, and a lifelong love for books.`,
+  },
+  {
+    id: 28,
+    name: "Rain Malayalam Tabloid",
+    wing: "Malayalam Wing",
+    image: Program28,
+    description: `Mazha" is a heartfelt tabloid by the Malayalam Wing, capturing the rain-soaked emotions, stories, and reflections of our vibrant community—where every page drips with culture, creativity, and connection.`,
   },
 ];
 
