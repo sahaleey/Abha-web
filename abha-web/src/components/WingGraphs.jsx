@@ -10,6 +10,8 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title, ChartDataLabels);
 
 const WingGraphs = () => {
   const [isInView, setIsInView] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const chartContainerRef = useRef(null);
   const chartRef = useRef(null);
 
   // Group programmes by wing, count points (1 per programme)
@@ -35,16 +37,36 @@ const WingGraphs = () => {
       { threshold: 0.5 }
     );
 
-    if (chartRef.current) {
-      observer.observe(chartRef.current);
+    if (chartContainerRef.current) {
+      observer.observe(chartContainerRef.current);
     }
 
     return () => {
-      if (chartRef.current) {
-        observer.unobserve(chartRef.current);
+      if (chartContainerRef.current) {
+        observer.unobserve(chartContainerRef.current);
       }
     };
   }, []);
+
+  const handleMouseMove = (e) => {
+    if (chartContainerRef.current) {
+      const rect = chartContainerRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Calculate position relative to center (-1 to 1 range)
+      const relX = (x - centerX) / centerX;
+      const relY = (y - centerY) / centerY;
+
+      setMousePosition({ x: relX, y: relY });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setMousePosition({ x: 0, y: 0 });
+  };
 
   // Define color palettes for up to 10 wings (expand as needed)
   const backgroundColors = [
@@ -149,7 +171,7 @@ const WingGraphs = () => {
       },
     },
     cutout: "60%",
-    rotation: -30,
+    rotation: -30 + mousePosition.x * 15, // Tilt based on mouse X position
   };
 
   return (
@@ -161,7 +183,9 @@ const WingGraphs = () => {
       className="w-full px-4 sm:px-6 md:px-8 lg:px-10 max-w-6xl mx-auto my-16"
     >
       <div
-        ref={chartRef}
+        ref={chartContainerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 sm:p-8 md:p-10 rounded-2xl shadow-2xl border border-gray-700"
       >
         <motion.h2
@@ -177,8 +201,19 @@ const WingGraphs = () => {
           className={`relative h-[400px] sm:h-[450px] md:h-[500px] transition-all duration-1000 ease-out ${
             isInView ? "opacity-100" : "opacity-0"
           }`}
+          style={{
+            transform: `perspective(1000px) rotateX(${
+              mousePosition.y * -5
+            }deg) rotateY(${mousePosition.x * 5}deg)`,
+            transition: "transform 0.2s ease-out",
+          }}
         >
-          <Pie data={wingsData} options={options} plugins={[ChartDataLabels]} />
+          <Pie
+            ref={chartRef}
+            data={wingsData}
+            options={options}
+            plugins={[ChartDataLabels]}
+          />
         </div>
 
         <motion.div
