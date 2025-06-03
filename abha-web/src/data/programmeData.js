@@ -24,6 +24,7 @@ import Program22 from "../assets/programmeImages/brothers abha 1.png";
 import Program23 from "../assets/programmeImages/KOOTTEZHUTH.jpg";
 import Program24 from "../assets/programmeImages/urdu wng.jpg";
 import Program25 from "../assets/programmeImages/website.jpg";
+import Program26 from "../assets/programmeImages/ig.jpg";
 
 export const alreadyDoneProgrammes = [
   {
@@ -271,6 +272,14 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     time: "8 : 00 PM",
     image: Program24,
     description: `Grammar Hunt – An engaging journey through the rules and beauty of Urdu, sharpening language skills with fun and challenge.`,
+  },
+  {
+    id: 25,
+    name: "Ummak Oru Kath",
+    stage: "Home",
+    host: "Usthad Muhammed Shareef Hudawi",
+    image: Program26,
+    description: `A heartfelt tribute to motherhood, where students pen emotional letters expressing their deepest love and gratitude to their mothers.`,
   },
 ];
 
