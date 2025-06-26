@@ -130,7 +130,7 @@ function App() {
                   <section className="relative  h-screen flex items-center justify-center overflow-hidden">
                     <FloatingIslands />
 
-                    <div className="relative z-20 container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+                    <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center gap-12">
                       <motion.div
                         className="flex-1 space-y-8"
                         initial={{ opacity: 0, x: -50 }}
@@ -191,7 +191,7 @@ function App() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
                       >
-                        <div className="relative w-64 h-64 md:w-80 md:h-80 group">
+                        <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 group">
                           {/* Glowing outer ring */}
                           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-purple-600/10 opacity-70 group-hover:opacity-100 transition-all duration-500 blur-[2px] group-hover:blur-[4px] animate-pulse-slow" />
 
@@ -228,7 +228,7 @@ function App() {
                   <section ref={ref} className="relative py-20">
                     <div className="container mx-auto px-6">
                       <motion.div
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
                         initial={{ opacity: 0, y: 40 }}
                         animate={controls}
                         transition={{ duration: 0.8, staggerChildren: 0.1 }}
@@ -247,7 +247,7 @@ function App() {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ duration: 1 }}
-                        className="grid grid-cols-2 md:grid-cols-4 gap-8"
+                        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
                       >
                         {[
                           { value: "26", label: "Community Members" },
@@ -275,7 +275,7 @@ function App() {
                   {/* Interactive Timeline */}
                   <section className="py-20 md:py-28 lg:py-32 relative">
                     <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+                    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 md:mb-20">
                         Our <span className="text-cyan-400">Journey</span>
                       </h2>

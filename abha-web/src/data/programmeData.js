@@ -27,6 +27,42 @@ import Program25 from "../assets/programmeImages/website.jpg";
 import Program26 from "../assets/programmeImages/ig.jpg";
 import Program27 from "../assets/programmeImages/50k.jpg";
 import Program28 from "../assets/programmeImages/rain mlm copy .jpg";
+import Program29 from "../assets/programmeImages/abu (1).jpg";
+import Program30 from "../assets/programmeImages/academia documentary.jpg";
+import Program31 from "../assets/programmeImages/ajnas.jpg";
+import Program32 from "../assets/programmeImages/ashaya,.jpg";
+import Program33 from "../assets/programmeImages/book.jpg";
+import Program34 from "../assets/programmeImages/CAREER GUIDENCE.jpg";
+import Program35 from "../assets/programmeImages/docu rajiv.jpg";
+import Program36 from "../assets/programmeImages/fmly day.jpg";
+import Program37 from "../assets/programmeImages/GROUP DISCUSSION.jpg";
+import Program38 from "../assets/programmeImages/halawa.jpg";
+import Program39 from "../assets/programmeImages/katha patrachil copy.jpg";
+import Program40 from "../assets/programmeImages/kathib sayiid kuktub.png";
+import Program41 from "../assets/programmeImages/KAVI copy.jpg";
+import Program42 from "../assets/programmeImages/know the legend 2.jpg";
+import Program43 from "../assets/programmeImages/malcom x.jpg";
+import Program44 from "../assets/programmeImages/mhd copy.jpg";
+import Program45 from "../assets/programmeImages/mirzu 2 copy.jpg";
+import Program46 from "../assets/programmeImages/mother.jpg";
+import Program47 from "../assets/programmeImages/munaqasha 2.jpg";
+import Program48 from "../assets/programmeImages/munaqasha1.jpg";
+import Program49 from "../assets/programmeImages/MUSA.jpg";
+import Program50 from "../assets/programmeImages/NGUGU WA THIONGO.jpg";
+import Program51 from "../assets/programmeImages/one day.jpg";
+import Program52 from "../assets/programmeImages/pd.jpg";
+import Program53 from "../assets/programmeImages/riyas.jpg";
+import Program54 from "../assets/programmeImages/rizller 2.jpg";
+import Program55 from "../assets/programmeImages/rizller.jpg";
+import Program56 from "../assets/programmeImages/talent 4.jpg";
+import Program57 from "../assets/programmeImages/talent copy.jpg";
+import Program58 from "../assets/programmeImages/talent copy1.jpg";
+import Program59 from "../assets/programmeImages/talent copy2.jpg";
+import Program60 from "../assets/programmeImages/THA'ARRAF ANISSHA'IR.jpg";
+import Program61 from "../assets/programmeImages/Untitled design.jpg";
+import Program62 from "../assets/programmeImages/URDU GD copy.jpg";
+import Program63 from "../assets/programmeImages/VAYANA.jpg";
+import Program64 from "../assets/programmeImages/vayna day.jpg";
 
 export const alreadyDoneProgrammes = [
   {
@@ -297,6 +333,26 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     wing: "Malayalam Wing",
     image: Program28,
     description: `Mazha" is a heartfelt tabloid by the Malayalam Wing, capturing the rain-soaked emotions, stories, and reflections of our vibrant community—where every page drips with culture, creativity, and connection.`,
+  },
+  {
+    id: 29,
+    name: "Abu Hassan Ali Hassan Biography",
+    wing: "Arabic Wing",
+    stage: "7th Class",
+    host: "Arabic Wing",
+    date: "21/06/2025",
+    image: Program29,
+    description: `A special tabloid released for International Reading Day, featuring the life and poems of renowned writer Abu Hassan Ali Hassan.`,
+  },
+  {
+    id: 30,
+    name: "How to study scientificcally",
+    wing: "Academic Wing",
+    stage: "7th Class",
+    host: "Ma'Moon",
+    date: "23/05/2025",
+    image: Program30,
+    description: `An engaging session led by Ma'moon, offering practical techniques and smart strategies to enhance learning through a scientific approach to studying.`,
   },
 ];
 
