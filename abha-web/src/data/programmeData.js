@@ -354,6 +354,25 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     image: Program30,
     description: `An engaging session led by Ma'moon, offering practical techniques and smart strategies to enhance learning through a scientific approach to studying.`,
   },
+  {
+    id: 31,
+    name: "അക്ഷരവീഥി",
+    stage: "7th Class",
+    host: "Usthad Ajnas hudawi",
+    date: "19/06/2025",
+    image: Program31,
+    description: ``,
+  },
+  {
+    id: 32,
+    name: "ആശയ വ്യാഖ്യാനം",
+    stage: "7th Class",
+    wing: "Malayalam Wing",
+    host: "Muhammed Ameen",
+    date: "19/06/2025",
+    image: Program32,
+    description: ``,
+  },
 ];
 
 export const wantToDoProgrammes = [];
