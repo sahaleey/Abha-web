@@ -70,6 +70,19 @@
   backface-visibility: hidden;
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
 }
+/* styles.css */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #94a3b8; /* tailwind slate-400 */
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
 
 .flip-card-back {
   transform: rotateY(180deg);
