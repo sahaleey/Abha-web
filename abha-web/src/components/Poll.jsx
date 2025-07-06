@@ -29,10 +29,7 @@ const Feedback = () => {
     setIsSubmitting(true);
 
     try {
-      await axios.post(
-        "https://abha-web-1.onrender.com/api/feedback",
-        feedback
-      );
+      await axios.post("/api/feedback", feedback);
       addNotification("🎉 Thank you for your feedback!", "success");
       setFeedback({ rating: 0, comment: "" });
     } catch (error) {

@@ -58,16 +58,13 @@ const GetInTouch = () => {
     }
 
     try {
-      const response = await fetch(
-        "https://abha-web-1.onrender.com/api/contact/send",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
       const data = await response.json();
       if (data.success) {
         addNotification("✅ Message sent successfully!", "success");
