@@ -29,7 +29,7 @@ const Feedback = () => {
     setIsSubmitting(true);
 
     try {
-      await axios.post("/api/feedback", feedback);
+      await axios.post("https://abha-web.vercel.app/api/feedback", feedback);
       addNotification("🎉 Thank you for your feedback!", "success");
       setFeedback({ rating: 0, comment: "" });
     } catch (error) {

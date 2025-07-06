@@ -58,7 +58,7 @@ const GetInTouch = () => {
     }
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://abha-web.vercel.app/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
