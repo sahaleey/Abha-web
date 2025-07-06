@@ -1,10 +1,9 @@
-"use client";
-
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import episode1 from "@/assets/Podcast/thumb ep 1.jpg";
-import kattan from "../assets/Podcast/kattancast.jpeg";
+import episode2 from "@/assets/Podcast/thumb ep 2.jpg";
+import kattan from "../assets/Podcast/kattancast.svg";
 
 export function ExpandableCardDemo() {
   const [active, setActive] = useState(null);
@@ -279,7 +278,7 @@ export function ExpandableCardDemo() {
         >
           <motion.div className="relative w-[140px] h-[140px] mx-auto mb-12  rounded-full p-[2px]">
             {/* Spinning gradient border */}
-            <div className="absolute inset-0 animate-spin-slow bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-400 rounded-full blur-sm"></div>
+            <div className="absolute inset-0 animate-spin-slow bg-gradient-to-tr from-amber-300 via-amber-500 to-amber-700 rounded-full blur-sm"></div>
 
             {/* Vapor animation */}
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full">
@@ -290,7 +289,7 @@ export function ExpandableCardDemo() {
             <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
               <img
                 src={kattan}
-                alt=""
+                alt="Kattan Cast Logo"
                 className="rounded-full h-full w-full object-cover"
               />
             </div>
@@ -550,6 +549,67 @@ const cards = [
             <span className="font-medium">"Chathanum Kuttichattanum"</span>{" "}
             reflects the chaotic energy, misunderstood motives, and the dual
             nature of power struggles seen in today's geopolitical world.
+          </p>
+          <div className="flex justify-center mt-8"></div>
+        </div>
+      );
+    },
+  },
+  {
+    description: "Ma'Mooon - Muhammad",
+    title: "Calender Stories",
+    src: episode2,
+    ctaText: "Play Now",
+    ctaLink: "https://youtu.be/L_CXzRGjA4A?si=TJQJjzA-ekdyUsGc",
+    content: () => {
+      return (
+        <div className="space-y-6">
+          <p className="text-xl leading-relaxed">
+            In this episode of{" "}
+            <span className="font-semibold text-green-600 dark:text-green-400">
+              Kattan.cast
+            </span>
+            , we dive into the cosmic chaos and cultural rhythms of time itself
+            — decoding how humans have been chasing the sun, moon, and meaning
+            through the Solar and Lunar calendars. And yeah, we end up right at
+            the doors of Muharram — the sacred start of the Islamic year.
+          </p>
+          <div className="relative p-6 rounded-xl bg-neutral-100 dark:bg-neutral-800/50 border-l-4 border-green-500">
+            <p className="text-lg leading-relaxed italic">
+              "Whether you're vibing with sunrises or moon phases, this episode
+              breaks down how different civilizations, from ancient Egypt to
+              modern Muslims, literally see time differently. It’s more than
+              just dates — it’s identity, ritual, and resistance."
+            </p>
+          </div>
+          <p className="text-xl leading-relaxed">
+            The Solar Calendar? It’s all about that sun life. Used by most of
+            the world today — like in the Gregorian calendar — it tracks Earth's
+            orbit around the sun. Perfect for planning your vacations. But the
+            Lunar Calendar? That's moon-coded. It follows the moon's phases, so
+            months slide around the seasons. Think Islamic Hijri calendar — the
+            one that determines Ramadan, Eid, and yes... Muharram.
+          </p>
+          <p className="text-xl leading-relaxed">
+            <span className="font-medium">Muharram</span> isn’t just “New Year’s
+            Day” in the Islamic calendar. It’s one of the holiest months —
+            especially for Shia Muslims who commemorate the tragedy of Karbala,
+            the martyrdom of Imam Hussain, and a deep reflection on justice,
+            sacrifice, and standing up against oppression. No fireworks. No
+            countdowns. Just deep vibes and remembrance.
+          </p>
+          <div className="relative p-6 rounded-xl bg-yellow-100 dark:bg-yellow-800/40 border-l-4 border-yellow-500">
+            <p className="text-lg leading-relaxed italic">
+              "Muharram teaches us that not all beginnings are about celebration
+              — sometimes they’re about resistance, legacy, and remembering who
+              we are."
+            </p>
+          </div>
+          <p className="text-xl leading-relaxed">
+            So next time someone says “It’s just a calendar,” hit them with the
+            real tea. Calendars shape history, culture, and the way we move
+            through the world. And whether you're syncing with the sun or
+            chilling under the moon, it's all written in the stars — literally.
           </p>
           <div className="flex justify-center mt-8"></div>
         </div>
