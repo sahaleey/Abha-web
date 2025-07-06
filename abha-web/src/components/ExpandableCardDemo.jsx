@@ -3,7 +3,8 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import episode1 from "@/assets/Podcast/kattancast.jpeg";
+import episode1 from "@/assets/Podcast/thumb ep 1.jpg";
+import kattan from "../assets/Podcast/kattancast.jpeg";
 
 export function ExpandableCardDemo() {
   const [active, setActive] = useState(null);
@@ -276,13 +277,32 @@ export function ExpandableCardDemo() {
           transition={{ delay: 0.1, type: "spring" }}
           className="text-center mb-16"
         >
+          <motion.div className="relative w-[140px] h-[140px] mx-auto mb-12  rounded-full p-[2px]">
+            {/* Spinning gradient border */}
+            <div className="absolute inset-0 animate-spin-slow bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-400 rounded-full blur-sm"></div>
+
+            {/* Vapor animation */}
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full">
+              <div className="vapor h-16 w-38"></div>
+            </div>
+
+            {/* Image layer */}
+            <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
+              <img
+                src={kattan}
+                alt=""
+                className="rounded-full h-full w-full object-cover"
+              />
+            </div>
+          </motion.div>
+
           <motion.h2
             className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
           >
-            Kattan.cast
+            KATTAN CAST.
           </motion.h2>
           <motion.p
             className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto"
@@ -358,24 +378,24 @@ export function ExpandableCardDemo() {
                   <motion.div
                     layoutId={`image-${card.title}-${id}`}
                     className={`relative overflow-hidden rounded-lg flex-shrink-0 
-            w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48
-            max-w-full
-            ${
-              active?.title === card.title
-                ? "w-full max-w-md max-h-[300px]"
-                : ""
-            }`}
+              w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48
+              max-w-full
+              ${
+                active?.title === card.title
+                  ? "w-full max-w-md max-h-[300px]"
+                  : ""
+              }`}
                     whileHover={{ scale: 1.05 }}
                   >
                     <motion.img
                       src={card.src}
                       alt={card.title}
                       className={`w-full h-full rounded-lg shadow-md transition-all duration-500
-              ${
-                active?.title === card.title
-                  ? "object-contain max-h-[300px]"
-                  : "object-cover"
-              }`}
+                ${
+                  active?.title === card.title
+                    ? "object-contain max-h-[300px]"
+                    : "object-cover"
+                }`}
                       initial={{ scale: 1 }}
                       whileHover={{ scale: 1.1 }}
                     />
