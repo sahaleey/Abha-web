@@ -55,7 +55,7 @@ export default function ChatApp() {
     setShowPromptSuggestions(false);
 
     try {
-      const response = await fetch("https://project1-flox.onrender.com/chat", {
+      const response = await fetch("https://project1-tnon.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMsg }),
