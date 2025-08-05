@@ -8,7 +8,9 @@ import { FlipWord } from "./components/Ui/flip-words";
 import AbhaLoader from "./components/Loading";
 import Footer from "./components/Footer";
 import ErrorBoundary from "./components/ErrorBoundary";
+import GameDetail from "./pages/GameDetail";
 import FloatingIslands from "./components/FloatingIslands";
+import Games from "./pages/Games";
 import GlassCard from "./components/GlassCard";
 import HolographicTimeline from "./components/HolographicTimeline";
 import NebulaBackground from "./components/NebulaBackground";
@@ -304,6 +306,8 @@ function App() {
             <Route path="/community/:slug" element={<CommunityBio />} />
             <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route path="/podcast" element={<Podcast />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/games/:id" element={<GameDetail />} />
           </Routes>
         </ErrorBoundary>
 

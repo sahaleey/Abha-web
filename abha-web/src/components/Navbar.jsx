@@ -16,6 +16,7 @@ function Navbar() {
     { path: "/programmes", label: "Programs" },
     { path: "/podcast", label: "Podcast" },
     { path: "/radio", label: "Radio" },
+    { path: "/games", label: "Games" },
     { path: "/abha-ai", label: "ABHA AI" },
   ];
 
