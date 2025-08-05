@@ -12,7 +12,7 @@ const sounds = {
   wrong: new Howl({ src: ["../assets/sounds/wrong.mp3"] }),
   powerup: new Howl({ src: ["../assets/sounds/powerup.mp3"] }),
   timer: new Howl({ src: ["../assets/sounds/timer.mp3"] }),
-  victory: new Howl({ src: ["../assets/sounds/victory.mp3"] }),
+  victory: new Howl({ src: ["../assets/sounds/Victory.mp3"] }),
 };
 
 const GameDetail = () => {
@@ -44,6 +44,10 @@ const GameDetail = () => {
   const [usedPowerUps, setUsedPowerUps] = useState([]);
   const [streak, setStreak] = useState(0);
   const [showStreak, setShowStreak] = useState(false);
+  const [doubleActive, setDoubleActive] = useState({
+    "Team A": false,
+    "Team B": false,
+  });
 
   // Initialize game
   useEffect(() => {
@@ -162,10 +166,33 @@ const GameDetail = () => {
 
       const correct = shuffledQuestions[currentQuestion].correctAnswer;
       const isCorrect = option === correct;
-      const pointsToAdd =
-        powerUps[activeTeam].doublePoints > 0 && isCorrect ? 2 : 1;
 
-      // Update scores
+      let isDouble = false;
+
+      // ✅ Only apply double points if manually activated
+      if (isCorrect && doubleActive[activeTeam]) {
+        isDouble = true;
+
+        // Reset doubleActive after using it
+        setDoubleActive((prev) => ({
+          ...prev,
+          [activeTeam]: false,
+        }));
+
+        // Also consume a doublePoints power-up if available
+        if (powerUps[activeTeam].doublePoints > 0) {
+          setPowerUps((prev) => ({
+            ...prev,
+            [activeTeam]: {
+              ...prev[activeTeam],
+              doublePoints: prev[activeTeam].doublePoints - 1,
+            },
+          }));
+        }
+      }
+
+      const pointsToAdd = isCorrect ? (isDouble ? 2 : 1) : 0;
+
       if (isCorrect) {
         sounds.correct.play();
         setScore((prev) => prev + pointsToAdd);
@@ -186,12 +213,18 @@ const GameDetail = () => {
         setStreak(0);
       }
 
-      // Auto-advance after delay
       setTimeout(() => {
         handleNext();
       }, 1500);
     },
-    [currentQuestion, shuffledQuestions, hasAnswered, activeTeam, powerUps]
+    [
+      currentQuestion,
+      shuffledQuestions,
+      hasAnswered,
+      activeTeam,
+      powerUps,
+      doubleActive,
+    ]
   );
 
   // Handle time running out
@@ -205,22 +238,27 @@ const GameDetail = () => {
   }, [handleNext]);
 
   // Use power-up
-  const handlePowerUp = (powerUpType) => {
-    if (powerUps[activeTeam][powerUpType] > 0) {
+  const handlePowerUp = (type) => {
+    if (powerUps[activeTeam][type] > 0) {
       sounds.powerup.play();
+
       setPowerUps((prev) => ({
         ...prev,
         [activeTeam]: {
           ...prev[activeTeam],
-          [powerUpType]: prev[activeTeam][powerUpType] - 1,
+          [type]: prev[activeTeam][type] - 1,
         },
       }));
-      setUsedPowerUps((prev) => [
-        ...prev,
-        { team: activeTeam, type: powerUpType },
-      ]);
 
-      if (powerUpType === "skipQuestion") {
+      if (type === "doublePoints") {
+        // Activate double points for current question
+        setDoubleActive((prev) => ({
+          ...prev,
+          [activeTeam]: true,
+        }));
+      }
+
+      if (type === "skipQuestion") {
         handleNext();
       }
     }
@@ -232,6 +270,10 @@ const GameDetail = () => {
       ...q,
       options: shuffleArray([...q.options]),
     }));
+    setDoubleActive({
+      "Team A": false,
+      "Team B": false,
+    });
 
     setShuffledQuestions(shuffled);
     setCurrentQuestion(0);
