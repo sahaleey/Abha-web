@@ -169,17 +169,12 @@ const GameDetail = () => {
 
       let isDouble = false;
 
-      // ✅ Only apply double points if manually activated
       if (isCorrect && doubleActive[activeTeam]) {
         isDouble = true;
-
-        // Reset doubleActive after using it
         setDoubleActive((prev) => ({
           ...prev,
           [activeTeam]: false,
         }));
-
-        // Also consume a doublePoints power-up if available
         if (powerUps[activeTeam].doublePoints > 0) {
           setPowerUps((prev) => ({
             ...prev,
@@ -251,7 +246,6 @@ const GameDetail = () => {
       }));
 
       if (type === "doublePoints") {
-        // Activate double points for current question
         setDoubleActive((prev) => ({
           ...prev,
           [activeTeam]: true,

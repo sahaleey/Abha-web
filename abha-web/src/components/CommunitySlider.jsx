@@ -1,262 +1,198 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { ShieldCheck, Wifi } from "lucide-react";
 import communityMembers from "../data/communityBio";
 
 const CommunitySlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const sliderRef = useRef(null);
-  const intervalRef = useRef(null);
-
+  const [isPaused, setIsPaused] = useState(false);
+  
   const classTeacher = communityMembers.find((m) => m.isClassTeacher);
   const sliderMembers = communityMembers.filter((m) => !m.isClassTeacher);
 
+  // Auto-rotate the slider (pauses on hover)
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prev) =>
-        prev === sliderMembers.length - 1 ? 0 : prev + 1
-      );
-    }, 3000);
-    return () => clearInterval(intervalRef.current);
-  }, [sliderMembers.length]);
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev === sliderMembers.length - 1 ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isPaused, sliderMembers.length]);
 
   const goToSlide = (index) => {
     setCurrentIndex(index);
   };
 
-  const getCardStyle = (index) => {
-    const distance = index - currentIndex;
-    const absDistance = Math.abs(distance);
-
-    if (distance === 0) {
-      return {
-        scale: 1,
-        opacity: 1,
-        zIndex: 10,
-        x: "0%",
-        filter: "none",
-        transition: { type: "spring", damping: 25, stiffness: 200 },
-      };
-    } else if (absDistance === 1) {
-      const direction = distance > 0 ? 1 : -1;
-      return {
-        scale: 0.9,
-        opacity: 0.8,
-        zIndex: 5,
-        x: `${direction * 120}%`,
-        filter: "blur(1px)",
-        transition: { type: "spring", damping: 25, stiffness: 200 },
-      };
-    } else if (absDistance === 2) {
-      const direction = distance > 0 ? 1 : -1;
-      return {
-        scale: 0.8,
-        opacity: 0.6,
-        zIndex: 1,
-        x: `${direction * 180}%`,
-        filter: "blur(2px)",
-        transition: { type: "spring", damping: 25, stiffness: 200 },
-      };
-    } else {
-      return {
-        scale: 0.7,
-        opacity: 0,
-        zIndex: 0,
-        x: "0%",
-        filter: "blur(4px)",
-        transition: { type: "spring", damping: 25, stiffness: 200 },
-      };
-    }
-  };
-
   return (
-    <div className="relative max-w-7xl mx-auto py-20 px-4 overflow-hidden">
-      <div className="absolute -top-20 -left-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl -z-10"></div>
+    <section className="relative py-24 px-4 min-h-[900px] overflow-hidden bg-[#050505] text-white perspective-1000">
+      
+      {/* --- Ambient Background --- */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] mix-blend-screen" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] mix-blend-screen" />
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 mb-4">
-          Our Community Team
-        </h2>
-        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-          The brilliant minds behind our community's success
-        </p>
-      </motion.div>
+      <div className="relative max-w-7xl mx-auto z-10">
+        
+        {/* --- Header --- */}
+        <div className="text-center mb-20 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sm text-cyan-400 font-mono tracking-wider"
+          >
+            <ShieldCheck size={14} /> UNION DATABASE // AUTH_REQ
+          </motion.div>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500"
+          >
+            Our Community
+          </motion.h2>
+        </div>
 
-      {/* Class Teacher Card (unchanged) */}
-      {classTeacher && (
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-16 w-full max-w-md"
+        {/* --- Class Teacher (Static - No Flip) --- */}
+        {classTeacher && (
+          <div className="flex justify-center mb-24">
+             {/* Passed disableFlip={true} here */}
+             <MembershipCard member={classTeacher} isLeader={true} disableFlip={true} />
+          </div>
+        )}
+
+        {/* --- 3D Carousel --- */}
+        <div 
+          className="relative h-[500px] w-full flex items-center justify-center"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          <Link to={`/community/${classTeacher.slug}`}>
-            <div className="relative bg-gradient-to-br from-white/5 to-white/10 rounded-2xl p-8 backdrop-blur-sm border border-cyan-400/50 shadow-lg shadow-cyan-500/20 overflow-hidden hover:scale-105 transition">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-2xl" />
+          <AnimatePresence mode="popLayout">
+            {sliderMembers.map((member, index) => {
+              // Calculate position relative to current index
+              let offset = index - currentIndex;
+              
+              // Handle infinite loop logic nicely
+              if (offset < -2) offset += sliderMembers.length;
+              if (offset > 2) offset -= sliderMembers.length;
+              
+              // Only render visible cards (optimization)
+              if (Math.abs(offset) > 2) return null;
 
-              <div className="relative w-40 h-40 mx-auto mb-6">
-                <div className="absolute inset-0 rounded-full border-2 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]"></div>
-                <img
-                  rel="preload"
-                  src={classTeacher.image}
-                  alt={classTeacher.name}
-                  className="relative z-10 w-full h-full rounded-full object-cover"
-                />
-              </div>
-
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  {classTeacher.name}
-                </h3>
-                <p className="text-cyan-300 font-mono mb-4">
-                  {classTeacher.role}
-                </p>
-                <p className="text-gray-400 text-sm mb-6">{classTeacher.bio}</p>
-
-                <div className="flex flex-wrap justify-center gap-2 mb-6">
-                  {classTeacher.skill?.split(",").map((skill, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-1 rounded-full text-xs bg-cyan-900/30 text-cyan-300 border border-cyan-400/20"
-                    >
-                      {skill.trim()}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex justify-center">
-                  <button className="px-6 py-2 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-full text-sm font-medium shadow-lg">
-                    View Profile
-                  </button>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </motion.div>
-      )}
-
-      {/* New Stunning Slider */}
-      <div className="relative h-[500px] w-full" ref={sliderRef}>
-        <div className="absolute inset-0 flex items-center justify-center">
-          {sliderMembers.map((member, index) => (
-            <motion.div
-              key={index}
-              className={`absolute w-full max-w-xs ${
-                index === currentIndex ? "cursor-default" : "cursor-pointer"
-              }`}
-              style={{
-                ...getCardStyle(index),
-              }}
-              animate={getCardStyle(index)}
-              onClick={() => goToSlide(index)}
-            >
-              <Link to={`/community/${member.slug}`}>
+              return (
                 <motion.div
-                  whileHover={{
-                    scale: index === currentIndex ? 1.02 : 1.05,
-                    boxShadow:
-                      index === currentIndex
-                        ? "0 10px 30px -10px rgba(34, 211, 238, 0.5)"
-                        : "0 5px 15px -5px rgba(34, 211, 238, 0.3)",
+                  key={member.slug || index}
+                  className="absolute"
+                  initial={false}
+                  animate={{
+                    x: offset * 320, // Spacing between cards
+                    scale: offset === 0 ? 1 : 0.85,
+                    opacity: offset === 0 ? 1 : Math.abs(offset) === 1 ? 0.6 : 0.3,
+                    zIndex: offset === 0 ? 50 : 50 - Math.abs(offset),
+                    rotateY: offset * -15, // Subtle 3D turn for side cards
                   }}
-                  className={`relative h-full bg-gradient-to-br from-white/5 to-white/10 rounded-2xl p-8 backdrop-blur-sm border overflow-hidden ${
-                    index === currentIndex
-                      ? "border-cyan-400/50 shadow-lg shadow-cyan-500/20"
-                      : "border-white/10"
-                  }`}
+                  transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                  style={{
+                     perspective: "1500px",
+                  }}
+                  onClick={() => goToSlide(index)}
                 >
-                  {index === currentIndex && (
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-2xl"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
-
-                  <div className="relative w-32 h-32 mx-auto mb-4">
-                    <motion.div
-                      className={`absolute inset-0 rounded-full border-2 ${
-                        index === currentIndex
-                          ? "border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]"
-                          : "border-cyan-400/50"
-                      }`}
-                      animate={{
-                        rotate: index === currentIndex ? 360 : 0,
-                        transition: {
-                          duration: 10,
-                          repeat: Infinity,
-                          ease: "linear",
-                        },
-                      }}
-                    />
-                    <motion.img
-                      rel="preload"
-                      src={member.image}
-                      alt={member.name}
-                      className="relative z-10 w-full h-full rounded-full object-cover"
-                      whileHover={{ scale: 1.05 }}
-                    />
-                  </div>
-
-                  <div className="text-center">
-                    <h3 className="text-xl font-bold text-white mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="text-cyan-300 text-sm mb-2">{member.role}</p>
-                    <p
-                      className={`text-gray-400 text-xs mb-4 ${
-                        index === currentIndex ? "line-clamp-4" : "line-clamp-2"
-                      }`}
-                    >
-                      {member.bio || member.quote || `${member.name}'s profile`}
-                    </p>
-
-                    <div className="flex flex-wrap justify-center gap-1 mb-4">
-                      {member.skill
-                        ?.split(",")
-                        .slice(0, index === currentIndex ? 3 : 2)
-                        .map((skill, i) => (
-                          <motion.span
-                            key={i}
-                            className={`px-2 py-0.5 rounded-full text-xs ${
-                              index === currentIndex
-                                ? "bg-cyan-900/30 text-cyan-300 border border-cyan-400/20"
-                                : "bg-gray-800/50 text-gray-400"
-                            }`}
-                            whileHover={{ scale: 1.1 }}
-                          >
-                            {skill.trim()}
-                          </motion.span>
-                        ))}
-                    </div>
-
-                    <motion.div
-                      className="flex justify-center"
-                      animate={{
-                        opacity: index === currentIndex ? 1 : 0,
-                        y: index === currentIndex ? 0 : 10,
-                      }}
-                    >
-                      <button className="px-4 py-1.5 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-full text-xs font-medium shadow-lg hover:shadow-cyan-500/40 transition-all">
-                        View Profile
-                      </button>
-                    </motion.div>
-                  </div>
+                   {/* Students allow flip */}
+                   <MembershipCard 
+                      member={member} 
+                      isActive={offset === 0}
+                      disableFlip={false}
+                   />
                 </motion.div>
-              </Link>
-            </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </div>
+
+        {/* --- Navigation Dots --- */}
+        <div className="flex justify-center gap-3 mt-12">
+          {sliderMembers.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => goToSlide(idx)}
+              className={`h-1 rounded-full transition-all duration-300 ${
+                idx === currentIndex ? "w-8 bg-cyan-400" : "w-2 bg-white/20 hover:bg-white/40"
+              }`}
+            />
           ))}
         </div>
+
       </div>
+    </section>
+  );
+};
+
+// --- SUB-COMPONENT: The Flip Card ---
+const MembershipCard = ({ member, isLeader = false, isActive = true, disableFlip = false }) => {
+  return (
+    <div className={`group relative w-[320px] h-[480px] perspective-1000 ${isActive ? 'cursor-pointer' : 'pointer-events-none'}`}>
+      
+      {/* The Flipper Container */}
+      <motion.div
+        className={`relative w-full h-full transition-all duration-700 preserve-3d ${!disableFlip ? "group-hover:rotate-y-180" : ""}`}
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        
+        {/* === FRONT SIDE (The Portrait) === */}
+        <div className="absolute inset-0 w-full h-full backface-hidden rounded-2xl overflow-hidden border border-white/10 bg-gray-900 shadow-2xl">
+          {/* Image */}
+          <div className="absolute inset-0">
+             <img 
+                src={member.image} 
+                alt={member.name} 
+                className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500" 
+             />
+             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
+          </div>
+          
+          {/* Overlay Info */}
+          <div className="absolute bottom-0 left-0 w-full p-6">
+             <div className="flex items-center gap-2 mb-2">
+                <div className={`w-2 h-2 rounded-full ${isLeader ? 'bg-amber-400' : 'bg-cyan-400'} animate-pulse`} />
+                <span className="text-xs tracking-widest uppercase text-white/70">{isLeader ? 'Class Lead' : 'Union Member'}</span>
+             </div>
+             <h3 className="text-3xl font-bold text-white mb-1 leading-tight">{member.name}</h3>
+             <p className="text-white/60 text-sm font-mono truncate">{member.role}</p>
+          </div>
+          
+          {/* Decoration */}
+          <div className="absolute top-4 right-4 text-white/30">
+            <Wifi size={20} />
+          </div>
+        </div>
+
+
+        {/* === BACK SIDE (The Membership Card Image) === */}
+        {/* Only render back side if flipping is enabled */}
+        {!disableFlip && (
+            <div 
+              className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl"
+            >
+              {/* NOTE: Ensure your data objects have 'cardImage' property! */}
+              {member.cardImage ? (
+                  <img 
+                    src={member.cardImage} 
+                    alt={`${member.name} Membership Card`} 
+                    className="w-full h-full object-contain bg-black" 
+                  />
+              ) : (
+                  <div className="flex flex-col items-center justify-center h-full text-center p-6 text-gray-500">
+                      <p>Membership Card Image Not Found</p>
+                      <p className="text-xs mt-2">(Add "cardImage" to your data)</p>
+                  </div>
+              )}
+            </div>
+        )}
+
+      </motion.div>
     </div>
   );
 };

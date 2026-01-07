@@ -1,39 +1,15 @@
 // src/data/communityMembers.js
-import ramees from "../assets/images/ramees.jpg";
-import maamoon from "../assets/images/maamoon.jpg";
-import jasil from "../assets/images/jasil.jpg";
-import ashiq from "../assets/images/ashiq.jpg";
-import swabah from "../assets/images/swabah.jpg";
-import muhsin from "../assets/images/muhsin.png";
-import bishr from "../assets/images/bishr.jpg";
-import jalal from "../assets/images/jalal.jpg";
-import ahmed from "../assets/images/ahmed.jpg";
-import alameen from "../assets/images/alameen.jpg";
-import anas from "../assets/images/anas.jpg";
-import anshif from "../assets/images/anshif.jpg";
-import anwar from "../assets/images/anwar.jpg";
-import dilshad from "../assets/images/dilshad.jpg";
-import favas from "../assets/images/favas.jpg";
-import fayiz from "../assets/images/fayiz.jpg";
-import ihsan from "../assets/images/ihsan.jpg";
-import mabrook from "../assets/images/mabrook.jpg";
-import muhammed from "../assets/images/muhammed.jpg";
-import rasheed from "../assets/images/rasheed.jpg";
-import ribin from "../assets/images/ribin.jpg";
-import sahal from "../assets/images/sahal.jpg";
-import sajad from "../assets/images/sajad.jpg";
-import sinankm from "../assets/images/sinan km.jpg";
-import sinanpm from "../assets/images/sinan pm.jpg";
-import yaseen from "../assets/images/yaseen.jpg";
-import ustd from "../assets/images/shreef u.jpg";
+
+const getImage = (name) =>
+  new URL(`../assets/images/${name}`, import.meta.url).href;
 
 const communityMembers = [
   {
     slug: "usthad",
     name: "Muhammad Shareef Hudawi",
     role: "Class Teacher",
-    image: ustd,
-    address: "Pattimattam, Aluva, Ernakulam", // Corrected image path
+    image: getImage("shreef u.jpg"),
+    address: "Pattimattam, Aluva, Ernakulam",
     DOB: "29/10/1994",
     skill: "Malayalam Writer",
     isClassTeacher: true,
@@ -42,9 +18,10 @@ const communityMembers = [
     slug: "ramees",
     name: "Ramees",
     role: "Second Leader",
-    image: ramees,
+    image: getImage("ramees.jpg"),
+    cardImage: getImage("rameescrd.jpg"),
     add: "516",
-    address: "Kuzhimanna, Kizhisseri, Malappuram", // Corrected image path
+    address: "Kuzhimanna, Kizhisseri, Malappuram",
     DOB: "4-11-2006",
     skill: "Singer",
     bio: "Creativity meets strategy to tell your story.",
@@ -53,19 +30,21 @@ const communityMembers = [
     slug: "maamoon",
     name: "Ma'moon",
     role: "General Secretery + Academic cord.",
-    image: maamoon, // Corrected image path
-    DOB: "22/08/2007",
+    image: getImage("maamoon.jpg"),
+    cardImage: getImage("ma-mooncrd.jpg"),
     add: "535",
     address: "Edathala, Ernakulam",
+    DOB: "22/08/2007",
     skill: "Arabic Scholar",
   },
   {
     slug: "jasil",
     name: "Muhammed Jasil T.J",
     role: "Treasure + Academic cord.",
+    image: getImage("jasil.jpg"),
+    cardImage: getImage("jasilcrd.jpg"),
     add: "534",
     address: "Kechery, Thrissur",
-    image: jasil, // Corrected image path
     DOB: "09/05/2008",
     skill: "Singer, Hadith expert, Arabic scholar",
   },
@@ -73,19 +52,21 @@ const communityMembers = [
     slug: "ashique",
     name: "Muhammed Ashique",
     role: "Al-Majma'ah Chair.",
+    image: getImage("ashiq.jpg"),
+    cardImage: getImage("ashiqcrd.jpg"),
     add: "536",
     address: "Muvattupuzha, Ernakulam",
-    image: ashiq, // Corrected image path
     DOB: "25/02/2008",
-    skill: "drawing, calligraphy",
+    skill: "Drawing, Calligraphy",
   },
   {
     slug: "swabah",
     name: "Swabah",
     role: "English Hub Chair.",
+    image: getImage("swabah.jpg"),
+    cardImage: getImage("swabahcrd.jpg"),
     add: "545",
     address: "Kuttamashery, Aluva, Eranakulam",
-    image: swabah, // Corrected image path
     DOB: "03/10/2008",
     skill: "English Scholar, Singer",
   },
@@ -93,9 +74,10 @@ const communityMembers = [
     slug: "muhsin",
     name: "Muhsin",
     role: "Auditing Board",
+    image: getImage("muhsin.png"),
+    cardImage: getImage("muhsincrd.png"),
     add: "518",
     address: "Vaduthala, Jetty, Alappuzha",
-    image: muhsin, // Corrected image path
     DOB: "16/05/2007",
     skill: "Tafheemul Quran",
   },
@@ -103,30 +85,32 @@ const communityMembers = [
     slug: "bishr",
     name: "Bishr",
     role: "Auditing Board",
+    image: getImage("bishr.jpg"),
+    cardImage: getImage("bishrcrd.jpg"),
     add: "564",
     address: "Ramankulam, Manjeri, Malappuram",
-    image: bishr, // Corrected image path
     DOB: "29/09/2007",
     skill: "Singer, Artist",
   },
   {
     slug: "jalal",
     name: "Jalal",
-    role: "Lisanul jazeera Conv.",
+    role: "Lisanul Jazeera Conv.",
+    image: getImage("jalal.jpg"),
+    cardImage: getImage("jalalcrd.jpg"),
     add: "568",
     address: "Kottappuram, Mannarkad, Palakkad",
-    image: jalal, // Corrected image path
     DOB: "17/11/2008",
-    skill: "Orator Arabic",
-    bio: "Creativity meets strategy to tell your story.",
+    skill: "Arabic Orator",
   },
   {
     slug: "ihsan",
     name: "Ihsan",
     role: "English Hub Chair.",
-    image: ihsan,
+    image: getImage("ihsan.jpg"),
+    cardImage: getImage("ihsancrd.jpg"),
     add: "540",
-    address: "Thaikattukkara, Aluva, Eranakulam", // Corrected image path
+    address: "Thaikattukkara, Aluva, Eranakulam",
     DOB: "23/03/2009",
     skill: "Graphic Designer, English Expert",
   },
@@ -134,9 +118,10 @@ const communityMembers = [
     slug: "sinan-km",
     name: "Sinan KM",
     role: "Creative Designer",
+    image: getImage("sinan km.jpg"),
+    cardImage: getImage("sinan kmcrd.jpg"),
     add: "537",
     address: "Ponjassery, Perumbavoor, Eranakulam",
-    image: sinankm, // Corrected image path
     DOB: "24/07/2008",
     skill: "Graphic Designer, English Expert, Artist",
   },
@@ -144,9 +129,10 @@ const communityMembers = [
     slug: "al-ameen",
     name: "Al-Ameen",
     role: "President",
+    image: getImage("alameen.jpg"),
+    cardImage: getImage("al-ameencrd.jpg"),
     add: "538",
     address: "Yedathala, Aluva, Ernakulam",
-    image: alameen, // Corrected image path
     DOB: "05/11/2007",
     skill: "English Scholar, Motivational Speaker",
   },
@@ -154,19 +140,21 @@ const communityMembers = [
     slug: "sajad",
     name: "Sajad",
     role: "Vice President",
+    image: getImage("sajad.jpg"),
+    cardImage: getImage("sajadcrd.jpg"),
     add: "533",
     address: "Painkanniyoor, Venmenad, Thrissur",
-    image: sajad,
     DOB: "21/12/2007",
     skill: "Artist",
   },
   {
     slug: "anshif",
     name: "Anshif",
+    role: "Member",
+    image: getImage("anshif.jpg"),
+    cardImage: getImage("anshifcrd.jpg"),
     add: "553",
     address: "Cherukunnu, Malappuram",
-    role: "Member",
-    image: anshif, // Corrected image path
     DOB: "24/12/2007",
     skill: "Singer",
   },
@@ -174,9 +162,10 @@ const communityMembers = [
     slug: "rasheed",
     name: "Rasheed",
     role: "Social Affairs Chair.",
+    image: getImage("rasheed.jpg"),
+    cardImage: getImage("rasheedcrd.jpg"),
     add: "557",
     address: "Valanjeri, Malappuram",
-    image: rasheed, // Corrected image path
     DOB: "08/07/2008",
     skill: "Urdu Writer",
   },
@@ -184,9 +173,10 @@ const communityMembers = [
     slug: "sahal",
     name: "Muhammed Sahal C.P",
     role: "Zuban e Ghalib Chair.",
+    image: getImage("sahal.jpg"),
+    cardImage: getImage("sahelcrd.jpg"),
     add: "551",
     address: "Thiruvambady, Kozhikkode",
-    image: sahal, // Corrected image path
     DOB: "19/05/2008",
     skill: "Urdu Writer, Web Designer, Science Expert",
   },
@@ -194,30 +184,32 @@ const communityMembers = [
     slug: "ahmed",
     name: "Ahmed",
     role: "Malayala Koottaima Conv.",
+    image: getImage("ahmed.jpg"),
+    cardImage: getImage("ahmedcrd.jpg"),
     add: "545",
     address: "Kothamangalam, Ernakulam",
-    image: ahmed, // Corrected image path
     DOB: "06/06/2007",
-    skill: "Malayalam Writer, Singer, Raper, Song Writer",
+    skill: "Malayalam Writer, Singer, Rapper, Song Writer",
   },
   {
     slug: "dilshad",
     name: "Dilshad",
     role: "Social Affair Conv.",
-    image: dilshad,
+    image: getImage("dilshad.jpg"),
+    cardImage: getImage("dilshadcrd.jpg"),
     add: "552",
-    address: "Cherur, Malappuram", // Corrected image path
+    address: "Cherur, Malappuram",
     DOB: "09/05/2008",
     skill: "Arabic Writer",
-    bio: "Creativity meets strategy to tell your story.",
   },
   {
     slug: "fayiz",
     name: "Fayiz",
     role: "Social Media Manager",
-    image: fayiz,
+    image: getImage("fayiz.jpg"),
+    cardImage: getImage("fayizcrd.jpg"),
     add: "567",
-    address: "Kuttamashery, Aluva, Eranakulam", // Corrected image path
+    address: "Kuttamashery, Aluva, Eranakulam",
     DOB: "25/04/2008",
     skill: "Social Media Influencer",
   },
@@ -225,62 +217,54 @@ const communityMembers = [
     slug: "mabrook",
     name: "Mabrook",
     role: "Creative Designer",
+    image: getImage("mabrook.jpg"),
+    cardImage: getImage("mabrookcrd.jpg"),
     add: "499",
     address: "Muvattuppuzha, Eranakulam",
-    image: mabrook, // Corrected image path
     DOB: "22/10/2007",
     skill: "Artist, RJ, Robotics Expert",
   },
-
   {
     slug: "yaseen",
     name: "Yaseen",
     role: "IQ Orbit Chair.",
+    image: getImage("yaseen.jpg"),
+    cardImage: getImage("yaseencrd.jpg"),
     add: "559",
     address: "Thodupuzha, Idukki",
-    image: yaseen, // Corrected image path
-    DOB: "28/8/2007",
+    DOB: "28/08/2007",
     skill: "GK Awareness",
   },
-
   {
     slug: "favas",
     name: "Favas",
     role: "Leader",
+    image: getImage("favas.jpg"),
+    cardImage: getImage("favascrd.jpg"),
     add: "549",
-    address: "Eranad, manjeri, malappuram",
-    image: favas, // Corrected image path
+    address: "Eranad, Manjeri, Malappuram",
     DOB: "08/09/2008",
-    skill: "Actor, Inspiration talk",
+    skill: "Actor, Inspiration Talk",
   },
   {
     slug: "anas",
     name: "Anas",
     role: "Member",
+    image: getImage("anas.jpg"),
+    cardImage: getImage("anascrd.jpg"),
     add: "507",
-    address: "Chenthrapinni, Thrissure",
-    image: anas, // Corrected image path
+    address: "Chenthrapinni, Thrissur",
     DOB: "07/08/2007",
     skill: "Orator",
   },
-
-  {
-    slug: "anwar",
-    name: "Anwar",
-    role: "Joint Secretery + IQ Orbit Conv.",
-    image: anwar,
-    add: "495",
-    address: "irukkupalam, Thodupuzha, Idukki", // Corrected image path
-    DOB: "01/12/2006",
-    skill: "GK awareness, MLM Essay",
-  },
   {
     slug: "sinan-pm",
-    name: "Sinan Pm",
+    name: "Sinan PM",
     role: "Zubane e Ghalib Conv.",
+    image: getImage("sinan pm.jpg"),
+    cardImage: getImage("sinan pmcrd.jpg"),
     add: "558",
     address: "Pattambi, Palakkad",
-    image: sinanpm, // Corrected image path
     DOB: "09/05/2008",
     skill: "Urdu Writer",
   },
@@ -288,23 +272,38 @@ const communityMembers = [
     slug: "ribin",
     name: "Ribin",
     role: "P.R.O",
+    image: getImage("ribin.jpg"),
+    cardImage: getImage("ribincrd.jpg"),
     add: "480",
     address: "Kuttippuram, Malappuram",
-    image: ribin, // Corrected image path
     DOB: "13/11/2006",
-    skill: "Leadership, Excell expert",
+    skill: "Leadership, Excel Expert",
   },
   {
     slug: "mohammed",
     name: "Mohammed",
     role: "Malayala Koottaima Chair.",
-    image: muhammed,
+    image: getImage("muhammed.jpg"),
+    cardImage: getImage("muhammedcrd.jpg"),
     add: "539",
-    address: "Pezhakkappilly, Eranakulam", // Corrected image path
+    address: "Pezhakkappilly, Eranakulam",
     DOB: "22/08/2008",
     skill: "Malayalam Writer, Graphic Designer",
   },
-  // Add more members as needed
+  {
+  slug: "anwar",
+  name: "Anwar",
+  role: "Joint Secretery + IQ Orbit Conv.",
+  image: getImage("anwar.jpg"),
+  cardImage: getImage("anwarcrd.jpg"),
+  add: "495",
+  address: "irukkupalam, Thodupuzha, Idukki", 
+  DOB: "01/12/2006",
+  skill: "GK awareness, MLM Essay",
+},
 ];
 
 export default communityMembers;
+
+
+

@@ -175,7 +175,7 @@ const Footer = () => {
           <p>
             Developed by{" "}
             <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent font-semibold ">
-              <a href="https://dev-scp.vercel.app">SCP</a>
+              <a href="https://sahaleey.me">SCP</a>
             </span>
           </p>
         </div>

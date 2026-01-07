@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSend, FiUser, FiMail, FiMessageSquare, FiX } from "react-icons/fi";
+import emailjs from "@emailjs/browser";
 
 const GetInTouch = () => {
   const [formData, setFormData] = useState({
@@ -13,25 +14,26 @@ const GetInTouch = () => {
   const [emailError, setEmailError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Add a new notification
+  // --- Notification Helpers ---
   const addNotification = (message, type = "info") => {
     const id = Date.now();
     setNotifications((prev) => [...prev, { id, message, type }]);
 
     // Auto-remove after 5 seconds
     setTimeout(() => {
-      removeNotification(id);
+      setNotifications((prev) => prev.filter((n) => n.id !== id));
     }, 5000);
   };
 
-  // Remove a notification
   const removeNotification = (id) => {
     setNotifications((prev) => prev.filter((n) => n.id !== id));
   };
 
+  // --- Input Handler ---
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    // Simple email validation on change
     if (name === "email") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (value && !emailRegex.test(value)) {
@@ -44,42 +46,46 @@ const GetInTouch = () => {
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
 
+  // --- Submit Logic ---
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     if (emailError || !formData.email) {
-      addNotification(
-        "⚠️ Please enter a valid email before submitting.",
-        "warning"
-      );
+      addNotification("⚠️ Please enter a valid email.", "warning");
       setIsSubmitting(false);
       return;
     }
 
+    // --- EMAILJS CONFIGURATION ---
+    // 1. Service ID: You provided this.
+    const SERVICE_ID = "service_qxcd6in";
+
+    // 2. Template ID: Go to EmailJS Dashboard > Email Templates > Create New Template.
+    //    Copy the ID (e.g., "template_x7z8y9") and paste it below.
+    const TEMPLATE_ID = "template_9wz5poe"; 
+
+    // 3. Public Key: Go to EmailJS Dashboard > Account > Public Key.
+    //    Copy it (e.g., "user_12345abcde") and paste it below.
+    const PUBLIC_KEY = "FxMMqUID4zVlRnpM7";
+
+    // Data to send (Match these names {{name}}, {{email}} in your EmailJS template)
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+    };
+
     try {
-      const response = await fetch("https://abha-web.vercel.app/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
-      if (data.success) {
-        addNotification("✅ Message sent successfully!", "success");
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        addNotification(
-          "❌ Failed to send message. Please try again later.",
-          "error"
-        );
-      }
+    
+
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+      
+      addNotification("✅ Message sent successfully!", "success");
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
-      addNotification(
-        "⚠️ Error sending message. Please check your connection.",
-        "error"
-      );
+      console.error("EmailJS Error:", error);
+      addNotification("❌ Failed to send message. Please try again.", "error");
     } finally {
       setIsSubmitting(false);
     }
@@ -87,7 +93,8 @@ const GetInTouch = () => {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-[#0a0a0f] to-[#1a1a25] text-white py-20 px-6 md:px-20 overflow-hidden">
-      {/* Floating Notifications */}
+      
+      {/* --- Floating Notifications --- */}
       <AnimatePresence>
         {notifications.map((notification) => (
           <motion.div
@@ -97,7 +104,9 @@ const GetInTouch = () => {
                 ? "bg-green-900/30 text-green-400 border-green-400/20"
                 : notification.type === "warning"
                 ? "bg-yellow-900/30 text-yellow-400 border-yellow-400/20"
-                : "bg-red-900/30 text-red-400 border-red-400/20"
+                : notification.type === "error"
+                ? "bg-red-900/30 text-red-400 border-red-400/20"
+                : "bg-blue-900/30 text-blue-400 border-blue-400/20"
             }`}
             initial={{ x: 300, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -117,7 +126,7 @@ const GetInTouch = () => {
         ))}
       </AnimatePresence>
 
-      {/* Background elements */}
+      {/* --- Background Elements --- */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-20">
         <div className="absolute inset-0 bg-[url('/grid.svg')]"></div>
       </div>

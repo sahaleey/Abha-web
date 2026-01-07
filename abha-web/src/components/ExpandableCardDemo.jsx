@@ -62,7 +62,7 @@ export function ExpandableCardDemo() {
                 height: 40,
                 borderRadius: "50%",
                 background:
-                  "radial-gradient(circle, rgba(74,222,128,0.3) 0%, rgba(74,222,128,0) 70%)",
+                  "radial-gradient(circle, #64010d 0%, rgba(74,222,128,0) 70%)",
                 filter: "blur(1px)",
               }}
             />
@@ -81,7 +81,7 @@ export function ExpandableCardDemo() {
                 height: 200,
                 borderRadius: "50%",
                 background:
-                  "radial-gradient(circle, rgba(74,222,128,0.4) 0%, rgba(74,222,128,0) 70%)",
+                  "radial-gradient(circle, #64010d 0%, rgba(74,222,128,0) 70%)",
                 filter: "blur(10px)",
               }}
             />
@@ -166,7 +166,7 @@ export function ExpandableCardDemo() {
                 animate={{ opacity: 1 }}
                 style={{
                   background:
-                    "linear-gradient(135deg, rgba(74,222,128,0.5) 0%, rgba(34,197,94,0.2) 50%, rgba(74,222,128,0.5) 100%)",
+                    "linear-gradient(135deg, #64010d 0%, #64010d 50%, #64010d 100%)",
                   WebkitMask:
                     "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                   WebkitMaskComposite: "xor",
@@ -236,16 +236,16 @@ export function ExpandableCardDemo() {
                     transition={{ delay: 0.3 }}
                     whileHover={{
                       scale: 1.05,
-                      boxShadow: "0 5px 25px rgba(74, 222, 128, 0.5)",
+                      boxShadow: "0 5px 25px #64010d",
                     }}
                     whileTap={{ scale: 0.95 }}
-                    className="relative px-8 py-4 rounded-full font-bold bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg hover:shadow-green-500/40 transition-all overflow-hidden group"
+                    className="relative px-8 py-4 rounded-full font-bold bg-gradient-to-r #64010d to-[#69050d]text-white shadow-lg hover:shadow-green-500/40 transition-all overflow-hidden group"
                   >
                     <span className="relative z-10 flex items-center gap-2">
                       <PlayIcon />
                       {active.ctaText}
                     </span>
-                    <motion.span className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <motion.span className="absolute inset-0 bg-gradient-to-r from-[#69050d] #64010d opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </motion.a>
                 </div>
 
@@ -296,7 +296,7 @@ export function ExpandableCardDemo() {
           </motion.div>
 
           <motion.h2
-            className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600"
+            className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r #64010d to-red-600"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
@@ -354,7 +354,7 @@ export function ExpandableCardDemo() {
                   transition={{ duration: 0.4 }}
                   style={{
                     background:
-                      "linear-gradient(45deg, rgba(74,222,128,0.3) 0%, rgba(34,197,94,0.15) 50%, rgba(74,222,128,0.3) 100%)",
+                      "linear-gradient(45deg, #64010d 0%, #64010d 50%, #64010d 100%)",
                   }}
                 />
 
@@ -368,7 +368,7 @@ export function ExpandableCardDemo() {
                       opacity: hoveredIndex === index ? 0.6 : 0,
                       background: `radial-gradient(circle at ${
                         hoveredIndex === index ? "60% 50%" : "50% 50%"
-                      }, rgba(74, 222, 128, 0.3), transparent 70%)`,
+                      }, #64010d, transparent 70%)`,
                     }}
                     transition={{ duration: 0.5 }}
                   />
@@ -432,9 +432,9 @@ export function ExpandableCardDemo() {
                       layoutId={`button-${card.title}-${id}`}
                       whileHover={{
                         scale: 1.05,
-                        backgroundColor: "rgb(34 197 94)",
+                        backgroundColor: "#64010d",
                         color: "white",
-                        boxShadow: "0 4px 20px rgba(34, 197, 94, 0.3)",
+                        boxShadow: "0 4px 20px #64010d",
                       }}
                       whileTap={{ scale: 0.95 }}
                       className="mt-4 px-6 py-3 rounded-full font-medium bg-neutral-100 dark:bg-neutral-700 text-neutral-800 dark:text-white shadow-sm hover:shadow-md transition-all flex items-center gap-2 justify-center md:justify-start"
@@ -556,7 +556,7 @@ const cards = [
     },
   },
   {
-    description: "Ma'Mooon - Muhammad",
+    description: "Ma'moon - Muhammad",
     title: "Calender Stories",
     src: episode2,
     ctaText: "Play Now",
