@@ -7,8 +7,11 @@ import {
   FaPenAlt,
   FaHandshake,
   FaBrain,
-  FaMicroscope,
-  FaLightbulb,
+  FaYoutube,
+  FaInstagram,
+  FaSpotify,
+  FaTwitter,
+  FaAt,
 } from "react-icons/fa";
 import { GiSpellBook } from "react-icons/gi";
 import { MdTranslate } from "react-icons/md";
@@ -56,6 +59,39 @@ const About = () => {
       desc: "Expanding intellectual horizons through critical thinking and knowledge exploration",
       icon: <FaBrain className="text-3xl text-indigo-400" />,
       color: "from-indigo-500/10 to-indigo-600/10",
+    },
+  ];
+
+  const socialLinks = [
+    {
+      name: "YouTube",
+      icon: <FaYoutube />,
+      url: "https://www.youtube.com/@abhamates",
+      gradient: "hover:shadow-red-500/50 hover:border-red-500/50 hover:bg-red-500/10 text-gray-300 hover:text-red-400",
+    },
+    {
+      name: "Instagram",
+      icon: <FaInstagram />,
+      url: "https://www.instagram.com/_abhanric_",
+      gradient: "hover:shadow-pink-500/50 hover:border-pink-500/50 hover:bg-pink-500/10 text-gray-300 hover:text-pink-400",
+    },
+    {
+      name: "X (Twitter)",
+      icon: <FaTwitter />,
+      url: "https://www.x.com/abhamates14th",
+      gradient: "hover:shadow-gray-400/50 hover:border-gray-400/50 hover:bg-gray-500/10 text-gray-300 hover:text-white",
+    },
+    {
+      name: "Spotify",
+      icon: <FaSpotify />,
+      url: "https://www.spotify.com/in-en/account/overview/?utm_source=spotify&utm_medium=",
+      gradient: "hover:shadow-green-500/50 hover:border-green-500/50 hover:bg-green-500/10 text-gray-300 hover:text-green-400",
+    },
+    {
+      name: "Threads",
+      icon: <FaAt />,
+      url: "https://www.threads.com/@_abha_nric?hl=en",
+      gradient: "hover:shadow-white/30 hover:border-white/30 hover:bg-white/5 text-gray-300 hover:text-white",
     },
   ];
 
@@ -205,6 +241,42 @@ const About = () => {
         </div>
       </motion.section>
 
+      {/* --- NEW SECTION: Social Links --- */}
+      <motion.section
+        className="mb-28 max-w-6xl mx-auto text-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 bg-gradient-to-r from-white via-gray-200 to-gray-500 bg-clip-text text-transparent">
+          Connect Across Platforms
+        </h2>
+        
+        <div className="flex flex-wrap justify-center gap-6">
+          {socialLinks.map((social, index) => (
+            <motion.a
+              key={index}
+              href={social.url}
+              target="_blank"
+              rel="noreferrer"
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1, type: "spring" }}
+              whileHover={{ scale: 1.1, y: -5 }}
+              className={`flex flex-col items-center justify-center w-28 h-28 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-300 group cursor-pointer ${social.gradient}`}
+            >
+              <div className="text-4xl mb-3 transition-transform duration-300 group-hover:scale-110">
+                {social.icon}
+              </div>
+              <span className="text-xs font-bold tracking-wider opacity-60 group-hover:opacity-100">
+                {social.name}
+              </span>
+            </motion.a>
+          ))}
+        </div>
+      </motion.section>
+
       {/* Call to Action */}
       <motion.div
         className="text-center"
@@ -223,14 +295,16 @@ const About = () => {
         </motion.p>
         <Link to="/get-in-touch">
           <motion.button
-            className="px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-black font-bold rounded-xl relative overflow-hidden group"
+            className="px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-black font-bold rounded-xl relative overflow-hidden group shadow-lg shadow-orange-500/20"
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 0 20px rgba(245, 158, 11, 0.5)",
+              boxShadow: "0 0 30px rgba(245, 158, 11, 0.4)",
             }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="relative z-10">Connect With Our Wings</span>
+            <span className="relative z-10 flex items-center gap-2">
+               Connect With Our Wings
+            </span>
             <span className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </motion.button>
         </Link>

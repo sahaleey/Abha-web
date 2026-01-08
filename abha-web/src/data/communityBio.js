@@ -53,7 +53,7 @@ const communityMembers = [
     name: "Muhammed Ashique",
     role: "Al-Majma'ah Chair.",
     image: getImage("ashiq.jpg"),
-    cardImage: getImage("ashiqcrd.jpg"),
+    cardImage: getImage("ahiqcrd.jpg"),
     add: "536",
     address: "Muvattupuzha, Ernakulam",
     DOB: "25/02/2008",
