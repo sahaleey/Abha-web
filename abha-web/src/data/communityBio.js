@@ -75,7 +75,7 @@ const communityMembers = [
     name: "Muhsin",
     role: "Auditing Board",
     image: getImage("muhsin.png"),
-    cardImage: getImage("muhsincrd.png"),
+    cardImage: getImage("muhsincrd.jpg"),
     add: "518",
     address: "Vaduthala, Jetty, Alappuzha",
     DOB: "16/05/2007",

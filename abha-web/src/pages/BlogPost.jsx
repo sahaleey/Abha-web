@@ -1,194 +1,189 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import blogData from "../data/blogData";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
+  Share2,
+} from "lucide-react";
 
 const BlogPost = () => {
   const { id } = useParams();
-  const post = blogData.find((item) => item.id.toString() === id);
+  const post = useMemo(
+    () => blogData.find((item) => item.id.toString() === id),
+    [id]
+  );
+
+  // Scroll progress bar
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 25,
+    restDelta: 0.001,
+  });
+
+  // Scroll to top on post change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [id]);
 
   if (!post) {
     return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white font-bloomsburg"
-      >
-        <div className="text-center p-8 max-w-md">
-          <h2 className="text-4xl font-bold text-amber-400 mb-6">
-            Post Not Found
-          </h2>
-          <Link
-            to="/blog"
-            className="inline-flex items-center px-8 py-3 bg-amber-500 hover:bg-amber-600 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-amber-500/20"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Back to Blog
-          </Link>
-        </div>
-      </motion.div>
+      <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center text-white text-center px-6">
+        <h2 className="text-4xl font-bold text-amber-500 mb-4">
+          404 // Post Not Found
+        </h2>
+        <p className="text-gray-400 mb-8">
+          This article doesn’t exist or was removed.
+        </p>
+        <Link
+          to="/blog"
+          className="px-6 py-3 bg-white/10 rounded-full hover:bg-white/20 transition"
+        >
+          Back to Blog
+        </Link>
+      </div>
     );
   }
 
+  // Reading time
+  const readingTime = Math.max(
+    1,
+    Math.ceil(
+      post.content.join(" ").split(/\s+/).length / 200
+    )
+  );
+
+  // Share handler
+  const handleShare = async () => {
+    const shareData = {
+      title: post.title,
+      text: post.title,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(shareData.url);
+        alert("Link copied to clipboard");
+      }
+    } catch {
+      // silent fail
+    }
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-900 text-white font-bloomsburg"
-    >
-      <article className="max-w-4xl mx-auto px-4 md:px-8 py-20">
-        {/* Back Button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-10"
-        >
-          <Link
-            to="/blog"
-            className="inline-flex items-center text-amber-400 hover:text-amber-300 transition-all duration-300 group"
+    <div className="min-h-screen bg-[#050505] text-white pb-24">
+
+      {/* Reading progress */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-amber-500 origin-left z-50"
+        style={{ scaleX }}
+      />
+
+      {/* Back button */}
+      <div className="fixed top-6 left-6 z-40">
+        <Link to="/blog">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="p-3 bg-black/50 backdrop-blur-md border border-white/10 rounded-full hover:bg-white/10 transition"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2 transition-transform group-hover:-translate-x-1"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span className="font-medium">All Articles</span>
-          </Link>
-        </motion.div>
+            <ArrowLeft size={20} />
+          </motion.button>
+        </Link>
+      </div>
 
-        {/* Title */}
-        <motion.h1
-          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-600"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-        >
-          {post.title}
-        </motion.h1>
+      {/* Hero */}
+      <div className="relative h-[65vh] w-full overflow-hidden">
+        <motion.img
+          src={post.image}
+          alt={post.title}
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.4, ease: "easeOut" }}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-black/60 to-transparent" />
 
-        {/* Meta */}
-        <motion.div
-          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-12 text-gray-400"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <div className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2 text-amber-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
-            <span>{post.date}</span>
+        <div className="absolute bottom-0 left-0 w-full px-6 pb-10 max-w-5xl mx-auto">
+          <div className="flex items-center gap-4 text-sm text-gray-300 font-mono mb-6">
+            <span className="flex items-center gap-2">
+              <Calendar size={14} className="text-amber-500" />
+              {post.date}
+            </span>
+            <span className="text-gray-600">|</span>
+            <span className="flex items-center gap-2">
+              <Clock size={14} className="text-amber-500" />
+              {readingTime} min read
+            </span>
           </div>
-          <div className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2 text-amber-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-              />
-            </svg>
-            <span>By {post.author}</span>
-          </div>
-        </motion.div>
 
-        {/* Featured Image */}
-        {post.image && (
-          <motion.figure
-            className="relative rounded-2xl overflow-hidden mb-12 shadow-2xl"
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            whileHover={{ scale: 1.01 }}
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+            {post.title}
+          </h1>
+        </div>
+      </div>
+
+      {/* Content */}
+      <article className="max-w-3xl mx-auto px-6 mt-16">
+
+        {/* Author + Share */}
+        <div className="flex items-center justify-between border-b border-white/10 pb-8 mb-12">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center text-black font-bold text-xl">
+              {post.author?.[0] || "A"}
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-widest text-gray-400">
+                Written by
+              </p>
+              <p className="font-semibold">{post.author}</p>
+            </div>
+          </div>
+
+          <button
+            onClick={handleShare}
+            className="p-2 text-gray-400 hover:text-amber-400 transition"
+            aria-label="Share post"
           >
-            <img
-              rel="preload"
-              src={post.image}
-              alt={post.title}
-              className="w-full h-auto max-h-96 object-cover "
-              loading="eager"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-          </motion.figure>
-        )}
+            <Share2 size={20} />
+          </button>
+        </div>
 
-        {/* Content */}
-        <motion.div
-          className="prose prose-invert max-w-none text-lg leading-relaxed space-y-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-        >
-          {post.content.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
+        {/* Text */}
+        <div className="space-y-10 text-lg md:text-xl leading-relaxed text-gray-300">
+          {post.content.map((para, i) => (
+            <motion.p
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.45 }}
+              className="first-letter:text-5xl first-letter:font-bold first-letter:text-amber-500 first-letter:float-left first-letter:mr-3"
+            >
+              {para}
+            </motion.p>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Back Button Bottom */}
-        <motion.div
-          className="mt-16 pt-8 border-t border-gray-800"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.1 }}
-        >
-          <Link
-            to="/blog"
-            className="inline-flex items-center text-amber-400 hover:text-amber-300 transition-all duration-300 group font-medium"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2 transition-transform group-hover:-translate-x-1"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Back to All Posts
+        {/* End */}
+        <div className="mt-24 text-center border-t border-white/10 pt-12">
+          <p className="text-gray-500 italic mb-8">
+            You reached the end. Respect.
+          </p>
+          <Link to="/blog">
+            <button className="px-8 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 transition">
+              Read More Articles
+            </button>
           </Link>
-        </motion.div>
+        </div>
       </article>
-    </motion.div>
+    </div>
   );
 };
 

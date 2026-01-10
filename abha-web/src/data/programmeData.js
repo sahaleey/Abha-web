@@ -1,68 +1,11 @@
-// src/data/programmesData.js
-import Program1 from "../assets/programmeImages/rafikka.jpg";
-import Program2 from "../assets/programmeImages/INAGRU CMYK.jpg";
-import Program3 from "../assets/programmeImages/labour day.jpg";
-import Program4 from "../assets/programmeImages/ptti copy.jpg";
-import Program5 from "../assets/programmeImages/press.jpg";
-import Program6 from "../assets/programmeImages/main pos.jpg";
-import Program7 from "../assets/programmeImages/labourday.jpg";
-import Program8 from "../assets/programmeImages/shuhaib std.jpg";
-import Program9 from "../assets/programmeImages/wa.jpg";
-import Program10 from "../assets/programmeImages/ig 2.jpg";
-import Program11 from "../assets/programmeImages/know the legend.jpg";
-import Program12 from "../assets/programmeImages/nurse day.jpg";
-import Program13 from "../assets/programmeImages/aljoddor copy.jpg";
-import Program14 from "../assets/programmeImages/fluent.jpg";
-import Program15 from "../assets/programmeImages/janam.jpg";
-import Program16 from "../assets/programmeImages/moria.jpg";
-import Program17 from "../assets/programmeImages/ner.jpg";
-import Program18 from "../assets/programmeImages/لطائف قرآنية copy.jpg";
-import Program19 from "../assets/programmeImages/anti-terror.jpg";
-import Program20 from "../assets/programmeImages/web-launch.jpg";
-import Program21 from "../assets/programmeImages/nerkazhcha-1.jpg";
-import Program22 from "../assets/programmeImages/brothers abha 1.png";
-import Program23 from "../assets/programmeImages/KOOTTEZHUTH.jpg";
-import Program24 from "../assets/programmeImages/urdu wng.jpg";
-import Program25 from "../assets/programmeImages/website.jpg";
-import Program26 from "../assets/programmeImages/ig.jpg";
-import Program27 from "../assets/programmeImages/50k.jpg";
-import Program28 from "../assets/programmeImages/rain mlm copy .jpg";
-import Program29 from "../assets/programmeImages/abu (1).jpg";
-import Program30 from "../assets/programmeImages/academia documentary.jpg";
-import Program31 from "../assets/programmeImages/ajnas.jpg";
-import Program32 from "../assets/programmeImages/ashaya,.jpg";
-import Program33 from "../assets/programmeImages/book.jpg";
-import Program34 from "../assets/programmeImages/CAREER GUIDENCE.jpg";
-import Program35 from "../assets/programmeImages/docu rajiv.jpg";
-import Program36 from "../assets/programmeImages/fmly day.jpg";
-import Program37 from "../assets/programmeImages/GROUP DISCUSSION.jpg";
-import Program38 from "../assets/programmeImages/halawa.jpg";
-import Program39 from "../assets/programmeImages/katha patrachil copy.jpg";
-import Program40 from "../assets/programmeImages/kathib sayiid kuktub.png";
-import Program41 from "../assets/programmeImages/KAVI copy.jpg";
-import Program42 from "../assets/programmeImages/know the legend 2.jpg";
-import Program43 from "../assets/programmeImages/malcom x.jpg";
-import Program44 from "../assets/programmeImages/mhd copy.jpg";
-import Program45 from "../assets/programmeImages/mirzu 2 copy.jpg";
-import Program46 from "../assets/programmeImages/mother.jpg";
-import Program47 from "../assets/programmeImages/munaqasha 2.jpg";
-import Program48 from "../assets/programmeImages/munaqasha1.jpg";
-import Program49 from "../assets/programmeImages/MUSA.jpg";
-import Program50 from "../assets/programmeImages/NGUGU WA THIONGO.jpg";
-import Program51 from "../assets/programmeImages/one day.jpg";
-import Program52 from "../assets/programmeImages/pd.jpg";
-import Program53 from "../assets/programmeImages/riyas.jpg";
-import Program54 from "../assets/programmeImages/rizller 2.jpg";
-import Program55 from "../assets/programmeImages/rizller.jpg";
-import Program56 from "../assets/programmeImages/talent 4.jpg";
-import Program57 from "../assets/programmeImages/talent copy.jpg";
-import Program58 from "../assets/programmeImages/talent copy1.jpg";
-import Program59 from "../assets/programmeImages/talent copy2.jpg";
-import Program60 from "../assets/programmeImages/THA'ARRAF ANISSHA'IR.jpg";
-import Program61 from "../assets/programmeImages/Untitled design.jpg";
-import Program62 from "../assets/programmeImages/URDU GD copy.jpg";
-import Program63 from "../assets/programmeImages/VAYANA.jpg";
-import Program64 from "../assets/programmeImages/vayna day.jpg";
+
+const images = import.meta.glob(
+  "../assets/programmeImages/*.{jpg,jpeg,png}",
+  { eager: true }
+);
+
+const img = (name) =>
+  images[`../assets/programmeImages/${name}`]?.default;
 
 export const alreadyDoneProgrammes = [
   {
@@ -72,9 +15,9 @@ export const alreadyDoneProgrammes = [
     host: "Rafi Hudawi Muvattupuzha",
     date: "31/04/2025",
     time: "4 : 20 PM",
-    image: Program1,
+    image: img("rafikka.jpg"),
     description:
-      "Head Start’ marked the energetic launch of our journey, led by Rafi Muvattupuzha. This kickoff event set the tone for our community’s mission, inspiring everyone with motivation, clear direction, and a powerful sense of purpose.",
+      "Head Start marked the energetic launch of our journey, setting direction and purpose.",
   },
   {
     id: 2,
@@ -83,9 +26,9 @@ export const alreadyDoneProgrammes = [
     host: "Usthad Younus Hudawi",
     date: "31/04/2025",
     time: "6 : 00 AM",
-    image: Program2,
+    image: img("INAGRU CMYK.jpg"),
     description:
-      "Join us as we mark the official inauguration of our Abha community — a celebration of new beginnings, shared visions, and the exciting journey ahead. Together, we open the doors to creativity, connection, and growth.",
+      "The official inauguration of Abha community celebrating new beginnings.",
   },
   {
     id: 3,
@@ -95,57 +38,57 @@ export const alreadyDoneProgrammes = [
     host: "Ahmed Zainudheen",
     date: "01/05/2025",
     time: "11 : 20 AM",
-    image: Program3,
+    image: img("labour day.jpg"),
     description:
-      "On May 1, led by Ahmed Zainudheen, we celebrated Labour Day, honoring workers’ dedication and the dignity of labour.",
+      "Labour Day program honoring the dignity and dedication of workers.",
   },
   {
     id: 4,
-    name: "നേർകാഴ്ച ",
+    name: "നേർകാഴ്ച",
     stage: "Radio",
-    host: "Yaseen Pi, Anwar",
     wing: "IQ Orbit",
+    host: "Yaseen Pi, Anwar",
     date: "03/05/2025",
     time: "08 : 15 PM",
-    image: Program4,
+    image: img("ptti copy.jpg"),
     description:
-      "On May 03, World Press Day. We conducted a live radio to talk about Indian anti-freedom of media",
+      "Live radio discussion on freedom of media conducted on World Press Day.",
   },
   {
     id: 5,
     name: "Defend freedom of Press",
     date: "03/05/2025",
-    image: Program5,
-    description: "World Press Day. Freedom for Press!",
+    image: img("press.jpg"),
+    description: "World Press Day special poster promoting press freedom.",
   },
   {
     id: 6,
     name: "നൻ പകൽ നേരത്തെ ജോലി",
     date: "01/05/2025",
-    image: Program7,
-    description: "World Labour Day Special Poster",
+    image: img("labourday.jpg"),
+    description: "World Labour Day special poster.",
   },
   {
     id: 7,
-    name: "ഒന്നും ഒന്നും ഒന്ന്  ",
+    name: "ഒന്നും ഒന്നും ഒന്ന്",
     stage: "Out Campus",
     host: "ABHA",
     date: "05/05/2025",
     time: "06 : 00 AM to 10 : 00 PM",
-    image: Program6,
+    image: img("main pos.jpg"),
     description:
-      "നമ്മൾ ഒത്തു ചേരുമ്പോൾ ആഗ്രഹങ്ങൾക്കു കരുത്തും പ്രവർത്തനങ്ങൾക്ക് ചിറകുകളും പിറക്കുന്നു. നമ്മുടെ ഗ്രൂപ്പ് ശക്തമായി മുന്നേറാൻ, സഹകരണത്തിൻ്റെയും പ്രചോദനത്തിൻ്റെയും ഈ ഘട്ടം ഒരിക്കലുമറക്കരുത്!",
+      "An out-campus initiative emphasizing unity and collaboration.",
   },
   {
     id: 8,
-    name: "Al-Dheenu  Al-Nasweeha",
+    name: "Al-Dheenu Al-Nasweeha",
     stage: "Out Campus",
     host: "Usthad Shuaib Hudawi",
     date: "05/05/2025",
     time: "In Camp",
-    image: Program8,
-    description: `برنامج «الدين النصيحة» بقيادة الشيخ شعيب هداوي في المسجد، يجمعنا على دروس الإيمان والصدق.
-فرصة للارتقاء بأرواحنا وتزكية قلوبنا بنور النصيحة والمحبة.`,
+    image: img("shuhaib std.jpg"),
+    description:
+      "A spiritual session focusing on faith, sincerity, and moral guidance.",
   },
   {
     id: 9,
@@ -154,16 +97,17 @@ export const alreadyDoneProgrammes = [
     host: "Usthad Abi Vakkas Usthad",
     date: "05/05/2025",
     time: "In Camp",
-    image: Program9,
-    description: `"Let Me Fly” with Usthad Vakkas Hudawi — where your dreams grow wings and your skills find their sky.
-It’s time to rise, break limits, and soar toward the greatness waiting inside you!`,
+    image: img("wa.jpg"),
+    description:
+      "A motivational program encouraging students to rise beyond limits.",
   },
   {
     id: 10,
     name: "Mothers day : Special poster",
     date: "11/05/2025",
-    image: Program10,
-    description: `Join Abha Community in honoring the unconditional love, strength, and sacrifices of mothers everywhere! Our special Mother’s Day poster is a vibrant tribute to the incredible women who shape our lives with warmth and wisdom.`,
+    image: img("ig 2.jpg"),
+    description:
+      "A tribute celebrating the unconditional love and sacrifices of mothers.",
   },
   {
     id: 11,
@@ -172,15 +116,17 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     wing: "English Wing",
     host: "English Wing",
     date: "Every Tuesday",
-    image: Program11,
-    description: `"Journey into Romanticism! The English Wing's #KnowTheLegend series begins with William Wordsworth – explore the poet who made nature sing. Stay tuned!" #AbhaLiteraryJourney `,
+    image: img("know the legend.jpg"),
+    description:
+      "A literary series introducing legendary figures in English literature.",
   },
   {
     id: 12,
     name: "Nurse Day : Special Poster",
     date: "12/05/2025",
-    image: Program12,
-    description: `Saluting Our Angels in Scrubs! This #InternationalNursesDay, Abha celebrates the compassion, courage and tireless care of nurses who heal the world every day. Join us in honoring these healthcare heroes!`,
+    image: img("nurse day.jpg"),
+    description:
+      "International Nurses Day poster honoring healthcare heroes.",
   },
   {
     id: 13,
@@ -190,8 +136,9 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     host: "Ma'moon",
     date: "01/05/2025",
     time: "8 : 00 PM",
-    image: Program13,
-    description: `Al-Judoor is an Abha Academia initiative by our union to teach students the foundational grammar of Arabic in an engaging and accessible way.`,
+    image: img("aljoddor copy.jpg"),
+    description:
+      "An Arabic grammar foundation initiative by Abha Academia.",
   },
   {
     id: 14,
@@ -201,8 +148,9 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     host: "Ihsan",
     date: "Every Wednesday",
     time: "8 : 30 PM",
-    image: Program14,
-    description: `Fluent Flicks is an English Wing program designed to introduce students to new English vocabulary through fun and interactive learning.`,
+    image: img("fluent.jpg"),
+    description:
+      "An English vocabulary program through fun and interactive learning.",
   },
   {
     id: 15,
@@ -211,8 +159,9 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     host: "Class leader",
     date: "All Month last Week",
     time: "9 : 30 PM",
-    image: Program15,
-    description: `ABHA Parliament is an inspiring initiative to empower and motivate the class wing through leadership, collaboration, and active participation.`,
+    image: img("janam.jpg"),
+    description:
+      "A leadership platform encouraging participation and responsibility.",
   },
   {
     id: 16,
@@ -221,19 +170,21 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     host: "Usthad Muhammad Asif Hudawi",
     date: "15/05/2025",
     time: "3 : 20 PM",
-    image: Program16,
-    description: `A Career Guidance class by Usthad Muhammed Asif Hudawi is being conducted to help students make informed and purpose-driven career choices.`,
+    image: img("moria.jpg"),
+    description:
+      "Career guidance session helping students make informed choices.",
   },
   {
     id: 17,
     name: "നേര്‍കാഴ്ച - മോദിയോടുള്ള ചോദ്യങ്ങള്‍",
     wing: "IQ Orbit",
     stage: "In front of 7th Class",
-    host: "Anwar sadath",
+    host: "Anwar Sadath",
     date: "13/05/2025",
     time: "9 : 30 PM",
-    image: Program17,
-    description: `IQ Orbit is hosting a group discussion titled "നേര്‍കാഴ്ച - മോദിയോടുള്ള ചോദ്യങ്ങള്‍" to critically engage students on the Pahalgam terrorist attack and encourage thoughtful dialogue.`,
+    image: img("ner.jpg"),
+    description:
+      "A discussion encouraging critical political awareness.",
   },
   {
     id: 18,
@@ -243,8 +194,9 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     host: "Ma'moon",
     date: "01/05/2025",
     time: "6 : 30 AM",
-    image: Program18,
-    description: `"لطائف قرآنية" is an enlightening session by Ma'moon under Abha Academia, aimed at introducing students to the profound laws and wisdom of the Qur’an.`,
+    image: img("لطائف قرآنية copy.jpg"),
+    description:
+      "A Qur’anic insight session exploring wisdom and deeper meanings.",
   },
   {
     id: 19,
@@ -254,15 +206,17 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     host: "IQ Orbit",
     date: "21/05/2025",
     time: "9 : 30 PM",
-    image: Program21,
-    description: `ABHA conducting "നേര്‍കാഴ്ച" sessions on three diverse topics, hosted by IQ Orbit, to spark critical thinking and open discussion among students.`,
+    image: img("nerkazhcha-1.jpg"),
+    description:
+      "Discussion sessions on diverse topics to spark critical thinking.",
   },
   {
     id: 20,
     name: "World Anti-Terrorist day - Special poster",
     date: "21/05/2025",
-    image: Program19,
-    description: `ABHA created a powerful special poster to commemorate Anti-Terrorist Day, spreading awareness and promoting peace among students.`,
+    image: img("anti-terror.jpg"),
+    description:
+      "A poster promoting peace and awareness against terrorism.",
   },
   {
     id: 21,
@@ -271,25 +225,28 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     host: "Usthad Muhammed Shafi Hudawi",
     date: "21/05/2025",
     time: "1 : 30 PM",
-    image: Program20,
-    description: `Abha proudly launched its official website, unveiled by Usthad Muhammed Shafi Hudawi, marking a new milestone in our community’s digital journey.`,
+    image: img("web-launch.jpg"),
+    description:
+      "Official launch of Abha’s website marking a digital milestone.",
   },
   {
     id: 22,
     name: "Brothers day",
     date: "24/05/2025",
-    image: Program22,
-    description: `Celebrating the unbreakable bond of love, laughter, and brotherhood this Brothers Day!`,
+    image: img("brothers abha 1.png"),
+    description:
+      "Celebrating the bond of love, laughter, and brotherhood.",
   },
   {
     id: 23,
     name: "Web Design Course",
-    stage: "7th class",
+    stage: "7th Class",
     host: "Usthad Muhammed Rahoof Hudawi",
     date: "18/05/2025",
     time: "9 : 30 PM",
-    image: Program25,
-    description: `Master the art of modern web design with Usthad Muhammad Rahoof Hudawi in our comprehensive and practical course.`,
+    image: img("website.jpg"),
+    description:
+      "A practical course on modern web design fundamentals.",
   },
   {
     id: 24,
@@ -298,8 +255,9 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     stage: "Masjid Ground floor",
     date: "21/05/2025",
     time: "1 : 30 PM",
-    image: Program23,
-    description: `Kuttezhuth – A heartfelt Malayalam tabloid celebrating the warmth, values, and stories of family life.`,
+    image: img("KOOTTEZHUTH.jpg"),
+    description:
+      "A Malayalam tabloid celebrating family values and stories.",
   },
   {
     id: 25,
@@ -308,31 +266,35 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     stage: "7th Class",
     host: "Muhammed Sahel cp",
     time: "8 : 00 PM",
-    image: Program24,
-    description: `Grammar Hunt – An engaging journey through the rules and beauty of Urdu, sharpening language skills with fun and challenge.`,
+    image: img("urdu wng.jpg"),
+    description:
+      "An engaging Urdu grammar challenge for language mastery.",
   },
   {
     id: 26,
     name: "Ummak Oru Kath",
     stage: "Home",
     host: "Usthad Muhammed Shareef Hudawi",
-    image: Program26,
-    description: `A heartfelt tribute to motherhood, where students pen emotional letters expressing their deepest love and gratitude to their mothers.`,
+    image: img("ig.jpg"),
+    description:
+      "Students write emotional letters expressing love for their mothers.",
   },
   {
     id: 27,
     name: "Mission 50K",
     stage: "7th Class",
     host: "Core Team",
-    image: Program27,
-    description: `Mission 50K is a powerful reading initiative challenging all class members to collectively read 50,000 pages within one academic year—fueling knowledge, focus, and a lifelong love for books.`,
+    image: img("50k.jpg"),
+    description:
+      "A reading initiative challenging students to read 50,000 pages.",
   },
   {
     id: 28,
     name: "Rain Malayalam Tabloid",
     wing: "Malayalam Wing",
-    image: Program28,
-    description: `Mazha" is a heartfelt tabloid by the Malayalam Wing, capturing the rain-soaked emotions, stories, and reflections of our vibrant community—where every page drips with culture, creativity, and connection.`,
+    image: img("rain mlm copy .jpg"),
+    description:
+      "A tabloid capturing rain-soaked emotions and reflections.",
   },
   {
     id: 29,
@@ -341,27 +303,29 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     stage: "7th Class",
     host: "Arabic Wing",
     date: "21/06/2025",
-    image: Program29,
-    description: `A special tabloid released for International Reading Day, featuring the life and poems of renowned writer Abu Hassan Ali Hassan.`,
+    image: img("abu (1).jpg"),
+    description:
+      "A tabloid released for International Reading Day.",
   },
   {
     id: 30,
-    name: "How to study scientificcally",
+    name: "How to study scientifically",
     wing: "Academic Wing",
     stage: "7th Class",
     host: "Ma'Moon",
     date: "23/05/2025",
-    image: Program30,
-    description: `An engaging session led by Ma'moon, offering practical techniques and smart strategies to enhance learning through a scientific approach to studying.`,
+    image: img("academia documentary.jpg"),
+    description:
+      "A session on scientific study techniques and smart learning.",
   },
   {
     id: 31,
     name: "അക്ഷരവീഥി",
     stage: "7th Class",
-    host: "Usthad Ajnas hudawi",
+    host: "Usthad Ajnas Hudawi",
     date: "19/06/2025",
-    image: Program31,
-    description: ``,
+    image: img("ajnas.jpg"),
+    description: "",
   },
   {
     id: 32,
@@ -370,9 +334,9 @@ It’s time to rise, break limits, and soar toward the greatness waiting inside 
     wing: "Malayalam Wing",
     host: "Muhammed Ameen",
     date: "19/06/2025",
-    image: Program32,
-    description: ``,
+    image: img("ashaya,.jpg"),
+    description: "",
   },
 ];
 
-export const wantToDoProgrammes = [];
+
